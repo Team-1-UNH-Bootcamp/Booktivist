@@ -31,7 +31,6 @@ router.post('/api/signup', (req, res) => {
 //     })
 //     console.log(result);
 //   })
-
 // });
 
 
@@ -63,8 +62,8 @@ router.post('/api/signup', (req, res) => {
 // });
 
 // router.get('/api/mylibrary/:userId', function (req, res) {
-// eslint-disable-next-line max-len
-//  connection.query('select * from wishlist where userId=?', [req.params.userId], (err, result) => {
+//  connection.query('select * from wishlist where userId=?',
+// [req.params.userId], (err, result) => {
 //     if (err) throw err;
 //     console.log(result);
 //   })
@@ -72,15 +71,15 @@ router.post('/api/signup', (req, res) => {
 // });
 
 
-// eslint-disable-next-line max-len
-// if user click on plus sign (+) to add a book into the mylibrary, check if user is logged in or not 
+// if user click on plus sign (+) to add a book into
+// the mylibrary, check if user is logged in or not
 // if not redirect to signup page or login page
 // if yes then book will be added to user's my library.
 
 // router.post('/api/mylibrary/', function (req, res) {
 
-// eslint-disable-next-line max-len
-//   connection.query('insert into wishlist (??) where userId=?', [req.params.userId], (err, result) => {
+//  connection.query('insert into wishlist (??)
+// where userId=?', [req.params.userId], (err, result) => {
 //     if (err) throw err;
 //     console.log(result);
 //   })
