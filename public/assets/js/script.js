@@ -1,7 +1,10 @@
 // populate book modal
 // GET /api/books/${bookid}
 // response -> populate book modal
+//populate book models with latest books by publication date
 
+
+//allow user to add to my library or opt out
 // in book modal
 // if user click on plus sign (+) to add a book
 // into the mylibrary, check if user is logged in or not
