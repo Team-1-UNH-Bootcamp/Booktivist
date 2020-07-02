@@ -9,10 +9,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <link rel="stylesheet" href="../public/css/styles.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Add Books</title>
 </head>
 
 <body>
+    <!------------------------ NAV BAR------------------------------------------->
     <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Booktivist</a>
         <div>
@@ -50,12 +52,158 @@
             </div>
         </div>
     </nav>
+
+
+
+
     <!-- Add Books---------------------------------------------------------------------- -->
 
+    <div class="container" id="isbn">
+        <h3>Add Book</h3>
+        <h id="isbnHeader">ISBN</h5>
+            <input type="text" placeholder=" Enter ISBN #">
+            <button type="button" class="btn btn-danger">Submit ISBN #</button>
+            <button type="button" class="btn btn-link">How do I find the ISBN number?</button>
+            <!-- <a href="...">
+                <p id="isbnSearch">How do I find the ISBN number?</p>
+            </a> -->
+    </div>
+
+    <!-- Dynamically Populated Forms ------------------->
+    <form class="container">
+        <h3>Book Information</h3>
+        <img src="http://via.placeholder.com/300
+
+C/O https://placeholder.com/" alt="..." class="img-thumbnail">
+        <div class="form-group row">
+            <label for="bookTitle" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="populateBook" placeholder="Book Title">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="bookAuthor" class="col-sm-2 col-form-label">Author</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="populateAuthor" placeholder="Author">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="bookIllustrator" class="col-sm-2 col-form-label">Illustrator</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="populateIllustrator" placeholder="Book Illustrator">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="bookYear" class="col-sm-2 col-form-label">Year of Publication</label>
+            <div class="col-sm-6">
+                <input type="date" class="form-control" id="populateDate" placeholder="Year">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="bookDescriptio " class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <textarea class="form-control" id="textarea" rows="7"></textarea>
+                </div>
+
+            </div>
+
+
+            <!-- Dyamically Populated  validation---------------------------- -->
+
+        </div>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Is this the right book?</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                            Yes, this is the book I want to add
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <label class="form-check-label" for="gridRadios2">
+                            No, edit the ISBN Number
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+        <!-- <div class="form-group row">
+            <div class="col-sm-2">Checkbox</div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Example checkbox
+                    </label>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="button" class="btn btn-warning">Submit</button>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- Choose Tags and YouTube Links ----------------------------->
+
+    <form class="container">
+        <h3>Additional Book Information</h3>
+        <select class="form-select" aria-label="Default select example">
+        <option selected>Select Relevant Categories</option>
+        <option value="1">BLM</option>
+        <option value="2">LGBTQIA+</option>
+        <option value="3">Native American Heritage</option>
+    </select>
+
+
+        <div class="form-group row">
+            <label for="bookIllustrator" class="col-sm-2 col-form-label">Add YouTube Link</label>
+            <div class="col-sm-8">
+                <input type="link" class="form-control" id="addYouTube" placeholder="
+                YouTubeLink">
+            </div>
+        </div>
 
 
 
-    <!-- --------------------------------------------------------------------------- -->
+        <h6>What questions should parents ask their kids that may provide insight about the message of the book?
+        </h6>
+        <div class="col-sm-10">
+            <div class="form-group">
+                <textarea class="form-control" id="textarea" rows="7"></textarea>
+            </div>
+
+        </div>
+
+        <button type="button" class="btn btn-warning">Submit Book</button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ------------------------FOOTER---------------------------------- --------->
     <!-- Footer -->
     <container>
         <footer id="footer" class="page-footer font-small mdb-color pt-4">
