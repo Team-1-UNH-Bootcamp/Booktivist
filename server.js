@@ -12,6 +12,7 @@ app.use(express.static('public'));
 
 app.use('/', routes);
 
+
 // Sync sequelize models then start Express app
 // =============================================
 db.sequelize.sync().then(() => {
