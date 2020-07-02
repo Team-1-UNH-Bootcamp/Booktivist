@@ -1,67 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Booktivist</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link
-			rel="stylesheet"
-			href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
-		/>
-		<link href="stylesheets/style.css" rel="stylesheet" />
-	</head>
-
-	<body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header"></div>
-			</div>
-		</nav>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<h2>Login Form</h2>
-					<form class="login">
-						<div class="form-group">
-							<label for="email">Email address</label>
-							<input
-								type="email"
-								class="form-control"
-								id="email-input"
-								name="email"
-								placeholder="Email"
-							/>
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input
-								type="password"
-								class="form-control"
-								id="password-input"
-								name="password"
-								placeholder="Password"
-							/>
-						</div>
-						<button type="submit" class="btn btn-default">Login</button>
-					</form>
-					<br />
-					<p>Or sign up <a href="/">here</a></p>
-				</div>
-			</div>
-		</div>
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/login.js"></script>
-	</body>
-</html>
 <!-- Peter -->
 
-<!-- centered <div> -->
-<!-- <text input> username -->
-<!-- <text input> password -->
-<!-- <button> login-->
-<!-- <link> forgot password-->
-<!-- <link> regiser-->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -133,11 +71,49 @@
 			</div>
 		</nav>
 
+		<!-- centered <div> -->
+		<div class="container">
+			<form>
+				<h1>Booktivist <i class="fas fa-book-open"></i></h1>
+				<h6>Start Reading Today!</h6>
+				<div class="form-control">
+					<label for="email">Email</label>
+					<input
+						type="email"
+						name="email"
+						id="email"
+						placeholder="Please Enter Your Email"
+					/>
+				</div>
+				<div class="form-control">
+					<label for="password">Password</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						placeholder="Please Enter Your Password"
+					/>
+					<small>Forgot Password? </small>
+					<a href="#"><small id="password">Click Here</small></a>
+				</div>
+				<button class="form-btn btn-warning">Login</button>
+				<small
+					>Don't have an account yet?
+					<a href="signup.html" class="sign">Sign Up</a></small
+				>
+			</form>
+		</div>
+		<!-- <text input> username -->
+		<!-- <text input> password -->
+		<!-- <button> login-->
+		<!-- <link> forgot password-->
+		<!-- <link> register-->
+
 		<!-- Footer -->
 		<container>
 			<footer id="footer" class="page-footer font-small mdb-color pt-4">
 				<!-- Footer Links -->
-				<div class="container text-center text-md-left">
+				<div class="text-center text-md-left">
 					<hr />
 					<!-- Footer links -->
 					<div class="row text-center text-md-left mt-3 pb-3">
@@ -215,7 +191,7 @@
 						<!-- Grid column -->
 						<div class="col-md-7 col-lg-8">
 							<!--Copyright-->
-							<p class="text-center text-md-left">
+							<p class="text-center text-md-right">
 								© 2020 Copyright:
 								<a href="www.booktivist.com">
 									<strong> Bootivist.com</strong>
@@ -276,6 +252,10 @@
 		<script
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://kit.fontawesome.com/2c59773103.js"
 			crossorigin="anonymous"
 		></script>
 	</body>
