@@ -43,10 +43,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => {
-    // Associating User with Library
-    // When a User is deleted, also delete any associated library
-    User.hasMany(models.Library, {
-      onDelete: 'cascade',
+    User.belongsToMany(models.Book, {
+      through: 'UserBooks',
+      as: 'books',
+      foreignKey: 'userId',
+      otherKey: 'bookId',
     });
   };
   return User;
