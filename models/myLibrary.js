@@ -12,7 +12,7 @@
 module.exports = (sequelize, DataTypes) => {
     const Library = sequelize.define('Library', {
 
-        firstName: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
