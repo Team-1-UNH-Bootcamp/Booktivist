@@ -8,3 +8,6 @@
 // next - clear dom and replace with final info
 // on submit, take all info from user and google books, set to obj
 // and submit to backend
+
+// $.ajax("/api/books", {type: 'POST', data: bookObj}).then(()=>{})
+// add that to the books table and set added to false
