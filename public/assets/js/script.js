@@ -1,5 +1,5 @@
 // populate book modal
-// GET /api/books/${book id}
+// GET /api/books/${bookid}
 // response -> populate book modal
 // populate book models with latest books by publication date
 // give book modal id = to book id
