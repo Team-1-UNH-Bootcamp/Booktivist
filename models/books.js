@@ -20,11 +20,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       validate: { len: [5, 100] },
     },
-    category: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: { len: [5, 100] },
-    },
+    // This field will not be required as it will be a foreign key
+    // category: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: { len: [5, 100] },
+    // },
     description: {
       // may need to allow for more than 255 chars per Ffej
       // could use TEXT data type and put a len cap of 500
@@ -58,22 +59,31 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       validate: { len: [5, 150] },
     },
-    featured: {
-      // will be reportable once book is approved by admin and updates to true?
+    added: {
+      // will be viewable once book is approved by admin and updates to true?
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       allowNull: false,
-      validate: { len: [1, 10] },
     },
   });
 
   Book.associate = (models) => {
     // we're saying that a Book should belong to a Category
     // A Book can't be created without a Category due to the foreign key constraint
-    Book.belongsTo(models.Category, {
-      foreignKey: {
-        allowNull: false,
-      },
+    Book.belongsToMany(models.Category, {
+      through: 'BookCategory',
+      as: 'categories',
+      foreignKey: 'bookId',
+      otherKey: 'categoryId',
+    });
+  };
+
+  Book.associate = (models) => {
+    Book.belongsToMany(models.User, {
+      through: 'UserBooks',
+      as: 'users',
+      foreignKey: 'bookId',
+      otherKey: 'userId',
     });
   };
 

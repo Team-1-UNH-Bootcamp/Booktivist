@@ -7,10 +7,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Category.associate = (models) => {
-    // Associating Categories with Books
-    // When a Category is deleted, also delete any associated Books
-    Category.hasMany(models.Book, {
-      onDelete: 'cascade',
+    Category.belongsToMany(models.Book, {
+      through: 'BookCategory',
+      as: 'books',
+      foreignKey: 'categoryId',
+      otherKey: 'bookId',
     });
   };
 
