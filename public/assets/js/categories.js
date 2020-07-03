@@ -11,7 +11,9 @@
 //     }
 //     return categoryName;
 // }
-// $.ajax(`/api/categories/${categoryName}`, {
+
+//
+// $.ajax(`/api/bycategory/${categoryName}`, {
 // type: 'GET',
 // }).then((response)=>{
 // for each element of response: create card
