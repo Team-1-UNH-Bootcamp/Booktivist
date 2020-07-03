@@ -34,6 +34,7 @@ select {
 }
 
 img {
+
 	float: left;
 } */
 
@@ -133,4 +134,10 @@ small {
 sign {
 	color: #2762eb;
 	text-decoration: none;
+}
+    float: left;
+}
+
+#about1 {
+    margin-top: 30px;
 }
