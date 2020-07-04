@@ -135,9 +135,10 @@ sign {
 	color: #2762eb;
 	text-decoration: none;
 }
-    float: left;
+ {
+	float: left;
 }
 
 #about1 {
-    margin-top: 30px;
+	margin-top: 30px;
 }
