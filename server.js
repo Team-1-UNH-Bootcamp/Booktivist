@@ -1,11 +1,12 @@
 const express = require('express');
 const session = require('express-session');
 const db = require('./models');
-
-const userBooks = require('./routes/userbooks-routes');
-
 const routes = require('./routes');
 const passport = require('./config/passport');
+const userBooks = require('./routes/userbooks-routes');
+
+// const routes = require('./routes');
+// const passport = require('./config/passport');
 
 const app = express();
 
@@ -18,9 +19,7 @@ app.use('/', routes);
 app.use('/', userBooks);
 
 app.use(
-  // eslint-disable-next-line
-  // eslint-disable-next-line comma-dangle
-  session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })
+  session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }),
 );
 app.use(passport.initialize());
 app.use(passport.session());
