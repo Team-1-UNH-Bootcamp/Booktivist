@@ -1,11 +1,6 @@
-
-// require bcryptjs for hashing the password
-
-
-// const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 // creating User model
-
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
 
@@ -31,13 +26,13 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
-    // The password cannot be null
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [5],
-      },
+    },
+    adminStatus: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
 
   });
@@ -50,5 +45,12 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'bookId',
     });
   };
+  User.prototype.validPassword = (password) => {
+    return bcrypt.compareSync(password, this.password);
+  };
+  User.addHook('beforeCreate', (user) => {
+    // eslint-disable-next-line no-param-reassign
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  });
   return User;
 };

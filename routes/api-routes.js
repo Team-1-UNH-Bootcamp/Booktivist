@@ -99,6 +99,9 @@ module.exports = (app) => {
 //     console.log(result);
 //   })
 //   return res.send('No books found');
+
+// router.post('/api/login', passport.authenticate('local'), (req, res) => {
+//   res.json(req.user);
 // });
 
 // if user click on plus sign (+) to add a book into
@@ -106,15 +109,8 @@ module.exports = (app) => {
 // if not redirect to signup page or login page
 // if yes then book will be added to user's my library.
 
-// router.post('/api/mylibrary/', function (req, res) {
+// router.post('/api/mylibrary/:bookid', function (req, res) {
 
-//  connection.query('insert into wishlist (??)
-// where userId=?', [req.params.userId], (err, result) => {
-//     if (err) throw err;
-//     console.log(result);
-//   })
-//   return res.send('No books found');
-// });
 
 // router.get('/', (req, res) => res.json('Sample API get endpoint'));
 
