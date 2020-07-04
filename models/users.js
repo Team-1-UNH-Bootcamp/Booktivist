@@ -49,8 +49,8 @@ module.exports = (sequelize, DataTypes) => {
     return bcrypt.compareSync(password, this.password);
   };
   User.addHook('beforeCreate', (user) => {
-    // eslint-disable-next-line no-param-reassign
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    const users = user;
+    users.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
   return User;
 };
