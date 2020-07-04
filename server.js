@@ -1,28 +1,31 @@
 const express = require('express');
 const session = require('express-session');
-const db = require('./models');
-const routes = require('./routes');
+// Requiring passport as we've configured it
 const passport = require('./config/passport');
-const userBooks = require('./routes/userbooks-routes');
-
+// Requiring database models
+const db = require('./models');
 // const routes = require('./routes');
-// const passport = require('./config/passport');
+// const userBooks = require('./routes/userbooks-routes');
+const apiRoutes = require('./routes/api-routes');
 
-const app = express();
-
+// Setting up port
 const PORT = process.env.PORT || 9000;
 
+// Creating express app and configuring middleware needed for authentication
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/', routes);
-app.use('/', userBooks);
-
-app.use(
-  session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }),
-);
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: process.env.SECRET_KEY, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// middleware for our routes
+// app.use('/', routes);
+// app.use('/', userBooks);
+app.use('/', apiRoutes);
+app.use('/api', apiRoutes);
 
 // Sync sequelize models then start Express app
 // =============================================
