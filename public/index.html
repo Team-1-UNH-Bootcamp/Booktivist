@@ -11,6 +11,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/remistyle.css" />
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Booktivist</title>
 </head>
 
@@ -99,60 +101,81 @@
 
     <!-- container -->
     <div class="container">
-        <!-- Search form -->
-        <!-- <div>
-            <button type="button" class="btn btn-primary">Primary</button>
-            <form class="form-inline">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
-            </form>
-        </div> -->
+        <!-- Category Button -->
 
-        <!-- -------------------------------------------------------------------- -->
-        <!-- Book Cards -->
-        <!-- Row 1 -->
-        <h1>Featured Books</h1>
+
+        <!-- Search form -->
+        <div class="container">
+
+            <!-- Custom rounded search bars with input group -->
+            <form action="" id="search">
+                <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                    <div class="input-group">
+                        <input type="search" placeholder="Search by category, author or title?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
+                                        class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <!-- End -->
+
+        </div>
+    </div>
+
+
+    <!-- -------------------------------------------------------------------- -->
+    <!-- Book Cards -->
+    <!-- Row 1 -->
+    <div class="container">
+        <h1>Newly Published Books</h1>
+
         <div class="row">
             <div class="col-sm-3">
                 <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/daily" alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/Newly Published Books/anti racist baby.png" alt="Card image top" />
                     <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <h4 class="card-subtitle">Card subtitle</h4>
-                        <p class="card-text">This is a simple Card example</p>
+                        <a href="">
+                            <h3 class="card-title">Antiracist Baby</h3>
+                        </a>
+                        <h4 class="card-subtitle">IBRAM X. KENDI</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/Newly Published Books/A is for activist.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">A is for Activist</h3>
+                        <h4 class="card-subtitle">Innosanto Nagara</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-3">
                 <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/daily" alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/Newly Published Books/its okay to be different.png" alt="Card image top" />
                     <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <h4 class="card-subtitle">Card subtitle</h4>
-                        <p class="card-text">This is a simple Card example</p>
+                        <h3 class="card-title">It's OK to be Different</h3>
+                        <h4 class="card-subtitle">Sharon Purtill</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-3">
                 <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/daily" alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/Newly Published Books/listening with my heart.png" alt="Card image top" />
                     <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <h4 class="card-subtitle">Card subtitle</h4>
-                        <p class="card-text">This is a simple Card example</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/daily" alt="Card image top" />
-                    <div class="card-body">
-                        <h3 class="card-title">Card title</h3>
-                        <h4 class="card-subtitle">Card subtitle</h4>
-                        <p class="card-text">This is a simple Card example</p>
+                        <h3 class="card-title">Listening with My Heart</h3>
+                        <h4 class="card-subtitle">Gabi Garcia</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
                     </div>
                 </div>
             </div>
@@ -161,179 +184,286 @@
 
         <!-- Row 2 -->
         <h1>Black Lives Matter</h1>
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap" />
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/hair love.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">Hair Love</h3>
+                        <h4 class="card-subtitle">Matthew A. Cherry and Vashti Harrison/h4>
+                            <!-- <p class="card-text">This is a simple Card example</p> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/I'm enough - blm.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">I Am Enough</h3>
+                        <h4 class="card-subtitle">Grace Byers and Keturah A. Bobo</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/think big little one -blm.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">Think Big, Little One</h3>
+                        <h4 class="card-subtitle">Vashti Harrison</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/I'am Human -blm.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">I Am Human</h3>
+                        <h4 class="card-subtitle">Susan Verde</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
+                    </div>
+                </div>
             </div>
         </div>
         <hr />
 
         <!-- row 3 -->
         <h1>LGBTQIA+</h1>
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap" />
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <hr />
 
-        <!-- row 4 -->
-        <h1>Native American Heritage</h1>
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap" />
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ------------------------------------------------------------------------ -->
-
-    <!-- Footer -->
-    <container>
-        <footer id="footer" class="page-footer font-small mdb-color pt-4">
-            <!-- Footer Links -->
-            <div class="container text-center text-md-left">
-                <hr />
-                <!-- Footer links -->
-                <div class="row text-center text-md-left mt-3 pb-3">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Booktivist</h6>
-                        <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        </p>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/LGBTQ+/Julian is a mermaid.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">Julián Is a Mermaid</h3>
+                        <h4 class="card-subtitle">Jessica Love</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
                     </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                        <p>
-                            <a href="#!">MDBootstrap</a>
-                        </p>
-                        <p>
-                            <a href="#!">MDWordPress</a>
-                        </p>
-                        <p>
-                            <a href="#!">BrandFlow</a>
-                        </p>
-                        <p>
-                            <a href="#!">Bootstrap Angular</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Useful Links</h6>
-                        <p>
-                            <a href="#!">Your Account</a>
-                        </p>
-                        <p>
-                            <a href="#!">Become an Affiliate</a>
-                        </p>
-                        <p>
-                            <a href="#!">Shipping Rates</a>
-                        </p>
-                        <p>
-                            <a href="#!">Help</a>
-                        </p>
-                    </div>
-
-                    <!-- Grid column -->
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <p><i class="fas fa-home mr-3"></i>Portsmouth, New Hampshire</p>
-                        <p>
-                            <i class="fas fa-envelope mr-3"></i> booktivistinfo@gmail.com
-                        </p>
-                        <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-                    </div>
-                    <!-- Grid column -->
                 </div>
-                <!-- Footer links -->
+            </div>
 
-                <hr />
-
-                <!-- Grid row -->
-                <div class="row d-flex align-items-center">
-                    <!-- Grid column -->
-                    <div class="col-md-7 col-lg-8">
-                        <!--Copyright-->
-                        <p class="text-center text-md-left">
-                            © 2020 Copyright:
-                            <a href="www.booktivist.com">
-                                <strong> Bootivist.com</strong>
-                            </a>
-                        </p>
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/LGBTQ+/Love makes a family.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">Love Makes a Family</h3>
+                        <h4 class="card-subtitle">Sophie Beer</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
                     </div>
-                    <!-- Grid column -->
+                </div>
+            </div>
 
-                    <!-- Grid column -->
-                    <div class="col-md-5 col-lg-4 ml-lg-0">
-                        <!-- Social buttons -->
-                        <div class="text-center text-md-right">
-                            <ul class="list-unstyled list-inline">
-                                <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                        <i class="fab fa-google-plus-g"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                </li>
-                            </ul>
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/LGBTQ+/Pink is for boys.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">Pink Is for Boys</h3>
+                        <h4 class="card-subtitle">Eleanor Morrison and Faye Orlove</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/bookcovers/LGBTQ+/pride.png" alt="Card image top" />
+                    <div class="card-body">
+                        <h3 class="card-title">Pride</h3>
+                        <h4 class="card-subtitle">Rob Sanders and Steven Salerno</h4>
+                        <!-- <p class="card-text">This is a simple Card example</p> -->
+                    </div>
+                </div>
+            </div>
+
+            <h1>Native American Heritage</h1>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="./assets/images/bookcovers/Native Tribes/how stars fell into the sky.png" alt="Card image top" />
+                        <div class="card-body">
+                            <h3 class="card-title">How the Stars Fell into the Sky: A Navajo</h3>
+                            <h4 class="card-subtitle">errie Oughton and Lisa Desimini</h4>
+                            <!-- <p class="card-text">This is a simple Card example</p> -->
                         </div>
                     </div>
-                    <!-- Grid column -->
                 </div>
-                <!-- Grid row -->
-            </div>
-            <!-- Footer Links -->
-        </footer>
-    </container>
-    <!-- Footer -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="./assets/images/bookcovers/Native Tribes/ten little rabbits.png" alt="Card image top" />
+                        <div class="card-body">
+                            <h3 class="card-title">Ten Little Rabbits</h3>
+                            <h4 class="card-subtitle">Virginia Grossman and Sylvia Long</h4>
+                            <!-- <p class="card-text">This is a simple Card example</p> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="./assets/images/bookcovers/Native Tribes/The  very first americans.png" alt="Card image top" />
+                        <div class="card-body">
+                            <h3 class="card-title">The Very First Americans</h3>
+                            <h4 class="card-subtitle">Cara Ashrose and Bryna Waldman</h4>
+                            <!-- <p class="card-text">This is a simple Card example</p> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="./assets/images/bookcovers/Native Tribes/fry bread.png" alt="Card image top" />
+                        <div class="card-body">
+                            <h3 class="card-title">Fry Bread: A Native American Family Story</h3>
+                            <h4 class="card-subtitle">Kevin Noble Maillard and Juana Martinez-Neal</h4>
+                            <!-- <p class="card-text">This is a simple Card example</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <!-- ------------------------------------------------------------------------ -->
+
+        <!-- Footer -->
+        <container>
+            <footer id="footer" class="page-footer font-small mdb-color pt-4">
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left">
+                    <hr />
+                    <!-- Footer links -->
+                    <div class="row text-center text-md-left mt-3 pb-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Booktivist</h6>
+                            <p>
+                                Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                            <p>
+                                <a href="#!">MDBootstrap</a>
+                            </p>
+                            <p>
+                                <a href="#!">MDWordPress</a>
+                            </p>
+                            <p>
+                                <a href="#!">BrandFlow</a>
+                            </p>
+                            <p>
+                                <a href="#!">Bootstrap Angular</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Useful Links</h6>
+                            <p>
+                                <a href="#!">Your Account</a>
+                            </p>
+                            <p>
+                                <a href="#!">Become an Affiliate</a>
+                            </p>
+                            <p>
+                                <a href="#!">Shipping Rates</a>
+                            </p>
+                            <p>
+                                <a href="#!">Help</a>
+                            </p>
+                        </div>
+
+                        <!-- Grid column -->
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                            <p><i class="fas fa-home mr-3"></i>Portsmouth, New Hampshire</p>
+                            <p>
+                                <i class="fas fa-envelope mr-3"></i> booktivistinfo@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Footer links -->
+
+                    <hr />
+
+                    <!-- Grid row -->
+                    <div class="row d-flex align-items-center">
+                        <!-- Grid column -->
+                        <div class="col-md-7 col-lg-8">
+                            <!--Copyright-->
+                            <p class="text-center text-md-left">
+                                © 2020 Copyright:
+                                <a href="www.booktivist.com">
+                                    <strong> Bootivist.com</strong>
+                                </a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-5 col-lg-4 ml-lg-0">
+                            <!-- Social buttons -->
+                            <div class="text-center text-md-right">
+                                <ul class="list-unstyled list-inline">
+                                    <li class="list-inline-item">
+                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                            <i class="fab fa-google-plus-g"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+                <!-- Footer Links -->
+            </footer>
+        </container>
+        <!-- Footer -->
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>
