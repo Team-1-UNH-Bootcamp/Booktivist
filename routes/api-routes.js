@@ -27,7 +27,7 @@ router.post('/api/signup', (req, res) => {
     password: req.body.password,
   })
     .then(() => {
-      // res.redirect(307, '/api/login');
+      res.redirect(307, '/');
       res.json({
         message: 'user created successfully',
       });
