@@ -39,3 +39,35 @@
 // on return of confirmation, tell user it got added
 // switch plus to minus
 // })
+
+// $("bookImgBtn").click(()=>{
+// $.ajax(`/api/books/${this.id}, {
+//      type: 'GET'
+// }).then((response)=>{
+//    dynamically create modal
+//      Nested call to see if book has been added
+//      1. check if logged in
+//      2. if logged in:
+//      $.ajax(`/api/userbooks/${this.id}`, {
+//          type: 'GET'
+// }).then((response)=>{
+//      if(response === true){
+//         display minus sign
+// })
+// } else{display plus sign}
+// })
+// })
+// })
+//
+//          $("#plusSign").click(function()=>{
+//          if(${"#plusSign"}.value === false){
+//              $.ajax(`/api/userBooks/${bookId}`, {type: 'POST'}).then(()=>{
+//              display message that book has been added
+//                 change to minus sign
+//             } else {
+//              $.ajax(`api/userBooks/${bookId}`. {type: 'DESTROy'}).then(()=>{
+//                  display message book has been removed from list
+//                  change minus sign to plus sign
+// })
+// }
+// })
