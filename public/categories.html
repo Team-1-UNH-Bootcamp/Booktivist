@@ -74,36 +74,87 @@
 
 		<!-- div class container to hold all books from backend / id="categoryBooksDisplay-->
 		<div class="container">
-			<div id="categoryHeader">$Category</div>
-			<div id="categoryBooksDisplay">$Category Content</div>
+			<!-- <div id="categoryBooksDisplay">$Category Content</div> -->
 			<form>
-				<h1>Booktivist <i class="fas fa-book-open"></i></h1>
+				<h1 id="categoryHeader">
+					$Category
+					<i class="fas fa-book-open"></i>
+				</h1>
 				<h6>Start Reading Today!</h6>
-				<div class="form-control">
-					<label for="email">Email</label>
-					<input
-						type="email"
-						name="email"
-						id="email"
-						placeholder="Please Enter Your Email"
-					/>
-				</div>
-				<div class="form-control">
-					<label for="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						id="password"
-						placeholder="Please Enter Your Password"
-					/>
-					<small>Forgot Password? </small>
-					<a href="#"><small id="password">Click Here</small></a>
-				</div>
-				<button class="form-btn btn-warning">Login</button>
-				<small
-					>Don't have an account yet?
-					<a href="signup.html" class="sign">Sign Up</a></small
-				>
+
+				<label for="Books">Choose a category:</label>
+				<!-- Ability **
+					African American/Black (redundant?)
+					Asian Pacific Islander
+					Biography
+					Black Lives Matter **
+					Challenging Stereotypes
+					Diverse Representation (or “Relationships Across Difference”)
+					Feelings/Self Esteem
+					History
+					Latinx
+					LGBTQIA+ **
+					Native American/Indigenous
+					Privilege/Racism
+					Religion
+					Strong Girls/Women ** -->
+
+				<select name="books" id="books">
+					<option value="book-category" class="book">
+						Please select a category
+					</option>
+					<option value="book-category" class="book">
+						Activism**
+					</option>
+					<option value="book-category" class="book">
+						Ability
+					</option>
+					<option value="book-category" class="book">
+						African American/Black (redundant?)
+					</option>
+					<option value="book-category" class="book">
+						Asian Pacific Islander
+					</option>
+					<option value="book-category" class="book">
+						Biography
+					</option>
+					<option value="book-category" class="book">
+						Black Lives Matter**
+					</option>
+					<option value="book-category" class="book">
+						Challenging Stereotypes
+					</option>
+					<option value="book-category" class="book">
+						Diverse Representation ( or "“Relationships Across Difference")
+					</option>
+					<option value="book-category" class="book">
+						Feelings/Self-Esteem
+					</option>
+					<option value="book-category" class="book">
+						History
+					</option>
+					<option value="book-category" class="book">
+						Latinx
+					</option>
+					<option value="book-category" class="book">
+						LGBTQIA+**
+					</option>
+					<option value="book-category" class="book">
+						Native Americans/Indigenous
+					</option>
+					<option value="book-category" class="book">
+						Privilege/ Racism
+					</option>
+					<option value="book-category" class="book">
+						Religion
+					</option>
+					<option value="book-category" class="book">
+						Strong Girls/Women
+					</option>
+				</select>
+				<button class="form-btn btn-warning">
+					<i class="fas fa-search"> Search</i>
+				</button>
 			</form>
 		</div>
 		<!-- Footer -->
@@ -188,7 +239,7 @@
 						<!-- Grid column -->
 						<div class="col-md-7 col-lg-8">
 							<!--Copyright-->
-							<p class="text-center text-md-left">
+							<p class="text-center text-md-right">
 								© 2020 Copyright:
 								<a href="www.booktivist.com">
 									<strong> Bootivist.com</strong>
@@ -249,6 +300,10 @@
 		<script
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://kit.fontawesome.com/2c59773103.js"
 			crossorigin="anonymous"
 		></script>
 	</body>

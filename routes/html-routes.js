@@ -1,6 +1,7 @@
 const path = require('path');
 const router = require('express').Router();
 
+// Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require('../config/middleware/isAuthenticated');
 
 // home page
@@ -9,9 +10,12 @@ router.get('/', (req, res) => {
 });
 
 // route to login page - see below
-// router.get('/login', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../public/login.html'));
-// });
+router.get('/login', (req, res) => {
+  if (req.user) {
+    res.redirect('/');
+  }
+  res.sendFile(path.join(__dirname, '../public/login.html'));
+});
 
 // route to signup page
 router.get('/signup', (req, res) => {

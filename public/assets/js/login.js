@@ -1,28 +1,17 @@
-// check if user's logged in - passport
-
-// $('#loginButton').click(() => {
-//   const userData = [
-//     {
-//       username: $('#userNameInput').val(),
-//       password: $('#passwordInput').val(),
-//     },
-//   ];
-// $.ajax('/api/user_data', {
-//  type: 'POST',
-//  data: 'userData'
-// }).then((response)=>{
-//  if response === ""{didn't work}
-// else {logged in and go to home page, logged in status set to true}
-// })
-// });
-
 // login
 // double check admin = true
 $(document).ready(() => {
+<<<<<<< HEAD
     // Getting references to our form and inputs
     const loginForm = $('form.login');
     const emailInput = $('input#email-input');
     const passwordInput = $('input#password-input');
+=======
+  // Getting references to our form and inputs
+  const loginForm = $('.signup');
+  const emailInput = $('#email');
+  const passwordInput = $('#password');
+>>>>>>> 1cb73584b36f6c64ff7ffdf63d4d3d02d1cb6b6e
 
     // When the form is submitted, we validate there's an email and password entered
     loginForm.on('submit', (event) => {
@@ -43,6 +32,7 @@ $(document).ready(() => {
         passwordInput.val('');
     });
 
+<<<<<<< HEAD
     // loginUser does a post to our "api/login" route and if successful,
     // redirects us the the members page
     const loginUser = (email, password) => {
@@ -60,4 +50,24 @@ $(document).ready(() => {
                 console.log(err);
             });
     };
+=======
+  // loginUser does a post to our "api/login" route and if successful,
+  // redirects us the the members page
+  const loginUser = (email, password) => {
+    console.log(email, password);
+    $.post('/api/login', {
+      // eslint-disable-next-line object-shorthand
+      email: email,
+      // eslint-disable-next-line object-shorthand
+      password: password,
+    })
+      .then(() => {
+        window.location.replace('/');
+        // If there's an error, log the error
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+>>>>>>> 1cb73584b36f6c64ff7ffdf63d4d3d02d1cb6b6e
 });
