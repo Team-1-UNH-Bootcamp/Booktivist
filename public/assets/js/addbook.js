@@ -66,9 +66,14 @@ $('#submitBook').click((e) => {
         category: category,
         youTubeLink: addYouTube,
         parentInsights: textarea
-
     }
     console.log(payload)
+
+    $.post("#", payload,
+        function(data, status) {
+            console.log(data, status);
+        }
+    );
 });
 
 
@@ -78,22 +83,6 @@ function populateFields(book) {
     $("#populateImg").attr("src", book.volumeInfo.imageLinks.thumbnail)
     $("#populateBook").val(book.volumeInfo.title)
     $("#populateAuthor").val(book.volumeInfo.authors.join(", "))
-    $("#populateDesc").val(book.volumeInfo.description)
-    $("#populateIllustrator").val(book.volumeInfo.thumbnail)
-    $("#populateDate").val(book.volumeInfo.publishedDate)
-
-
-}
-
-
-function getFields() {
-    const bookData = {
-
-
-    }
-    $("#populateImg").attr("src", book.volumeInfo.imageLinks.thumbnail)
-    $("#populateBook").val(book.volumeInfo.title)
-    $("#populateAuthor").val(book.volumeInfo.authors[0])
     $("#populateDesc").val(book.volumeInfo.description)
     $("#populateIllustrator").val(book.volumeInfo.thumbnail)
     $("#populateDate").val(book.volumeInfo.publishedDate)
