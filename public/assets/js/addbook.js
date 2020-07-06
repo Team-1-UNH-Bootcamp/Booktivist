@@ -12,7 +12,9 @@
 
 // $.ajax("/api/books", {type: 'POST', data: bookObj}).then(()=>{})
 // add that to the books table and set added to false
-var currentBook = null
+var currentBook = null;
+$("#bookInfo").hide();
+$("#extraInfo").hide();
 
 $('#isbnSubmit').click(() => {
     var isbn = $('#isbnInput').val();
@@ -20,14 +22,56 @@ $('#isbnSubmit').click(() => {
     var googleAPI = "https://www.googleapis.com/books/v1/volumes?q=" + isbn_without_hyphens;
     $.getJSON(googleAPI, function(response) {
         if (typeof response.items === "undefined") {
-            alert("No populatebooks match that ISBN.")
+            alert("No populatebooks match that ISBN.");
         } else {
-            currentBook = response.items[0]
-            populateFields(response.items[0])
-            console.log(response.items)
+            currentBook = response.items[0];
+            populateFields(response.items[0]);
+            console.log(currentBook);
+
+            $("#bookInfo").show();
+
         }
     });
 });
+
+$('#infoReject').click(() => {
+
+    $("#bookInfo").hide();
+    console.log(currentBook);
+
+
+
+});
+$('#infoSubmit').click((e) => {
+    e.preventDefault()
+    $("#extraInfo").show();
+    console.log(currentBook);
+
+});
+
+$('#submitBook').click((e) => {
+    e.preventDefault()
+    $("#extraInfo").show();
+    const category = $("#categorySelect").val()
+    const addYouTube = $("#addYouTube").val()
+    const textarea = $("#textarea").val()
+    console.log(category, addYouTube, textarea);
+    const payload = {
+
+        thumbnail: currentBook.volumeInfo.imageLinks.thumbnail,
+        title: currentBook.volumeInfo.title,
+        authors: currentBook.volumeInfo.authors.join(", "),
+        description: currentBook.volumeInfo.description,
+        publishedDate: currentBook.volumeInfo.publishedDate,
+        category: category,
+        youTubeLink: addYouTube,
+        parentInsights: textarea
+
+    }
+    console.log(payload)
+});
+
+
 
 function populateFields(book) {
 
@@ -42,9 +86,11 @@ function populateFields(book) {
 }
 
 
-
 function getFields() {
+    const bookData = {
 
+
+    }
     $("#populateImg").attr("src", book.volumeInfo.imageLinks.thumbnail)
     $("#populateBook").val(book.volumeInfo.title)
     $("#populateAuthor").val(book.volumeInfo.authors[0])

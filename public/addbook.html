@@ -74,7 +74,7 @@
     </div>
 
     <!-- Dynamically Populated Forms ------------------->
-    <form class="container">
+    <form class="container" id="bookInfo">
         <h3>Book Information</h3>
         <img src="http://via.placeholder.com/300" alt="..." class="img-thumbnail" id="populateImg">
         <div class="form-group row">
@@ -119,34 +119,14 @@
             <!-- Dyamically Populated  validation---------------------------- -->
 
         </div>
-        <!-- <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Is this the right book?</legend>
-                <div class="col-sm-10">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                        <label class="form-check-label" for="gridRadios1">
-                            Yes, this is the book I want to add
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                        <label class="form-check-label" for="gridRadios2">
-                            No, edit the ISBN Number
-                        </label>
-                    </div>
-
-                </div>
-            </div>
-        </fieldset> -->
 
 
         <div class="form-group row">
             <div class="col-sm-4">
-                <button type="button" class="btn btn-danger">No, edit ISBN #</button>
+                <button type="button" class="btn btn-danger" id="infoReject">No, edit ISBN #</button>
             </div>
             <div class="col-sm-4 offset-4">
-                <button type=" button " class="btn btn-success ">Submit</button>
+                <button type=" button " class="btn btn-success" id="infoSubmit">Submit</button>
             </div>
         </div>
 
@@ -162,20 +142,20 @@
 
     <!-- Choose Tags and YouTube Links ----------------------------->
 
-    <form class="container ">
+    <form class="container " id="extraInfo">
         <h3>Additional Book Information</h3>
-        <select class="form-select " aria-label="Default select example ">
+        <select class="form-select " aria-label="Default select example " id="categorySelect">
         <option selected>Select Relevant Categories</option>
-        <option value="1 ">BLM</option>
-        <option value="2 ">LGBTQIA+</option>
-        <option value="3 ">Native American Heritage</option>
+        <option value="BLM">BLM</option>
+        <option value="LGBTQIA+">LGBTQIA+</option>
+        <option value="Native American Heritage">Native American Heritage</option>
     </select>
 
 
         <div class="form-group row ">
             <label for="bookIllustrator " class="col-sm-2 col-form-label ">Add YouTube Link</label>
             <div class="col-sm-8 ">
-                <input type="link " class="form-control " id="addYouTube " placeholder=" YouTubeLink ">
+                <input type="link " class="form-control " id="addYouTube" placeholder=" YouTubeLink ">
             </div>
         </div>
 
@@ -185,12 +165,12 @@
         </h6>
         <div class="col-sm-10 ">
             <div class="form-group ">
-                <textarea class="form-control " id="textarea " rows="7 "></textarea>
+                <textarea class="form-control " id="textarea" rows="7 "></textarea>
             </div>
 
         </div>
 
-        <button type="button " class="btn btn-warning ">Submit Book</button>
+        <button type="button " class="btn btn-warning" id="submitBook">Submit Book</button>
     </form>
 
 
