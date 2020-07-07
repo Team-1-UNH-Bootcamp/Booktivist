@@ -10,7 +10,7 @@ router.get('/', (req, res) => res.json('Sample API get endpoint'));
 // categories - load from the categories.html (onload)
 // get /api/categories/:category
 // return all books fitting category from req.params.category
-router.get('/api/:category', (req, res) => {
+router.get('/api/categories/:category', (req, res) => {
   db.Category.findAll({
     raw: true,
     where: { category: req.params.category },
