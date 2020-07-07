@@ -32,7 +32,6 @@ const getBooks = (category) => {
         });
       const linkTitle = $('<button>')
         .attr({ class: 'titleModal', value: data[apiId] })
-        // value: data.id
         .attr('data-toggle', 'modal')
         .attr('data-target', '#bookModal')
         .css({ border: 'none', backgroundColor: 'white' });
@@ -53,11 +52,11 @@ const getBooks = (category) => {
     // eslint-disable-next-line comma-dangle
   });
 };
-const recent = ['recent', 'recent'];
+// const recent = ['recent', 'recent'];
 const BLM = ['category/3', 'BLM'];
 const LGBTQ = ['category/1', 'LGBTQ'];
 // const NAH = 'category/2';
-getBooks(recent);
+// getBooks(recent);
 getBooks(BLM);
 getBooks(LGBTQ);
 // getBooks(NAH);
