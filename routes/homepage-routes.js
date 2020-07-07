@@ -100,15 +100,15 @@ router.get('/api/books/recent', (req, res) => {
 // will pull against value entered on end and return accordingly
 // ':categoryid' will need to be hardcoded as the id that BLM has on the Category table
 // currently with mock data in db the Category id for Black Lives Matter = 3
-router.get('/api/books/category/3', (req, res) => {
+router.get('/api/books/category/:id', (req, res) => {
   db.Category.findAll({
     raw: true,
-    where: { id: 3 },
+    where: { id: req.params.id },
     include: [
       {
         model: db.Book,
         where: { added: true },
-        as: 'books',
+        // as: 'books',
         attributes: ['id', 'title', 'author', 'image_link', 'description'],
       },
     ],
@@ -120,41 +120,43 @@ router.get('/api/books/category/3', (req, res) => {
 // LGBTQIA+ books displayed on the homepage
 // get /api/books/category/:categoryid
 // return all books marked LGBTQIA
-router.get('/api/books/category/1', (req, res) => {
-  db.Category.findAll({
-    raw: true,
-    where: { id: 1 },
-    include: [
-      {
-        model: db.Book,
-        where: { added: true },
-        as: 'books',
-        attributes: ['id', 'title', 'author', 'image_link', 'description'],
-      },
-    ],
-  }).then((dbBookLGBTQ) => {
-    res.json(dbBookLGBTQ);
-  });
-});
+// router.get('/api/books/category/1', (req, res) => {
+//   db.Category.findAll({
+//     raw: true,
+//     where: { id: 1 },
+//     include: [
+//       {
+//         model: db.Book,
+//         where: { added: true },
+//         as: 'books',
+//         attributes: ['id', 'title', 'author', 'image_link', 'description'],
+//       },
+//     ],
+//   }).then((dbBookLGBTQ) => {
+//     res.json(dbBookLGBTQ);
+//   });
+// });
 
 // Native American Heritge books displayed on the homepage
 // get /api/books/category/:categoryid
 // return all books marked NAH
-router.get('/api/books/category/2', (req, res) => {
-  db.Category.findAll({
-    raw: true,
-    where: { id: 2 },
-    include: [
-      {
-        model: db.Book,
-        where: { added: true },
-        as: 'books',
-        attributes: ['id', 'title', 'author', 'image_link', 'description'],
-      },
-    ],
-  }).then((dbBookNAH) => {
-    res.json(dbBookNAH);
-  });
-});
+// router.get('/api/books/category/2', (req, res) => {
+//   db.Category.findAll({
+//     raw: true,
+//     where: { id: 2 },
+//     include: [
+//       {
+//         model: db.Book,
+//         where: { added: true },
+//         as: 'books',
+//         attributes: ['id', 'title', 'author', 'image_link', 'description'],
+//       },
+//     ],
+//   }).then((dbBookNAH) => {
+//     // res.json(dbBookNAH);
+//     console.log(dbBookNAH);
+//     res.send('hello!');
+//   });
+// });
 
 module.exports = router;
