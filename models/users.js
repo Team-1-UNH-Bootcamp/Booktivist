@@ -45,8 +45,6 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'bookId',
     });
   };
-  // User.prototype.validPassword = (password) => bcrypt.compareSync(password, this.password);
-
 
   User.addHook('beforeCreate', (user) => {
     const users = user;

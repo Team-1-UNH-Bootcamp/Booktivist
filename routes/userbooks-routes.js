@@ -11,21 +11,21 @@ const db = require('../models');
 // });
 
 // add categories
-router.post('/api/categories', (req, res) => {
-  db.Category.create(req.body).then((dbCat) => {
-    res.json(dbCat);
-  });
-});
+// router.post('/categories', (req, res) => {
+//   db.Category.create(req.body).then((dbCat) => {
+//     res.json(dbCat);
+//   });
+// });
 
 // add books
-router.post('/api/books', (req, res) => {
-  db.Book.create(req.body).then((dbBook) => {
-    res.json(dbBook);
-  });
-});
+// router.post('/books', (req, res) => {
+//   db.Book.create(req.body).then((dbBook) => {
+//     res.json(dbBook);
+//   });
+// });
 
 // add UserBooks
-router.post('/api/userbooks', (req, res) => {
+router.post('/userbooks', (req, res) => {
   db.UserBooks.create(req.body).then((dbUserBook) => {
     res.json(dbUserBook);
   });
@@ -35,7 +35,7 @@ router.post('/api/userbooks', (req, res) => {
 // return if book id is in row matching userid
 
 
-router.get('/api/userbooks/', (req, res) => {
+router.get('/userbooks/', (req, res) => {
   db.Book.findAll({
     include: [{
       model: db.User,
@@ -55,7 +55,7 @@ router.get('/api/userbooks/', (req, res) => {
       console.log(dbUserBook);
     });
 });
-router.get('/api/userbooks/:id', (req, res) => {
+router.get('/userbooks/:id', (req, res) => {
   db.Book.findOne({
     where: {
       id: req.params.id,
@@ -83,7 +83,7 @@ router.get('/api/userbooks/:id', (req, res) => {
 
 // first time adding book in wishlist or userBooks
 // click on (+) sign and book will be added to userBooks table (we need to pass userid and bookId)
-router.post('/api/userbooks/', (req, res) => {
+router.post('/userbooks/', (req, res) => {
   db.UserBooks.create(req.body)
     .then((dbUserBook) => {
       res.json(dbUserBook);
