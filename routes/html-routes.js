@@ -58,9 +58,11 @@ router.get('/', (req, res) => {
 
 // Place this route below all others to send he index.html file
 // to any request that is not explicitly defined above
-router.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-});
+// router.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../public/index.html'));
+// });
+// router.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../public/login.html'));
 
 module.exports = (app) => {
   app.get('/login', (req, res) => {
@@ -77,7 +79,7 @@ module.exports = (app) => {
   app.get('/mylibrary', isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
   });
-  app.get('/adbook', isAuthenticated, (req, res) => {
+  app.get('/addbook', isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, '../public/addbook.html'));
   });
   app.get('/admin/review', isAuthenticated, (req, res) => {
