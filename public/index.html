@@ -2,512 +2,520 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./css/remistyle.css" />
     <!-- Load icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Booktivist</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Booktivist</a>
-        <div>
-            <button class="btn btn-warning" type="button" style="width: 130px; margin-right: 40px; height: 38px;">
-                <!--TODO get this shit to float right-->
-                Sign Up
-                <a class="nav-link" href="#"></a>
-            </button>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      <a class="navbar-brand" href="#">Booktivist</a>
+      <div>
+        <button
+          class="btn btn-warning"
+          type="button"
+          style="width: 130px; margin-right: 40px; height: 38px;"
+        >
+          Sign Up
+          <a class="nav-link" href="#"></a>
+        </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">My Library</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Add Book</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/mylibrary">My Library</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="addbook">Add Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
     <!-- --------------------------------------------------------------------------- -->
 
     <!-- Carousel -->
     <div class="container" id="carousel">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" style="max-height: 500px;"
-                        src="../public/assets/images/index_photos/sara-torda-ViUzwBK0Vrs-unsplash.jpg"
-                        alt="First slide" />
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="max-height: 500px;"
-                        src="../public/assets/images/index_photos/jonathan-borba-Z1Oyw2snqn8-unsplash.jpg"
-                        alt="Second slide" />
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="max-height: 500px;"
-                        src="../public/assets/images/index_photos/johnny-mcclung-RjdoQxJ7-5k-unsplash copy 2.jpg"
-                        alt="Third slide" />
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="max-height: 500px;"
-                        src="../public/assets/images/index_photos/jerry-wang-0qmXPnZKeLU-unsplash.jpg"
-                        alt="Third slide" />
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="max-height: 500px;"
-                        src="../public/assets/images/index_photos/heping-EZ4dXMnhqkk-unsplash.jpg" alt="Third slide" />
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="max-height: 500px;"
-                        src="../public/assets/images/index_photos/gabriel-tovar-Y9RFMB7Gb94-unsplash.jpg"
-                        alt="Third slide" />
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="max-height: 500px;"
-                        src="../public/assets/images/index_photos/element5-digital-OyCl7Y4y0Bk-unsplash.jpg"
-                        alt="Third slide" />
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="max-height: 500px;"
-                        src="../public/assets/images/index_photos/catherine-hammond-dsf3lRHaUuA-unsplash.jpg"
-                        alt="Third slide" />
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              class="d-block w-100"
+              style="max-height: 500px;"
+              src="./assets/images/index_photos/sara-torda-ViUzwBK0Vrs-unsplash.jpg"
+              alt="First slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              style="max-height: 500px;"
+              src="./assets/images/index_photos/jonathan-borba-Z1Oyw2snqn8-unsplash.jpg"
+              alt="Second slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              style="max-height: 500px;"
+              src="./assets/images/index_photos/johnny-mcclung-RjdoQxJ7-5k-unsplash copy 2.jpg"
+              alt="Third slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              style="max-height: 500px;"
+              src="./assets/images/index_photos/jerry-wang-0qmXPnZKeLU-unsplash.jpg"
+              alt="Third slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              style="max-height: 500px;"
+              src="./assets/images/index_photos/heping-EZ4dXMnhqkk-unsplash.jpg"
+              alt="Third slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              style="max-height: 500px;"
+              src="./assets/images/index_photos/gabriel-tovar-Y9RFMB7Gb94-unsplash.jpg"
+              alt="Third slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              style="max-height: 500px;"
+              src="./assets/images/index_photos/element5-digital-OyCl7Y4y0Bk-unsplash.jpg"
+              alt="Third slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              style="max-height: 500px;"
+              src="./assets/images/index_photos/catherine-hammond-dsf3lRHaUuA-unsplash.jpg"
+              alt="Third slide"
+            />
+          </div>
         </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </div>
 
     <!--------------------------------------------------------------------------- -->
 
     <!-- container -->
     <div class="container">
-        <!-- Category Button -->
+      <!-- Category Button -->
 
-
-        <!-- Search form -->
-        <div class="container">
-
-            <!-- Custom rounded search bars with input group -->
-            <form action="" id="search">
-                <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                    <div class="input-group">
-                        <input type="search" placeholder="Search by category, author or title?"
-                            aria-describedby="button-addon1" class="form-control border-0 bg-light">
-                        <div class="input-group-append">
-                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
-                                    class="fa fa-search"></i></button>
-                        </div>
-                    </div>
+      <!-- Search form -->
+      <div class="container">
+        <div class="row" id="searchContainer">
+          <!-- Custom rounded search bars with input group -->
+          <form action="" id="search" class="col-xs-12 col-sm-7">
+            <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+              <div class="input-group">
+                <input
+                  type="search"
+                  placeholder="Search by author or title?"
+                  aria-describedby="button-addon1"
+                  class="form-control border-0 bg-light"
+                />
+                <div class="input-group-append">
+                  <button
+                    id="button-addon1"
+                    type="submit"
+                    class="btn btn-link text-primary"
+                  >
+                    <i class="fa fa-search"></i>
+                  </button>
                 </div>
+              </div>
+            </div>
+          </form>
+          <!-- End -->
+          <div class="dropdown col-sm-4">
+            <a
+              class="btn btn-primary dropdown-toggle"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Search by Category
+            </a>
 
-            </form>
-            <!-- End -->
-
+            <div
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuLink"
+              id="categorySelect"
+            >
+              <a
+                class="dropdown-item"
+                href="/categories/?category=blacklivesmatter"
+                >Black Lives Matter</a
+              >
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-
 
     <!-- -------------------------------------------------------------------- -->
     <!-- Book Cards -->
     <!-- Row 1 -->
     <div class="container">
-        <h1>Newly Published Books</h1>
+      <h1>Newly Published Books</h1>
 
-        <div class="row">
-            <div class="col-sm-3">
+      <div class="row" id="newlyPubbed">
+        <!-- <div class="col-lg-3 col-sm-12">
                 <div class="card">
-                    <img class="card-img-top"
-                        src="./assets/images/bookcovers/Newly Published Books/anti racist baby.png"
-                        alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/Newly Published Books/anti racist baby.png" alt="Card image top" />
                     <div class="card-body">
                         <a href="">
                             <h3 class="card-title">Antiracist Baby</h3>
                         </a>
-                        <h4 class="card-subtitle">IBRAM X. KENDI</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
+                        <h4 class="card-subtitle">IBRAM X. KENDI</h4> -->
+        <!-- <p class="card-text">This is a simple Card example</p> -->
+        <!-- </div>
                 </div>
-            </div>
+            </div> -->
 
-
-            <div class="col-sm-3">
+        <!-- <div class="col-lg-3 col-sm-12">
                 <div class="card">
-                    <img class="card-img-top"
-                        src="./assets/images/bookcovers/Newly Published Books/A is for activist.png"
-                        alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/Newly Published Books/A is for activist.png" alt="Card image top" />
                     <div class="card-body">
                         <h3 class="card-title">A is for Activist</h3>
-                        <h4 class="card-subtitle">Innosanto Nagara</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
+                        <h4 class="card-subtitle">Innosanto Nagara</h4> -->
+        <!-- <p class="card-text">This is a simple Card example</p> -->
+        <!-- </div>
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-lg-3 col-sm-12">
                 <div class="card">
-                    <img class="card-img-top"
-                        src="./assets/images/bookcovers/Newly Published Books/its okay to be different.png"
-                        alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/Newly Published Books/its okay to be different.png" alt="Card image top" />
                     <div class="card-body">
                         <h3 class="card-title">It's OK to be Different</h3>
-                        <h4 class="card-subtitle">Sharon Purtill</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
+                        <h4 class="card-subtitle">Sharon Purtill</h4> -->
+        <!-- <p class="card-text">This is a simple Card example</p> -->
+        <!-- </div>
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-lg-3 col-sm-12">
                 <div class="card">
-                    <img class="card-img-top"
-                        src="./assets/images/bookcovers/Newly Published Books/listening with my heart.png"
-                        alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/Newly Published Books/listening with my heart.png" alt="Card image top" />
                     <div class="card-body">
                         <h3 class="card-title">Listening with My Heart</h3>
-                        <h4 class="card-subtitle">Gabi Garcia</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
+                        <h4 class="card-subtitle">Gabi Garcia</h4> -->
+        <!-- <p class="card-text">This is a simple Card example</p> -->
+        <!-- </div>
                 </div>
             </div>
         </div>
         <hr />
 
         <!-- Row 2 -->
-        <h1>Black Lives Matter</h1>
+        <!-- <h1>Black Lives Matter</h1>
 
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-lg-3 col-sm-12">
                 <div class="card">
                     <img class="card-img-top" src="./assets/images/bookcovers/BLM/hair love.png" alt="Card image top" />
                     <div class="card-body">
                         <h3 class="card-title">Hair Love</h3>
-                        <h4 class="card-subtitle">Matthew A. Cherry and Vashti Harrison/h4>
-                            <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
+                        <h4 class="card-subtitle">Matthew A. Cherry and Vashti Harrison</h4> -->
+        <!-- <p class="card-text">This is a simple Card example</p> -->
+        <!-- </div>
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-lg-3 col-sm-12">
                 <div class="card">
-                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/I'm enough - blm.png"
-                        alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/I'm enough - blm.png" alt="Card image top" />
                     <div class="card-body">
                         <h3 class="card-title">I Am Enough</h3>
-                        <h4 class="card-subtitle">Grace Byers and Keturah A. Bobo</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
+                        <h4 class="card-subtitle">Grace Byers and Keturah A. Bobo</h4> -->
+        <!-- <p class="card-text">This is a simple Card example</p> -->
+        <!-- </div>
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-lg-3 col-sm-12">
                 <div class="card">
-                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/think big little one -blm.png"
-                        alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/think big little one -blm.png" alt="Card image top" />
                     <div class="card-body">
                         <h3 class="card-title">Think Big, Little One</h3>
-                        <h4 class="card-subtitle">Vashti Harrison</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
+                        <h4 class="card-subtitle">Vashti Harrison</h4> -->
+        <!-- <p class="card-text">This is a simple Card example</p> -->
+        <!-- </div>
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-lg-3 col-sm-12">
                 <div class="card">
-                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/I'am Human -blm.png"
-                        alt="Card image top" />
+                    <img class="card-img-top" src="./assets/images/bookcovers/BLM/I'am Human -blm.png" alt="Card image top" />
                     <div class="card-body">
                         <h3 class="card-title">I Am Human</h3>
-                        <h4 class="card-subtitle">Susan Verde</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
+                        <h4 class="card-subtitle">Susan Verde</h4> -->
+        <!-- <p class="card-text">This is a simple Card example</p>
                     </div>
                 </div>
+            </div> -->
+      </div>
+
+      <h1>LGBTQIA+</h1>
+      <div class="row" id="parentDivLGBTQIA"></div>
+
+      <h1>Native American Heritage</h1>
+      <div class="row" id="parentDivNativeAmericanHeritage"></div>
+      <hr />
+
+      <!-- INSERT HERE-->
+
+      <!--  </div> -->
+    </div>
+    <!-- ------------------------------------------------------------------------ -->
+
+    <!-- Footer -->
+    <container>
+      <footer id="footer" class="page-footer font-small mdb-color pt-4">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+          <hr />
+          <!-- Footer links -->
+          <div class="row text-center text-md-left mt-3 pb-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Booktivist</h6>
+              <p>
+                Here you can use rows and columns to organize your footer
+                content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit.
+              </p>
             </div>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+              <p>
+                <a href="#!">MDBootstrap</a>
+              </p>
+              <p>
+                <a href="#!">MDWordPress</a>
+              </p>
+              <p>
+                <a href="#!">BrandFlow</a>
+              </p>
+              <p>
+                <a href="#!">Bootstrap Angular</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Useful Links</h6>
+              <p>
+                <a href="#!">Your Account</a>
+              </p>
+              <p>
+                <a href="#!">Become an Affiliate</a>
+              </p>
+              <p>
+                <a href="#!">Shipping Rates</a>
+              </p>
+              <p>
+                <a href="#!">Help</a>
+              </p>
+            </div>
+
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+              <p><i class="fas fa-home mr-3"></i>Portsmouth, New Hampshire</p>
+              <p>
+                <i class="fas fa-envelope mr-3"></i> booktivistinfo@gmail.com
+              </p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Footer links -->
+
+          <hr />
+
+          <!-- Grid row -->
+          <div class="row d-flex align-items-center">
+            <!-- Grid column -->
+            <div class="col-md-7 col-lg-8">
+              <!--Copyright-->
+              <p class="text-center text-md-left">
+                © 2020 Copyright:
+                <a href="www.booktivist.com">
+                  <strong> Bootivist.com</strong>
+                </a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+              <!-- Social buttons -->
+              <div class="text-center text-md-right">
+                <ul class="list-unstyled list-inline">
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i class="fab fa-google-plus-g"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
         </div>
-        <hr />
+        <!-- Footer Links -->
+      </footer>
+    </container>
 
-        <!-- row 3 -->
-        <h1>LGBTQIA+</h1>
+    <div
+      class="modal fade"
+      id="bookModal"
+      aria-labelledby="exampleModalLabel"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div
+          class="modal-content container"
+          style="width: 100%; margin-left: auto; margin-right: auto;"
+        ></div>
+      </div>
+    </div>
+    <!-- Footer -->
 
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="./assets/images/bookcovers/LGBTQ+/Julian is a mermaid.png"
-                        alt="Card image top" />
-                    <div class="card-body">
-                        <h3 class="card-title">Julián Is a Mermaid</h3>
-                        <h4 class="card-subtitle">Jessica Love</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="./assets/images/bookcovers/LGBTQ+/Love makes a family.png"
-                        alt="Card image top" />
-                    <div class="card-body">
-                        <h3 class="card-title">Love Makes a Family</h3>
-                        <h4 class="card-subtitle">Sophie Beer</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="./assets/images/bookcovers/LGBTQ+/Pink is for boys.png"
-                        alt="Card image top" />
-                    <div class="card-body">
-                        <h3 class="card-title">Pink Is for Boys</h3>
-                        <h4 class="card-subtitle">Eleanor Morrison and Faye Orlove</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="./assets/images/bookcovers/LGBTQ+/pride.png" alt="Card image top" />
-                    <div class="card-body">
-                        <h3 class="card-title">Pride</h3>
-                        <h4 class="card-subtitle">Rob Sanders and Steven Salerno</h4>
-                        <!-- <p class="card-text">This is a simple Card example</p> -->
-                    </div>
-                </div>
-            </div>
-
-            <h1>Native American Heritage</h1>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top"
-                            src="./assets/images/bookcovers/Native Tribes/how stars fell into the sky.png"
-                            alt="Card image top" />
-                        <div class="card-body">
-                            <h3 class="card-title">How the Stars Fell into the Sky: A Navajo</h3>
-                            <h4 class="card-subtitle">errie Oughton and Lisa Desimini</h4>
-                            <!-- <p class="card-text">This is a simple Card example</p> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/bookcovers/Native Tribes/ten little rabbits.png"
-                            alt="Card image top" />
-                        <div class="card-body">
-                            <h3 class="card-title">Ten Little Rabbits</h3>
-                            <h4 class="card-subtitle">Virginia Grossman and Sylvia Long</h4>
-                            <!-- <p class="card-text">This is a simple Card example</p> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top"
-                            src="./assets/images/bookcovers/Native Tribes/The  very first americans.png"
-                            alt="Card image top" />
-                        <div class="card-body">
-                            <h3 class="card-title">The Very First Americans</h3>
-                            <h4 class="card-subtitle">Cara Ashrose and Bryna Waldman</h4>
-                            <!-- <p class="card-text">This is a simple Card example</p> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/bookcovers/Native Tribes/fry bread.png"
-                            alt="Card image top" />
-                        <div class="card-body">
-                            <h3 class="card-title">Fry Bread: A Native American Family Story</h3>
-                            <h4 class="card-subtitle">Kevin Noble Maillard and Juana Martinez-Neal</h4>
-                            <!-- <p class="card-text">This is a simple Card example</p> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-        </div>
-        <!-- ------------------------------------------------------------------------ -->
-
-        <!-- Footer -->
-        <container>
-            <footer id="footer" class="page-footer font-small mdb-color pt-4">
-                <!-- Footer Links -->
-                <div class="container text-center text-md-left">
-                    <hr />
-                    <!-- Footer links -->
-                    <div class="row text-center text-md-left mt-3 pb-3">
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Booktivist</h6>
-                            <p>
-                                Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit
-                                amet, consectetur adipisicing elit.
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <!-- Grid column -->
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                            <p>
-                                <a href="#!">MDBootstrap</a>
-                            </p>
-                            <p>
-                                <a href="#!">MDWordPress</a>
-                            </p>
-                            <p>
-                                <a href="#!">BrandFlow</a>
-                            </p>
-                            <p>
-                                <a href="#!">Bootstrap Angular</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Useful Links</h6>
-                            <p>
-                                <a href="#!">Your Account</a>
-                            </p>
-                            <p>
-                                <a href="#!">Become an Affiliate</a>
-                            </p>
-                            <p>
-                                <a href="#!">Shipping Rates</a>
-                            </p>
-                            <p>
-                                <a href="#!">Help</a>
-                            </p>
-                        </div>
-
-                        <!-- Grid column -->
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <!-- Grid column -->
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                            <p><i class="fas fa-home mr-3"></i>Portsmouth, New Hampshire</p>
-                            <p>
-                                <i class="fas fa-envelope mr-3"></i> booktivistinfo@gmail.com
-                            </p>
-                            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <!-- Footer links -->
-
-                    <hr />
-
-                    <!-- Grid row -->
-                    <div class="row d-flex align-items-center">
-                        <!-- Grid column -->
-                        <div class="col-md-7 col-lg-8">
-                            <!--Copyright-->
-                            <p class="text-center text-md-left">
-                                © 2020 Copyright:
-                                <a href="www.booktivist.com">
-                                    <strong> Bootivist.com</strong>
-                                </a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-5 col-lg-4 ml-lg-0">
-                            <!-- Social buttons -->
-                            <div class="text-center text-md-right">
-                                <ul class="list-unstyled list-inline">
-                                    <li class="list-inline-item">
-                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                            <i class="fab fa-google-plus-g"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <!-- Grid row -->
-                </div>
-                <!-- Footer Links -->
-            </footer>
-        </container>
-        <!-- Footer -->
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-</body>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
