@@ -8,6 +8,7 @@ const db = require('./models');
 // const userBooks = require('./routes/userbooks-routes');
 const apiRoutes = require('./routes/api-routes');
 const homePageRoutes = require('./routes/homepage-routes.js');
+const categoryPageRoutes = require('./routes/categorypage-routes.js');
 
 // Setting up port
 const PORT = process.env.PORT || 9000;
@@ -36,6 +37,8 @@ app.use('/', apiRoutes);
 app.use('/api', apiRoutes);
 app.use('/', homePageRoutes);
 app.use('/api', homePageRoutes);
+app.use('/', categoryPageRoutes);
+app.use('/api', categoryPageRoutes);
 
 // Sync sequelize models then start Express app
 // =============================================
