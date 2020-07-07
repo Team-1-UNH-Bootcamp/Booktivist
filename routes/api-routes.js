@@ -60,5 +60,4 @@ router.get('/user_data', (req, res) => {
   }
 });
 
-
 module.exports = router;
