@@ -1,7 +1,9 @@
 const express = require('express');
 const session = require('express-session');
 // Requiring passport as we've configured it
+// const flash = require('express-flash');
 const passport = require('./config/passport');
+
 // Requiring database models
 const db = require('./models');
 // const routes = require('./routes');
@@ -12,7 +14,7 @@ const homePageRoutes = require('./routes/homepage-routes.js');
 const categoryPageRoutes = require('./routes/categorypage-routes.js');
 
 // Setting up port
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 9001;
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
