@@ -7,6 +7,7 @@ const db = require('./models');
 // const routes = require('./routes');
 // const userBooks = require('./routes/userbooks-routes');
 const apiRoutes = require('./routes/api-routes');
+const homePageRoutes = require('./routes/homepage-routes.js');
 
 // Setting up port
 const PORT = process.env.PORT || 9000;
@@ -17,7 +18,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 // We need to use sessions to keep track of our user's login status
-app.use(session({ secret: process.env.SECRET_KEY, resave: true, saveUninitialized: true }));
+app.use(
+  session({
+    secret: process.env.SECRET_KEY,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -26,6 +33,8 @@ app.use(passport.session());
 // app.use('/', userBooks);
 app.use('/', apiRoutes);
 app.use('/api', apiRoutes);
+app.use('/', homePageRoutes);
+app.use('/api', homePageRoutes);
 
 // Sync sequelize models then start Express app
 // =============================================
