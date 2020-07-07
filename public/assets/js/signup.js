@@ -25,10 +25,10 @@ $(document).ready(() => {
     console.log(userData);
 
     if (
-      !userData.firstName ||
-      !userData.lastName ||
-      !userData.email ||
-      !userData.password
+      !userData.firstName
+      || !userData.lastName
+      || !userData.email
+      || !userData.password
     ) {
       return 'Please enter values';
     }
@@ -38,7 +38,7 @@ $(document).ready(() => {
       userData.firstName,
       userData.lastName,
       userData.email,
-      userData.password
+      userData.password,
     );
     firstNameInput.val('');
     lastNameInput.val('');

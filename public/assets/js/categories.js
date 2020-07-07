@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 // onload ->
 const response = [
   {
@@ -79,7 +80,6 @@ $(document).ready(() => {
   });
   // };
 
-  // eslint-disable-next-next-line func-names
   // eslint-disable-next-line space-before-function-paren
   $('.titleModal').click(function() {
     const i = this.value;

@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 // recently published books - books published in the last month
 
 const response = [
@@ -77,7 +78,6 @@ response.forEach((data) => {
 // getBooks(BlackLivesMatter);
 // getBooks(NativeAmericanHeritage)
 
-// eslint-disable-next-next-line func-names
 // eslint-disable-next-line space-before-function-paren
 $('.titleModal').click(function() {
   const i = this.value;
