@@ -108,7 +108,7 @@ router.get('/api/books/category/:id', (req, res) => {
       {
         model: db.Book,
         where: { added: true },
-        // as: 'books',
+        as: 'books',
         attributes: ['id', 'title', 'author', 'image_link', 'description'],
       },
     ],
