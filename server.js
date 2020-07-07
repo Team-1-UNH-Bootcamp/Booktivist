@@ -23,6 +23,7 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: true,
     saveUninitialized: true,
+    // eslint-disable-next-line comma-dangle
   })
 );
 app.use(passport.initialize());
