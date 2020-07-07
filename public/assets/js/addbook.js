@@ -1,41 +1,72 @@
-// click event - search ISBN
-// ajax call to google books API
-// return book info from first book
-// take specifics and populate review form
-// append to the dom, clear previous search
-// two buttons - prev and next
-// prev - clear dom and replace with ISBN search
-// next - clear dom and replace with final info
-// on submit, take all info from user and google books, set to obj
-// and submit to backend
+$('#bookInfo').hide();
+$('#extraInfo').hide();
 
-//     const isbnVal = ${"#"}.val().trim(),
-//     titleVal: ${"#populateBook"}.val().trim(),
-//     authorVal: ${"#populateAuthor"}.val().trim(),
-//     illustratorVal: ${'populateIllustrator'}.val().trim(),
-//     yearVal: ${'#populateDate'}.val().trim(),
-//     descriptionVal: ${'#textarea'}.val().trim(),
+// $.ajax('api/categoreis', { type: 'GET' }).then((response) => {
+//   response.forEach((data) => {
+//     const option = $('<option>')
+//       .attr({ value: data })
+//       .text(data);
+//     $('#categorySelect').append(option);
+//   });
+// });
 
-//      TODO Need to change input type to select all
-//      TODO need to determine what value is = to
-//     categoriesVal: ${'#'}.val().trim(),
-//     youtubeVal: ${#"addYouTube"}.val().trim(),
-//     talkingPontsVal: ${'#talkingPoints'}.val().trim()
+function populateFields(book) {
+  $('#populateImg').attr('src', book.volumeInfo.imageLinks.thumbnail);
+  $('#populateBook').val(book.volumeInfo.title);
+  $('#populateAuthor').val(book.volumeInfo.authors.join(', '));
+  $('#populateDesc').val(book.volumeInfo.description);
+  $('#populateIllustrator').val(book.volumeInfo.thumbnail);
+  $('#populateDate').val(book.volumeInfo.publishedDate);
+}
+$('#isbnSubmit').click(() => {
+  const isbn = $('#isbnInput').val();
+  console.log(isbn);
+  const isbnWithoutHyphens = isbn.replace(/-/g, '');
+  const googleAPI = `https://www.googleapis.com/books/v1/volumes?q=${isbnWithoutHyphens}`;
+  $.getJSON(googleAPI, (response) => {
+    if (typeof response.items === 'undefined') {
+      console.log('error ');
+    } else {
+      populateFields(response.items[0]);
 
-// const bookObj = {
-//     isbn: isbnVal,
-//     title: titleVal,
-//     author: authorVal,
-//     illustrator: illustratorVal,
-//     year: yearVal,
-//     description: descriptionVal,
-//     categories: categoriesVal,
-//     youtube: youtubeVal,
-//     talkingPonts: talkingpointsVal,
-// }
+      $('#bookInfo').show();
+      $('#isbn').hide();
+    }
 
-// $.ajax("/api/books", {type: 'POST', data: bookObj}).then(()=>{})
-// add that to the books table and set added to false
-// if (succesful) {display message saying booked added for approval},
-// else if (book already exists){display book has already been added, it may be pending},
-// else if(other err){display there was an error please try again later}
+    $('#infoReject').click(() => {
+      $('#bookInfo').hide();
+      $('#isbn').show();
+      console.log(response);
+    });
+    $('#infoSubmit').click((e) => {
+      e.preventDefault();
+      $('#extraInfo').show();
+      $('#bookInfo').hide();
+    });
+
+    $('#submitBook').click((e) => {
+      e.preventDefault();
+      $('#extraInfo').show();
+      const category = $('#categorySelect').val();
+      const addYouTube = $('#addYouTube').val();
+      const textarea = $('#textarea').val();
+      console.log(category, addYouTube, textarea);
+      const payload = {
+        isbn: isbnWithoutHyphens,
+        thumbnail: response.items[0].volumeInfo.imageLinks.thumbnail,
+        title: response.items[0].volumeInfo.title,
+        authors: response.items[0].volumeInfo.authors.join(', '),
+        description: response.items[0].volumeInfo.description,
+        publishedDate: response.items[0].volumeInfo.publishedDate,
+        category,
+        youTubeLink: addYouTube,
+        parentInsights: textarea,
+      };
+      console.log(payload);
+
+      // $.ajax("/api/books", {type: 'POST', data: bookObj}).then((response)=>{
+      // console.log(response)
+      // })
+    });
+  });
+});

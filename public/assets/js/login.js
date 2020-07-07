@@ -28,7 +28,6 @@ $(document).ready(() => {
   // loginUser does a post to our "api/login" route and if successful,
   // redirects us the the members page
   const loginUser = (email, password) => {
-    console.log(email, password);
     $.post('/api/login', {
       // eslint-disable-next-line object-shorthand
       email: email,
