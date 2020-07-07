@@ -6,6 +6,7 @@ const passport = require('./config/passport');
 const db = require('./models');
 // const routes = require('./routes');
 // const userBooks = require('./routes/userbooks-routes');
+const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
 const homePageRoutes = require('./routes/homepage-routes.js');
 const categoryPageRoutes = require('./routes/categorypage-routes.js');
@@ -33,7 +34,7 @@ app.use(passport.session());
 // middleware for our routes
 // app.use('/', routes);
 // app.use('/', userBooks);
-app.use('/', apiRoutes);
+app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
 app.use('/', homePageRoutes);
 app.use('/api', homePageRoutes);
