@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get('/', (req, res) => res.json('Sample API get endpoint'));
+// router.get('/', (req, res) => res.json('Sample API get endpoint'));
 
 // category dropdown on home bage
 // categories - load from the categories.html (onload)

@@ -24,12 +24,22 @@ $(document).ready(() => {
     };
     console.log(userData);
 
-    if (!userData.firstName || !userData.lastName || !userData.email || !userData.password) {
+    if (
+      !userData.firstName ||
+      !userData.lastName ||
+      !userData.email ||
+      !userData.password
+    ) {
       return 'Please enter values';
     }
     // If we have an email and password, run the signUpUser function
     // eslint-disable-next-line no-use-before-define
-    signUpUser(userData.firstName, userData.lastName, userData.email, userData.password);
+    signUpUser(
+      userData.firstName,
+      userData.lastName,
+      userData.email,
+      userData.password
+    );
     firstNameInput.val('');
     lastNameInput.val('');
     emailInput.val('');
@@ -41,7 +51,6 @@ $(document).ready(() => {
   function signUpUser(firstName, lastName, email, password) {
     console.log(firstName);
     $.post('/api/signup', {
-
       firstName,
       lastName,
       email,
