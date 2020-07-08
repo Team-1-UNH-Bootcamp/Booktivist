@@ -17,3 +17,35 @@
 // append all
 // })
 // })
+const modal = document.getElementById('simple-modal');
+// get open modal button 
+const modalBtn = document.getElementById('modal-btn')
+// get closed btn
+const closedBtn = document.getElementsByClassName('closed-btn')[0];
+
+// listen for open click
+modalBtn.addEventListener('click', openModal);
+// listen for closed click
+closedBtn.addEventListener('click', closedModal);
+// Listen for outside click
+window.addEventListener('click', clickOutside)
+
+
+// function to open your modal
+function openModal() {
+    modal.style.display = 'block';
+
+}
+// function to close your modal
+function closedModal() {
+    modal.style.display = 'none';
+
+}
+
+// function to close your modal if outside click
+function clickOutside(e) {
+    if (e.target == modal) {
+        modal.style.display = 'none';
+    }
+
+}
