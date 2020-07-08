@@ -12,6 +12,8 @@ const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
 const homePageRoutes = require('./routes/homepage-routes.js');
 const categoryPageRoutes = require('./routes/categorypage-routes.js');
+const adminReviewRoutes = require('./routes/adminreview-routes');
+const addBookRoutes = require('./routes/addbook-routes');
 
 // Setting up port
 const PORT = process.env.PORT || 9001;
@@ -42,6 +44,8 @@ app.use('/', homePageRoutes);
 app.use('/api', homePageRoutes);
 app.use('/', categoryPageRoutes);
 app.use('/api', categoryPageRoutes);
+app.use('/', adminReviewRoutes);
+app.use('/', addBookRoutes);
 
 // Sync sequelize models then start Express app
 // =============================================
