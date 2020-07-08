@@ -41,8 +41,9 @@ module.exports = (sequelize, DataTypes) => {
       validate: { len: [5, 150] },
     },
     key_talking_points: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
+      validate: { len: [5, 500] },
     },
     isbn: {
       type: DataTypes.INTEGER,
