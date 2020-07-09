@@ -5,7 +5,12 @@ const passport = require('../config/passport');
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
-router.post('/login', passport.authenticate('local'), (req, res) => {
+router.post('/api/login', passport.authenticate('local', {
+
+  successRedirect: '/mylibrary',
+  failureRedirect: '/login',
+  failureFlash: true,
+}), (req, res) => {
   res.json(req.user);
   // console.log(req.user);
 });
@@ -15,7 +20,8 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 // how we configured our Sequelize User Model. If the user is created
 // successfully, proceed to log the user in,
 // otherwise send back an error
-router.post('/signup', (req, res) => {
+
+router.post('/api/signup', (req, res) => {
   db.User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -23,9 +29,11 @@ router.post('/signup', (req, res) => {
     password: req.body.password,
   })
     .then(() => {
+      req.flash('success', 'The user has been signed up successfully');
       res.redirect('/login');
     })
     .catch((err) => {
+      req.flash('error', 'Please try again');
       res.status(401).json(err);
     });
 });
@@ -34,18 +42,12 @@ router.post('/signup', (req, res) => {
 router.get('/logout', (req, res) => {
   console.log(req.user);
   req.logout();
-  req.session.destroy((err) => {
-    if (!err) {
-      res.status(200).clearCookie('connect.sid', { path: '/' }).json({ status: 'Success' });
-    } else {
-      // handle error case...
-    }
-  });
+  req.flash('success', 'You are logged out');
   res.redirect('/');
 });
 
 // Route for getting some data about our user to be used client side
-router.get('/user_data', (req, res) => {
+router.get('/api/user_data', (req, res) => {
   if (!req.user) {
     // The user is not logged in, send back an empty object
     res.json({});

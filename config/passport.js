@@ -10,16 +10,11 @@ const db = require('../models');
 passport.use(new LocalStrategy(
 
   {
-
     // by default, local strategy uses username and password, we will override with email
-
     usernameField: 'email',
-
-    // passwordField: 'password',
-
+    passReqToCallback: true,
   },
-
-  (email, password, done) => {
+  (req, email, password, done) => {
     const isValidPassword = (userpass, password1) => bcrypt.compareSync(password1, userpass);
 
     db.User.findOne({
@@ -32,20 +27,17 @@ passport.use(new LocalStrategy(
           message: 'Email does not exist',
         });
       }
+      console.log(`what is admin status ${user.adminStatus}`);
       console.log(`what is pass ${user.password}`);
       console.log(`what is password ${password}`);
       if (!isValidPassword(user.password, password)) {
-        return done(null, false, {
-          message: 'Incorrect password.',
-        });
+        return done(null, false, req.flash('error', 'Incorrect Password'));
       }
       return done(null, user);
     }).catch((err) => {
       console.log('Error:', err);
 
-      return done(null, false, {
-        message: 'Something went wrong with your Sign in',
-      });
+      return done(null, false, req.flash('error', 'Something went wrong with your Sign in'));
     });
   },
 
