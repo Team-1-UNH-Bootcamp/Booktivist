@@ -38,20 +38,15 @@ $(document).ready(() => {
 
 // eslint-disable-next-line prefer-arrow-callback
 $('#bookCategorySelect').change(function() {
-  console.log(this.value);
   const index = this.value;
   const bookId = this.options[index].id;
   const catHeader = this.options[index].text;
+  const urlHeader = catHeader.replace(/ /g, '&');
 
   // eslint-disable-next-line prefer-arrow-callback
   $('#submitCategory').click(function(event) {
     event.preventDefault();
-    const arg1 = 'books/category';
-    // eslint-disable-next-line no-use-before-define
-    $.when(getBooksbyCat(arg1, bookId, catHeader, true)).then(() => {
-      // eslint-disable-next-line no-use-before-define
-      getModal();
-    });
+    window.location.href = `/categories/?category=${bookId}+${urlHeader}`;
   });
 });
 
@@ -75,20 +70,22 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
             let apiTitle = 'books.title';
             let apiId = 'books.id';
             let apiAuthor = 'books.author';
+            let apiImg = 'books.image_link';
             if (isBook === false) {
               apiTitle = 'title';
               apiId = 'id';
               apiAuthor = 'author';
+              apiImg = 'image_link';
             }
             // apiImg = 'books.image_link';
 
             const parentDiv = $('<div>').attr({ class: 'col-lg-3 col-sm-12' });
             const cardDiv = $('<div>').attr({ class: 'card' });
-            // const cardImg = $('<img>').attr({
-            //   class: 'card-img-top',
-            //   src: data[apiImg],
-            //   alt: 'Card Img Top',
-            // });
+            const cardImg = $('<img>').attr({
+              class: 'card-img-top',
+              src: data[apiImg],
+              alt: 'Card Img Top',
+            });
             const cardBody = $('<div>')
               .attr({ class: 'card-body' })
               .css({
@@ -111,8 +108,7 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
 
             $(linkTitle).append(bookTitle, bookAuthor);
             $(cardBody).append(linkTitle);
-            $(cardDiv).append(cardBody);
-            // cardImg,
+            $(cardDiv).append(cardImg, cardBody);
             $(parentDiv).append(cardDiv);
 
             $('#cardDiv').append(parentDiv);
@@ -122,6 +118,11 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
         }
       })
       .catch((err) => {
+        $('#categoryHeader').text(
+          'We experienced an error with your search. Please try a different category.'
+        );
+        $('#cardDiv').empty();
+
         reject(err);
       });
   });
