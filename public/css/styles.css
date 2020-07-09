@@ -101,7 +101,9 @@ label {
 p {
   margin: 0 5px;
 }
-
+#footerGraph {
+  margin: 20px 0;
+}
 small {
   margin-top: 10px;
   float: left;
