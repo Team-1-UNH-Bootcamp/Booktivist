@@ -39,7 +39,7 @@ img {
 } */
 
 a {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 * {
   box-sizing: border-box;
@@ -68,7 +68,7 @@ form {
 }
 
 h6 {
-	margin-top: 3rem;
+  margin-top: 3rem;
 }
 
 hr {
@@ -101,7 +101,6 @@ label {
 p {
   margin: 0 5px;
 }
-
 
 small {
   margin-top: 10px;
@@ -218,7 +217,7 @@ select {
 }
 
 footer {
-	padding: 0 80px;
+  padding: 0 80px;
 }
 
 .sign {
@@ -266,7 +265,6 @@ option:hover {
 #about1 {
   margin-top: 30px;
 }
-<<<<<<< HEAD
 
 .button {
   background: coral;
@@ -309,5 +307,3 @@ option:hover {
     opacity: 1;
   }
 } */
-=======
->>>>>>> 826062833605056e811db58c4f4c5610871a5599
