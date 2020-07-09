@@ -43,7 +43,8 @@ router.get('/api/categories/:category', (req, res) => {
 // I think ultimately that I'll need to bring in the category from the Category
 // model into the Books model
 router.get('/api/search/:searchparams', (req, res) => {
-  const lookupValue = req.params.searchparams;
+  const request = req.params.searchparams;
+  const lookupValue = request.replace(/&/g, ' ');
   db.Book.findAll({
     where: {
       [Op.or]: [
