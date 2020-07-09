@@ -1,9 +1,10 @@
 const path = require('path');
 const router = require('express').Router();
+const db = require('../models');
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require('../config/middleware/isAuthenticated');
-
+const isAdmin = require('../config/middleware/isAdmin');
 
 // home page
 router.get('/', (req, res) => {
@@ -42,31 +43,51 @@ router.get('/categories', (req, res) => {
 // Here we've add our isAuthenticated middleware to this route.
 // If a user who is not logged in tries to access this route they
 // will be redirected to the signup page
+
+// get all the books for logged in user
 router.get('/mylibrary', isAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
+  db.Book.findAll({
+    include: [{
+      model: db.User,
+      as: 'users',
+      where: {
+        id: req.user.id,
+      },
+      attributes: ['id', 'firstName', 'lastName'],
+      through: {
+        // This block of code allows you to retrieve the properties of the join table
+        model: db.UserBooks,
+        as: 'userBooks',
+        attributes: ['bookId'],
+      },
+    }],
+  })
+    .then((dbUserBook) => {
+      res.json(dbUserBook);
+      // res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
+    }).catch((err) => {
+      res.status(401).json(err);
+    });
 });
 
-
-// route to my add book
-// router.get('/addbook', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../public/addbook.html'));
-// });
-
-// for admin login
-router.get('/admin/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/admin_login.html'));
-});
-
-// for admin review user book submissions - see below
-// router.get('/admin/review', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../public/admin_review.html'));
-// });
-
+// user is redirected to addbook page if the user is loggedin
 router.get('/addbook', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/addbook.html'));
 });
-router.get('/admin/review', isAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/addmin_review.html'));
+
+router.get('/admin/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/adminLogin.html'));
+});
+// for admin login
+// router.get('/admin/login', (req, res) => {
+//   // if (req.user) {
+//   //   res.redirect('/admin/review');
+//   // }
+//   res.sendFile(path.join(__dirname, '../public/adminLogin.html'));
+// });
+
+router.get('/admin/review', isAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/adminReview.html'));
 });
 
 

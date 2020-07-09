@@ -9,7 +9,6 @@
 
 $(document).ready(() => {
   $.get('/api/user_data').then((data) => {
-    console.log(data);
     $('.memberName').text(data.email);
   });
 });
