@@ -1,5 +1,5 @@
-$('#bookInfo').show();
-$('#extraInfo').show();
+$('#bookInfo').hide();
+$('#extraInfo').hide();
 
 // $.ajax('api/categoreis', { type: 'GET' }).then((response) => {
 //   response.forEach((data) => {
