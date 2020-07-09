@@ -63,10 +63,8 @@ const getBooks = (category) => {
   });
 };
 const getModal = () => {
-  console.log('123');
   // eslint-disable-next-line space-before-function-paren
   $('.titleModal').click(function() {
-    console.log('hello!');
     const i = this.value;
     console.log(i);
     $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
@@ -146,6 +144,12 @@ loadBooks();
 
 $('#button-addon1').click(function(event) {
   event.preventDefault();
+  const targetUrl = $('#searchBar')
+    .val()
+    .replace(/ /g, '&')
+    .toLowerCase();
+
+  window.location.href = `/categories/?search=${targetUrl}`;
 });
 
 //
