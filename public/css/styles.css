@@ -38,10 +38,9 @@ img {
 	float: left;
 } */
 
-/* a {
-	display: flex;
-	flex-direction: row;
-} */
+a {
+	line-height: 1.5;
+}
 * {
   box-sizing: border-box;
 }
@@ -55,6 +54,9 @@ body {
   height: 100vh;
 }
 
+container {
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -63,6 +65,10 @@ form {
   max-width: 70%;
   width: 400px;
   padding: 30px;
+}
+
+h6 {
+	margin-top: 3rem;
 }
 
 hr {
@@ -93,7 +99,9 @@ label {
 }
 
 p {
+
   margin: 0 5px;
+
 }
 
 small {
@@ -210,6 +218,10 @@ select {
   padding: 0.5rem;
 }
 
+footer {
+	padding: 0 80px;
+}
+
 .sign {
   color: #2762eb;
   text-decoration: none;
@@ -297,3 +309,4 @@ option:hover {
     opacity: 1;
   }
 } */
+
