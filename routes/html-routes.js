@@ -79,18 +79,14 @@ router.get('/addbook', isAuthenticated, (req, res) => {
 });
 
 router.get('/admin/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/adminLogin.html'));
+  if ((req.user) && (req.user.adminStatus === true)) {
+    res.redirect('/admin_review');
+  }
+  res.sendFile(path.join(__dirname, '../public/admin_login.html'));
 });
-// for admin login
-// router.get('/admin/login', (req, res) => {
-//   // if (req.user) {
-//   //   res.redirect('/admin/review');
-//   // }
-//   res.sendFile(path.join(__dirname, '../public/adminLogin.html'));
-// });
 
 router.get('/admin/review', isAdmin, (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/adminReview.html'));
+  res.sendFile(path.join(__dirname, '../public/admin_review.html'));
 });
 
 module.exports = router;
