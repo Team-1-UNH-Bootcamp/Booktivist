@@ -1,40 +1,48 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
+const bcrypt = require('bcryptjs');
 const db = require('../models');
 
-// eslint-disable-next-line max-len
-// Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
+
+// Telling passport we want to use a Local Strategy
+// In other words, we want login with a username/email and password
 passport.use(new LocalStrategy(
-  // Our user will sign in using an email, rather than a "username"
 
   {
+    // by default, local strategy uses username and password, we will override with email
     usernameField: 'email',
+    passReqToCallback: true,
   },
-  ((email, password, done) => {
-    // When a user tries to sign in this code runs
+  (req, email, password, done) => {
+    const isValidPassword = (userpass, password1) => bcrypt.compareSync(password1, userpass);
+
     db.User.findOne({
       where: {
         email,
       },
-    }).then((dbUser) => {
-      // If there's no user with the given email
-      if (!dbUser) {
+    }).then((user) => {
+      if (!user) {
         return done(null, false, {
-          message: 'Incorrect email.',
+          message: 'Email does not exist',
         });
       }
-      // If there is a user with the given email, but the password the user gives us is incorrect
-      if (!dbUser.validPassword(password)) {
-        return done(null, false, {
-          message: 'Incorrect password.',
-        });
+      console.log(`what is admin status ${user.adminStatus}`);
+      console.log(`what is pass ${user.password}`);
+      console.log(`what is password ${password}`);
+      if (!isValidPassword(user.password, password)) {
+        return done(null, false, req.flash('error', 'Incorrect Password'));
       }
-      // If none of the above, return the user
-      return done(null, dbUser);
+      return done(null, user);
+    }).catch((err) => {
+      console.log('Error:', err);
+
+      return done(null, false, req.flash('error', 'Something went wrong with your Sign in'));
     });
-  }),
+  },
+
 ));
+
 
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user

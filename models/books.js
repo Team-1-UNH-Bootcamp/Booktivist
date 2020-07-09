@@ -59,6 +59,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       validate: { len: [5, 150] },
     },
+    createdAt: {
+      type: 'TIMESTAMP',
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      allowNull: false,
+    },
+    updatedAt: {
+      type: 'TIMESTAMP',
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      allowNull: false,
+    },
     added: {
       // will be viewable once book is approved by admin and updates to true?
       type: DataTypes.BOOLEAN,
@@ -76,9 +86,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'bookId',
       otherKey: 'categoryId',
     });
-  };
 
-  Book.associate = (models) => {
     Book.belongsToMany(models.User, {
       through: 'UserBooks',
       as: 'users',
