@@ -6,7 +6,7 @@
 // })
 
 // $("#this").click(()=>{
-// $.ajax("/api/admin/books/{bookid}")
+// $.ajax("/api/books/${bookid}")
 // get clicked book from books table based on book id
 // }).then((response)=>{use response to populate book modal})
 
