@@ -44,6 +44,7 @@ img {
 }
 
 /* Search  */
+
 #searchContainer {
   align-items: center;
 }
@@ -69,10 +70,18 @@ img {
   color: #aaa;
   font-style: italic;
 }
+
 .card-title {
   color: blue;
   text-decoration: underline;
 }
+
 #titleModal {
   text-align: left;
+}
+
+/* ABout page */
+
+#aboutIntro {
+  margin-top: 50px;
 }
