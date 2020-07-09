@@ -47,25 +47,28 @@ router.get('/categories', (req, res) => {
 // get all the books for logged in user
 router.get('/mylibrary', isAuthenticated, (req, res) => {
   db.Book.findAll({
-    include: [{
-      model: db.User,
-      as: 'users',
-      where: {
-        id: req.user.id,
+    include: [
+      {
+        model: db.User,
+        as: 'users',
+        where: {
+          id: req.user.id,
+        },
+        attributes: ['id', 'firstName', 'lastName'],
+        through: {
+          // This block of code allows you to retrieve the properties of the join table
+          model: db.UserBooks,
+          as: 'userBooks',
+          attributes: ['bookId'],
+        },
       },
-      attributes: ['id', 'firstName', 'lastName'],
-      through: {
-        // This block of code allows you to retrieve the properties of the join table
-        model: db.UserBooks,
-        as: 'userBooks',
-        attributes: ['bookId'],
-      },
-    }],
+    ],
   })
     .then((dbUserBook) => {
       res.json(dbUserBook);
       // res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
-    }).catch((err) => {
+    })
+    .catch((err) => {
       res.status(401).json(err);
     });
 });
@@ -85,6 +88,5 @@ router.get('/admin/login', (req, res) => {
 router.get('/admin/review', isAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/admin_review.html'));
 });
-
 
 module.exports = router;

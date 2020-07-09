@@ -35,7 +35,7 @@ $(document).ready(() => {
       password: password,
     })
       .then(() => {
-        window.location.replace('/mylibrary');
+        window.location.href('/mylibrary');
         // If there's an error, log the error
       })
       .catch((err) => {
