@@ -10,7 +10,7 @@ const db = require('./models');
 const userBooks = require('./routes/userbooks-routes');
 const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
-const adminLoginRoutes = require('./routes/adminLogin-routes');
+// const adminLoginRoutes = require('./routes/adminLogin-routes');
 const homePageRoutes = require('./routes/homepage-routes.js');
 const categoryPageRoutes = require('./routes/categorypage-routes.js');
 const adminReviewRoutes = require('./routes/adminreview-routes');
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 });
 
 // middleware for our routes
-app.use('/', adminLoginRoutes);
+// app.use('/', adminLoginRoutes);
 app.use('/api', userBooks);
 app.use('/', htmlRoutes);
 app.use('/', apiRoutes);
