@@ -10,6 +10,7 @@ router.post('/api/login', passport.authenticate('local', {
   successRedirect: '/mylibrary',
   failureRedirect: '/login',
   failureFlash: true,
+  successFlash: true,
 }), (req, res) => {
   res.json(req.user);
   // console.log(req.user);
@@ -35,6 +36,7 @@ router.post('/api/signup', (req, res) => {
     .then(() => {
       req.flash('success', 'The user has been signed up successfully');
       res.redirect('/login');
+      console.log(res);
     })
     .catch((err) => {
       req.flash('error', 'Please try again');
