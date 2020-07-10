@@ -23,9 +23,9 @@ router.get('/login', (req, res) => {
 // route to signup page,working
 router.get('/signup', (req, res) => {
   // If the user already has an account send them to the mylibrary page
-  if (req.user) {
-    res.redirect('/mylibrary');
-  }
+  // if (req.user) {
+  //   res.redirect('/mylibrary');
+  // }
   res.sendFile(path.join(__dirname, '../public/signup.html'));
 });
 
