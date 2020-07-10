@@ -85,7 +85,7 @@ router.get('/admin/login', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/admin_login.html'));
 });
 
-router.get('/admin/review', (req, res) => {
+router.get('/admin/review', isAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/admin_review.html'));
 });
 
