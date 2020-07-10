@@ -44,6 +44,31 @@ $('#isbnSubmit').click(() => {
       $('#bookInfo').hide();
     });
 
+    // Function for Previous Button
+    // https: //stackoverflow.com/questions/20731637/next-and-previous-button-using-jquery
+
+    // $('#extraInfo').ready(function() {
+    //     const $wrap = $('#wrap'),
+    //         page = 1;
+
+    //     $('#next').on('click', function() {
+    //         getPage(++page);
+    //     });
+
+    //     $('#prev').on('click', function() {
+    //         getPage(--page);
+    //     });
+
+    //     var getPage = function(page) {
+    //         $wrap.load('proxy.php?page=' + page + ' #postsArea');
+    //     };
+
+    //     getPage(page);
+
+    // });
+
+    // Function for Submit Form
+
     $('#submitBook').click((e) => {
       e.preventDefault();
       $('#extraInfo').show();
