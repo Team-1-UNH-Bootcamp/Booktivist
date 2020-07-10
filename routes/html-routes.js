@@ -1,6 +1,5 @@
 const path = require('path');
 const router = require('express').Router();
-const db = require('../models');
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require('../config/middleware/isAuthenticated');
@@ -46,28 +45,7 @@ router.get('/categories', (req, res) => {
 
 // get all the books for logged in user
 router.get('/mylibrary', isAuthenticated, (req, res) => {
-  db.Book.findAll({
-    include: [{
-      model: db.User,
-      as: 'users',
-      where: {
-        id: req.user.id,
-      },
-      attributes: ['id', 'firstName', 'lastName'],
-      through: {
-        // This block of code allows you to retrieve the properties of the join table
-        model: db.UserBooks,
-        as: 'userBooks',
-        attributes: ['bookId'],
-      },
-    }],
-  })
-    .then((dbUserBook) => {
-      res.json(dbUserBook);
-      // res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
-    }).catch((err) => {
-      res.status(401).json(err);
-    });
+  res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
 });
 
 // user is redirected to addbook page if the user is loggedin
@@ -76,8 +54,8 @@ router.get('/addbook', isAuthenticated, (req, res) => {
 });
 
 router.get('/admin/login', (req, res) => {
-  if ((req.user) && (req.user.adminStatus === true)) {
-    res.redirect('/admin_review');
+  if (req.user && req.user.adminStatus === true) {
+    res.redirect('/admin/review');
   }
   res.sendFile(path.join(__dirname, '../public/admin_login.html'));
 });
@@ -85,6 +63,5 @@ router.get('/admin/login', (req, res) => {
 router.get('/admin/review', isAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/admin_review.html'));
 });
-
 
 module.exports = router;

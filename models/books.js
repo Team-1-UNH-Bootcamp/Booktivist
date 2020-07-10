@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: { len: [5, 500] },
     },
-    image__link: {
+    image_link: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: { len: [5, 150] },

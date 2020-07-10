@@ -1,58 +1,80 @@
 <!-- see Remi's outline -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./css/remistyle.css" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
     <title>Add Books</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!------------------------ NAV BAR------------------------------------------->
     <nav class="navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">Kid Booktivist</a>
-        <div>
-            <button class="btn btn-warning" type="button" style="width: 130px; margin-right: 40px; height: 38px;">
+      <a class="navbar-brand" href="/">Kid Booktivist</a>
+      <div>
+        <button
+          class="btn btn-warning"
+          type="button"
+          style="width: 130px; margin-right: 40px; height: 38px;"
+        >
           <!--TODO get this shit to float right-->
           Sign Up
           <a class="nav-link" href="#"></a>
         </button>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home </a
-              >
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/categories">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/mylibrary">My Library</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/addbook">Add Book<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                </ul>
-            </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/mylibrary">My Library</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/addbook"
+                >Add Book<span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
-
 
     <!-- <form>
         <strong> Enter ISBN:
@@ -63,130 +85,177 @@
     <!-- Add Books---------------------------------------------------------------------- -->
     <!-- 1690582863 -->
     <div class="container" id="isbn">
-        <h3>Add Book</h3>
-        <h id="isbnHeader">ISBN</h5>
-            <input type="text" placeholder=" Enter ISBN #" value="9781609806934" id="isbnInput">
-            <button type="button" class="btn btn-danger" id="isbnSubmit">Submit ISBN #</button>
-            <button type="button" class="btn btn-link">How do I find the ISBN number?</button>
-            <!-- <a href="...">
+      <h3>Add Book</h3>
+      <h5 id="isbnHeader">ISBN</h5>
+      <input
+        type="text"
+        placeholder=" Enter ISBN #"
+        value="9781609806934"
+        id="isbnInput"
+      />
+      <button type="button" class="btn btn-danger" id="isbnSubmit">
+        Submit ISBN #
+      </button>
+      <button type="button" class="btn btn-link">
+        How do I find the ISBN number?
+      </button>
+      <!-- <a href="...">
                 <p id="isbnSearch">How do I find the ISBN number?</p>
             </a> -->
     </div>
 
     <!-- Dynamically Populated Forms ------------------->
     <form class="container" id="bookInfo">
-        <h3>Book Information</h3>
-        <img src="http://via.placeholder.com/300" alt="..." class="img-thumbnail" id="populateImg">
-        <div class="form-group row">
-            <label for="bookTitle" class="col-sm-2 col-form-label">Title</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="populateBook" placeholder="Book Title" readonly>
-            </div>
+      <h3>Book Information</h3>
+      <img
+        src="http://via.placeholder.com/300"
+        alt="..."
+        class="img-thumbnail"
+        id="populateImg"
+      />
+      <div class="form-group row">
+        <label for="bookTitle" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            id="populateBook"
+            placeholder="Book Title"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="bookAuthor" class="col-sm-2 col-form-label">Author</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            id="populateAuthor"
+            placeholder="Author"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="bookIllustrator" class="col-sm-2 col-form-label"
+          >Illustrator</label
+        >
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            id="populateIllustrator"
+            placeholder="Book Illustrator"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="bookYear" class="col-sm-2 col-form-label"
+          >Year of Publication</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="date"
+            class="form-control"
+            id="populateDate"
+            placeholder="Year"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="bookDescription " class="col-sm-2 col-form-label"
+          >Description</label
+        >
+        <div class="col-sm-10">
+          <div class="form-group">
+            <textarea
+              class="form-control"
+              id="populateDesc"
+              rows="7"
+              readonly
+            ></textarea>
+          </div>
         </div>
 
-        <div class="form-group row">
-            <label for="bookAuthor" class="col-sm-2 col-form-label">Author</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="populateAuthor" placeholder="Author" readonly>
-            </div>
+        <!-- Dyamically Populated  validation---------------------------- -->
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-danger" id="infoReject">
+            No, edit ISBN #
+          </button>
         </div>
-
-        <div class="form-group row">
-            <label for="bookIllustrator" class="col-sm-2 col-form-label">Illustrator</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="populateIllustrator" placeholder="Book Illustrator" readonly>
-            </div>
+        <div class="col-sm-4 offset-4">
+          <button type=" button " class="btn btn-success" id="infoSubmit">
+            Submit
+          </button>
         </div>
+      </div>
 
-        <div class="form-group row">
-            <label for="bookYear" class="col-sm-2 col-form-label">Year of Publication</label>
-            <div class="col-sm-6">
-                <input type="date" class="form-control" id="populateDate" placeholder="Year" readonly>
-            </div>
-        </div>
-
-
-        <div class="form-group row">
-            <label for="bookDescription " class="col-sm-2 col-form-label">Description</label>
-            <div class="col-sm-10">
-                <div class="form-group">
-                    <textarea class="form-control" id="populateDesc" rows="7" readonly></textarea>
-                </div>
-
-            </div>
-
-
-            <!-- Dyamically Populated  validation---------------------------- -->
-
-        </div>
-
-
-        <div class="form-group row">
-            <div class="col-sm-4">
-                <button type="button" class="btn btn-danger" id="infoReject">No, edit ISBN #</button>
-            </div>
-            <div class="col-sm-4 offset-4">
-                <button type=" button " class="btn btn-success" id="infoSubmit">Submit</button>
-            </div>
-        </div>
-
-
-
-        <div class="form-group row ">
-
-        </div>
+      <div class="form-group row "></div>
     </form>
-
-
-
 
     <!-- Choose Tags and YouTube Links ----------------------------->
 
     <form class="container " id="extraInfo">
-        <h3>Additional Book Information</h3>
+      <h3>Additional Book Information</h3>
 
-        <select class="multiselect-ui form-control" aria-label="Default select example " id="categorySelect" multiple>
-        <option value = "" disabled selected>Select Relevant Categories -- Use CTRL (command on Macs) to select multiple</option>
+      <select
+        class="multiselect-ui form-control"
+        aria-label="Default select example "
+        id="categorySelect"
+        multiple
+      >
+        <option value="" disabled selected
+          >Select Relevant Categories -- Use CTRL (command on Macs) to select
+          multiple</option
+        >
         <option type="checkbox" value="BLM">BLM</option>
         <option type="checkbox" value="LGBTQIA+">LGBTQIA+</option>
-        <option type="checkbox" value="Native American Heritage">Native American Heritage</option>
-    </select>
+        <option type="checkbox" value="Native American Heritage"
+          >Native American Heritage</option
+        >
+      </select>
 
+      <div class="form-group row ">
+        <label for="bookIllustrator " class="col-sm-2 col-form-label "
+          >Add YouTube Link</label
+        >
+        <div class="col-sm-8 ">
+          <input
+            type="link "
+            class="form-control "
+            id="addYouTube"
+            placeholder=" YouTubeLink "
+          />
+        </div>
+      </div>
 
-        <div class="form-group row ">
-            <label for="bookIllustrator " class="col-sm-2 col-form-label ">Add YouTube Link</label>
-            <div class="col-sm-8 ">
-                <input type="link " class="form-control " id="addYouTube" placeholder=" YouTubeLink ">
-            </div>
+      <h6>
+        What questions should parents ask their kids that may provide insight
+        about the message of the book?
+      </h6>
+      <div class="col-sm-10 ">
+        <div class="form-group ">
+          <textarea class="form-control " id="textarea" rows="7 "></textarea>
         </div>
 
+      </div>
 
+      <button type="button " class="btn btn-warning" id="submitBook">
+        Submit Book
+      </button>
 
-        <h6>What questions should parents ask their kids that may provide insight about the message of the book?
-        </h6>
-        <div class="col-sm-10 ">
-            <div class="form-group ">
-                <textarea class="form-control " id="textarea" rows="7 "></textarea>
-
-            </div>
-
-        </div>
-        <a href="#" class="previous" id="prev">&laquo; Previous</a>
-        <button type="button " class="btn btn-warning" id="submitBook">Submit Book</button>
     </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
     <!-- Footer -->
     <container>
         <footer id="footer" class="page-footer font-small mdb-color pt-4">
@@ -320,26 +389,78 @@
                 </div>
                 <!-- Grid row -->
             </div>
-            <!-- Footer Links -->
-        </footer>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+              <!-- Social buttons -->
+              <div class="text-center text-md-right">
+                <ul class="list-unstyled list-inline">
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <!-- <i class="fab fa-facebook-f"></i> -->
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <!-- <i class="fab fa-twitter"></i> -->
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <!-- <i class="fab fa-google-plus-g"></i> -->
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <!-- <i class="fab fa-linkedin-in"></i> -->
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+        <!-- Footer Links -->
+      </footer>
     </container>
 
-    <div class="modal fade" id="bookModal" aria-labelledby="exampleModalLabel" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content container" style="width: 100%; margin-left: auto; margin-right: auto;"></div>
-        </div>
+    <div
+      class="modal fade"
+      id="bookModal"
+      aria-labelledby="exampleModalLabel"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div
+          class="modal-content container"
+          style="width: 100%; margin-left: auto; margin-right: auto;"
+        ></div>
+      </div>
     </div>
     <!-- Footer -->
 
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
     <!-- <script src="./assets/js/script.js"></script> -->
     <script src="./assets/js/addbook.js "></script>
-
-
-</body>
-
+  </body>
 </html>
