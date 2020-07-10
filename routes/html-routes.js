@@ -66,7 +66,7 @@ router.get('/mylibrary', isAuthenticated, (req, res) => {
   })
     .then((dbUserBook) => {
       res.json(dbUserBook);
-      // res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
+      res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
     })
     .catch((err) => {
       res.status(401).json(err);
@@ -79,8 +79,8 @@ router.get('/addbook', isAuthenticated, (req, res) => {
 });
 
 router.get('/admin/login', (req, res) => {
-  if ((req.user) && (req.user.adminStatus === true)) {
-    res.redirect('/admin_review');
+  if (req.user && req.user.adminStatus === true) {
+    res.redirect('/admin/review');
   }
   res.sendFile(path.join(__dirname, '../public/admin_login.html'));
 });
