@@ -10,11 +10,16 @@ router.post('/api/login', passport.authenticate('local', {
   successRedirect: '/mylibrary',
   failureRedirect: '/login',
   failureFlash: true,
+  successFlash: true,
 }), (req, res) => {
   res.json(req.user);
   // console.log(req.user);
 });
 
+router.post('/api/admin/login', passport.authenticate('local'), (req, res) => {
+  res.json(req.user);
+  // console.log(req.user);
+});
 // Route for signing up a user. The user's password is automatically hashed
 // and stored securely thanks to
 // how we configured our Sequelize User Model. If the user is created
@@ -31,6 +36,7 @@ router.post('/api/signup', (req, res) => {
     .then(() => {
       req.flash('success', 'The user has been signed up successfully');
       res.redirect('/login');
+      console.log(res);
     })
     .catch((err) => {
       req.flash('error', 'Please try again');

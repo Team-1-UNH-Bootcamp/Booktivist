@@ -1,7 +1,6 @@
 const express = require('express');
 const session = require('express-session');
 // Requiring passport as we've configured it
-const flash = require('connect-flash');
 const passport = require('./config/passport');
 
 // Requiring database models
@@ -10,7 +9,7 @@ const db = require('./models');
 const userBooks = require('./routes/userbooks-routes');
 const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
-const adminLoginRoutes = require('./routes/adminLogin-routes');
+// const adminLoginRoutes = require('./routes/adminLogin-routes');
 const homePageRoutes = require('./routes/homepage-routes.js');
 const categoryPageRoutes = require('./routes/categorypage-routes.js');
 const adminReviewRoutes = require('./routes/adminreview-routes');
@@ -33,18 +32,11 @@ app.use(
     // eslint-disable-next-line comma-dangle
   })
 );
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
-app.use((req, res, next) => {
-  res.locals.success = req.flash('success');
-  res.locals.errors = req.flash('error');
-  next();
-});
 
 // middleware for our routes
-app.use('/', adminLoginRoutes);
+// app.use('/', adminLoginRoutes);
 app.use('/api', userBooks);
 app.use('/', htmlRoutes);
 app.use('/', apiRoutes);
