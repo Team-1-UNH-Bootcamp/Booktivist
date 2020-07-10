@@ -11,7 +11,12 @@ $(document).ready(() => {
   $.get('/api/user_data').then((data) => {
     $('.memberName').text(data.email);
   });
+
+  $.ajax('/mylibrary', { type: 'GET' }).then((response) => {
+    console.log(response);
+  });
 });
+
 // TODO set up rows in mylibrary.html
 // $.ajax("/api/books/${bookid}", {type: 'GET'}).then((response)=>{
 // respone.forEach((data)=>{

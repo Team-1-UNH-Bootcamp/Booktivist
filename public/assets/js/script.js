@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable space-before-function-paren */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable func-names */
@@ -9,6 +10,7 @@ const getBooks = (category) => {
     $.ajax(`/api/books/${category[0]}`, { type: 'GET' })
       .then((response) => {
         response.forEach((data) => {
+          console.log('hello - 1');
           let apiTitle = 'title';
           let apiId = 'id';
           let apiAuthor = 'author';
@@ -39,7 +41,7 @@ const getBooks = (category) => {
             .attr('data-toggle', 'modal')
             .attr('data-target', '#bookModal')
             .css({ border: 'none', backgroundColor: 'white' });
-          console.log(linkTitle[0].value);
+          // console.log(linkTitle[0].value);
           const bookTitle = $('<h3>')
             .attr({ class: 'card-title' })
             .text(data[apiTitle]);
@@ -68,10 +70,6 @@ const getModal = () => {
     const i = this.value;
     console.log(i);
     $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
-      console.log(response);
-      console.log(response.title);
-
-      $('.modal-content').text('');
       const bookJpg = $('<img>').attr({
         src: response.img_link,
         class: 'col-sm-4',
@@ -126,6 +124,10 @@ const getModal = () => {
         isbn
       );
       $('.modal-content').append(rowDiv, extendedBookInfo);
+      $.ajax(`api/mylibrary/${i}`, { type: 'POST' }).then((userData) => {
+        // window.location.replace('/mylibrary');
+        console.log(userData);
+      });
     });
   });
 };
