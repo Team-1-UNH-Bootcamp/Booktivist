@@ -17,41 +17,56 @@ router.get('/userbooks/:id', (req, res) => {
       id: req.params.id,
     },
 
-    include: [{
-      model: db.User,
-      as: 'users',
-      attributes: ['id', 'firstName', 'lastName'],
-      through: {
-        // This block of code allows you to retrieve the properties of the join table
-        model: db.UserBooks,
-        as: 'userBooks',
-        attributes: ['bookId'],
+    include: [
+      {
+        model: db.User,
+        as: 'users',
+        attributes: ['id', 'firstName', 'lastName'],
+        through: {
+          // This block of code allows you to retrieve the properties of the join table
+          model: db.UserBooks,
+          as: 'userBooks',
+          attributes: ['bookId'],
+        },
       },
-    }],
-  })
-    .then((dbUserBook) => {
-      res.json(dbUserBook);
-      // res.redirect('/mylibrary');
-      console.log(dbUserBook);
-    });
-});
-
-
-// first time adding book in wishlist or userBooks
-// click on (+) sign and book will be added to userBooks table (we need to pass userid and bookId)
-router.post('/mylibrary/', (req, res) => {
-  db.UserBooks.create({
-    bookId: req.body.bookId,
-    userId: req.user.Id,
+    ],
   }).then((dbUserBook) => {
-    req.flash('success', 'The book has been added successfully');
     res.json(dbUserBook);
-  }).catch((err) => {
-    req.flash('error', 'Please login first');
-    res.redirect('/login');
-    res.status(401).json(err);
+    // res.redirect('/mylibrary');
+    console.log(dbUserBook);
   });
 });
 
+// first time adding book in wishlist or userBooks
+// click on (+) sign and book will be added to userBooks table (we need to pass userid and bookId)
+// router.post('/mylibrary/', (req, res) => {
+//   db.UserBooks.create({
+//     bookId: req.body.bookId,
+//     userId: req.user.Id,
+//   }).then((dbUserBook) => {
+//     req.flash('success', 'The book has been added successfully');
+//     res.json(dbUserBook);
+//   }).catch((err) => {
+//     req.flash('error', 'Please login first');
+//     res.redirect('/login');
+//     res.status(401).json(err);
+//   });
+// });
+
+router.post('/mylibrary/:id', (req, res) => {
+  db.UserBooks.create({
+    userId: req.user.id,
+    bookId: req.params.id,
+  })
+    .then((dbUserBook) => {
+      // req.flash('success', 'The book has been added successfully');
+      res.json(dbUserBook);
+    })
+    .catch((err) => {
+      req.flash('error', 'Please login first');
+      res.redirect('/login');
+      res.status(401).json(err);
+    });
+});
 
 module.exports = router;

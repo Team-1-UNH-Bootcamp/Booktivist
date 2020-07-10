@@ -35,7 +35,7 @@ $(document).ready(() => {
       password: password,
     })
       .then(() => {
-        window.location.replace('/admin_review');
+        window.location.replace('/admin/review');
         // If there's an error, log the error
       })
       .catch((err) => {
