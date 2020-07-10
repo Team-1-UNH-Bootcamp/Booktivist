@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+}
+
+#isbn {
+    width: 100%;
+    margin-top: 100px;
+}
+
+form {
+    margin-top: 40px;
+    background-color: whitesmoke;
+    text-align: center;
+    padding: 30px;
+}
+
+#isbnSearch {
+    margin-top: 20px;
+}
+
+h3 {
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+h1,
+h6 {
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+select {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+img {
+    float: left;
+}
+
+
+/* Search  */
+
+#searchContainer {
+    align-items: center;
+}
+
+#search {
+    background-color: white;
+    text-decoration: bold;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+* .form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.card-title {
+    color: blue;
+    text-decoration: underline;
+}
+
+#titleModal {
+    text-align: left;
+}
+
+
+/* ABout page */
+
+#aboutIntro {
+    margin-top: 50px;
+}
