@@ -83,7 +83,7 @@ $('#isbnSubmit').click(() => {
         isbn: Number(isbnWithoutHyphens),
         pub_date: response.items[0].volumeInfo.publishedDate,
         youtube_link: addYouTube,
-        categoires: categoriesArray,
+        categories: categoriesArray,
       };
       console.log(payload);
       // const categoryIds = [];

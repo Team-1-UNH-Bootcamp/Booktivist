@@ -20,21 +20,21 @@ const getBooks = (category) => {
           let apiTitle = 'title';
           let apiId = 'id';
           let apiAuthor = 'author';
-          // let apiImg = 'image_link';
+          let apiImg = 'image_link';
           if (category[0] !== 'recent') {
             apiTitle = 'books.title';
             apiId = 'books.id';
             apiAuthor = 'books.author';
-            // apiImg = 'books.image_link';
+            apiImg = 'books.image_link';
           }
 
           const parentDiv = $('<div>').attr({ class: 'col-lg-3 col-sm-12' });
           const cardDiv = $('<div>').attr({ class: 'card' });
-          // const cardImg = $('<img>').attr({
-          //   class: 'card-img-top',
-          //   src: data[apiImg],
-          //   alt: 'Card Img Top',
-          // });
+          const cardImg = $('<img>').attr({
+            class: 'card-img-top',
+            src: data[apiImg],
+            alt: 'Card Img Top',
+          });
           const cardBody = $('<div>')
             .attr({ class: 'card-body' })
             .css({
@@ -56,7 +56,7 @@ const getBooks = (category) => {
 
           $(linkTitle).append(bookTitle, bookAuthor);
           $(cardBody).append(linkTitle);
-          $(cardDiv).append(cardBody);
+          $(cardDiv).append(cardImg, cardBody);
           // cardImg,
           $(parentDiv).append(cardDiv);
 
