@@ -61,7 +61,7 @@ const getBooks = (category) => {
           $(parentDiv).append(cardDiv);
 
           $(`#${category[1]}`).append(parentDiv);
-          resolve(response);
+          resolve();
         });
       })
       .catch((err) => {
@@ -70,10 +70,11 @@ const getBooks = (category) => {
   });
 };
 
-const loadBooks = () => {
-  $.when(getBooks(recent), getBooks(BLM), getBooks(LGBTQ)).then(() => {
-    getModal();
-  });
+const loadBooks = async () => {
+  await getBooks(recent);
+  await getBooks(BLM);
+  await getBooks(LGBTQ);
+  getModal();
 };
 
 loadBooks();
