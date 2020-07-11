@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// route to login page - see below-working
+// route to login page
 // If the user already has an account send them to the mylibrary page
 router.get('/login', (req, res) => {
   if (req.user) {
@@ -37,11 +37,6 @@ router.get('/about', (req, res) => {
 router.get('/categories', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/categories.html'));
 });
-
-// route to my library - see below, working
-// Here we've add our isAuthenticated middleware to this route.
-// If a user who is not logged in tries to access this route they
-// will be redirected to the signup page
 
 // get all the books for logged in user
 router.get('/mylibrary', isAuthenticated, (req, res) => {

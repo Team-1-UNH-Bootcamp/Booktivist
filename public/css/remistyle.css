@@ -14,7 +14,9 @@ body {
 
 form {
     margin-top: 40px;
+
     background-color: lightblue;
+
     text-align: center;
     padding: 30px;
 }
@@ -86,6 +88,7 @@ img {
 
 #aboutIntro {
     margin-top: 50px;
+
 }
 
 
@@ -94,3 +97,4 @@ img {
         display: none;
     }
 } */
+
