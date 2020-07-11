@@ -14,7 +14,9 @@ body {
 
 form {
     margin-top: 40px;
-    background-color: whitesmoke;
+
+    background-color: lightblue;
+
     text-align: center;
     padding: 30px;
 }
@@ -86,4 +88,13 @@ img {
 
 #aboutIntro {
     margin-top: 50px;
+
 }
+
+
+/* @media screen and(max-width: 768px) {
+    body {
+        display: none;
+    }
+} */
+
