@@ -86,29 +86,5 @@ router.delete('/mylibrary/:id', (req, res) => {
       console.log(err);
     });
 });
-router.get('/mylibrary/:id', (req, res) => {
-  db.Book.findOne({
-    where: {
-      bookId: req.params.id,
-    },
-    include: [{
-      model: db.User,
-      as: 'users',
-      where: {
-        id: req.user.id,
-      },
-      attributes: ['id', 'firstName', 'lastName'],
-      through: {
-        model: db.UserBooks,
-        as: 'userBooks',
-        attributes: ['bookId'],
-      },
-    }],
-  })
-    .then((dbBook) => {
-      res.status(200).json(dbBook);
-    }).catch((err) => {
-      res.status(401).json(err);
-    });
-});
+
 module.exports = router;
