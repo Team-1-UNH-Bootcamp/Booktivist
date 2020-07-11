@@ -2,7 +2,7 @@
 // double check admin = true
 $(document).ready(() => {
   // Getting references to our form and inputs
-  const loginForm = $('.signup');
+  const loginForm = $('.login');
   const emailInput = $('#email');
   const passwordInput = $('#password');
 

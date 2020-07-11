@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable arrow-body-style */
 /* eslint-disable space-before-function-paren */
 /* eslint-disable comma-dangle */
@@ -128,16 +129,116 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
   });
 };
 
+const addPlusSign = () => {
+  const plusSign = $('<i>').attr({
+    class: 'fa fa-plus',
+    id: 'plusSign',
+  });
+
+  const addButton = $('<button>')
+    .attr({
+      class: 'btn btn-primary',
+      id: 'thePlusSign',
+    })
+    .css({
+      position: 'float-left',
+      width: '35px',
+      height: '35px',
+      marginTop: '10px',
+    });
+
+  $(addButton).append(plusSign);
+  $('.modal-content').prepend(addButton);
+};
+
+const addMinusSign = () => {
+  const minusSign = $('<i>').attr({
+    class: 'fa fa-minus',
+    id: 'minusSign',
+  });
+
+  const addButton = $('<button>')
+    .attr({
+      class: 'btn btn-primary',
+      id: 'theMinusSign',
+    })
+    .css({
+      position: 'float-left',
+      width: '35px',
+      height: '35px',
+      marginTop: '10px',
+    });
+
+  $(addButton).append(minusSign);
+  $('.modal-content').prepend(addButton);
+};
+
+const notLoggedIn = () => {
+  console.log('not logged in');
+  addPlusSign();
+  $('#thePlusSign').click(() => {
+    const topDiv = $('<div>')
+      .attr({ class: 'alert alert-danger' })
+      .text('Please Login To Add This Book To Your Library');
+    $('.modal-content').prepend(topDiv);
+    setTimeout(() => {
+      topDiv.remove();
+    }, 2000);
+  });
+};
+
+const addBookToLibrary = (bookId) => {
+  addPlusSign();
+  plusMinusBtn(bookId);
+};
+
+const removeBookFromLibrary = (bookId) => {
+  addMinusSign();
+  plusMinusBtn(bookId);
+};
+
+const plusMinusBtn = (bookId) => {
+  $('#theMinusSign').click(() => {
+    $.ajax(`/api/mylibrary/${bookId}`, { type: 'DELETE' }).then(() => {
+      $('#theMinusSign').remove();
+      addPlusSign();
+    });
+  });
+  $('#thePlusSign').click(() => {
+    $.ajax(`/api/mylibrary/${bookId}`, { type: 'POST' }).then(() => {
+      $('#thePlusSign').remove();
+      addMinusSign();
+    });
+  });
+};
+
 const getModal = () => {
   // eslint-disable-next-line space-before-function-paren
   $('.titleModal').click(function() {
+    $('.modal-content').text('');
     const i = this.value;
     console.log(i);
+    $.ajax('/api/user_data', { type: 'GET' }).then((userData) => {
+      if (userData.message === false) {
+        console.log(userData);
+        notLoggedIn();
+      } else {
+        $.ajax(`/api/mylibrary/${i}`, { type: 'GET' }).then((isAdded) => {
+          if (isAdded === null) {
+            console.log('notAdded');
+            addBookToLibrary(i);
+          } else {
+            console.log('added');
+            removeBookFromLibrary(i);
+          }
+        });
+      }
+    });
+
     $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
       console.log(response);
       console.log(response.title);
 
-      $('.modal-content').text('');
       const bookJpg = $('<img>').attr({
         src: response.img_link,
         class: 'col-sm-4',
