@@ -92,9 +92,9 @@ $('#isbnSubmit').click(() => {
       // categoriesArray.forEach((thingy) => {
       //   console.log(thingy);
       // });
-      // $.ajax('/api/books', { type: 'POST', data: payload }).then((data) => {
-      //   console.log(data);
-      // });
+      $.ajax('/api/books', { type: 'POST', data: payload }).then((data) => {
+        console.log(data);
+      });
     });
   });
 });

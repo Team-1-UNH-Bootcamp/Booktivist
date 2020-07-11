@@ -53,7 +53,7 @@ router.get('/addbook', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/addbook.html'));
 });
 
-router.get('/admin/login', (req, res) => {
+router.get('/admin/login', isAuthenticated, (req, res) => {
   if (req.user && req.user.adminStatus === true) {
     res.redirect('/admin/review');
   }
