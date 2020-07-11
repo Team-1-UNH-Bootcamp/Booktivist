@@ -9,6 +9,7 @@ router.get('/', (req, res) => res.json('Sample API get endpoint'));
 // adds book to Book model, adds bookid and categoryid to BookCategory model
 
 router.post('/api/books', (req, res) => {
+  console.log(req.body);
   db.Book.create(req.body, {}).then((dbBook) => {
     console.log(dbBook);
     dbBook.setCategories(req.body.categories);
