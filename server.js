@@ -16,7 +16,7 @@ const adminReviewRoutes = require('./routes/adminreview-routes');
 const addBookRoutes = require('./routes/addbook-routes');
 
 // Setting up port
-const PORT = process.env.PORT || 9001;
+const PORT = process.env.PORT || 9000;
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();

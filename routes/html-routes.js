@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// route to login page - see below-working
+// route to login page
 // If the user already has an account send them to the mylibrary page
 router.get('/login', (req, res) => {
   if (req.user) {
@@ -22,9 +22,9 @@ router.get('/login', (req, res) => {
 // route to signup page,working
 router.get('/signup', (req, res) => {
   // If the user already has an account send them to the mylibrary page
-  // if (req.user) {
-  //   res.redirect('/mylibrary');
-  // }
+  if (req.user) {
+    res.redirect('/mylibrary');
+  }
   res.sendFile(path.join(__dirname, '../public/signup.html'));
 });
 
@@ -38,11 +38,6 @@ router.get('/categories', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/categories.html'));
 });
 
-// route to my library - see below, working
-// Here we've add our isAuthenticated middleware to this route.
-// If a user who is not logged in tries to access this route they
-// will be redirected to the signup page
-
 // get all the books for logged in user
 router.get('/mylibrary', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/mylibrary.html'));
@@ -53,7 +48,7 @@ router.get('/addbook', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/addbook.html'));
 });
 
-router.get('/admin/login', isAuthenticated, (req, res) => {
+router.get('/admin/login', (req, res) => {
   if (req.user && req.user.adminStatus === true) {
     res.redirect('/admin/review');
   }
