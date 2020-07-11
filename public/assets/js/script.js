@@ -90,6 +90,7 @@ $('#button-addon1').click(function(event) {
 });
 
 const getModal = () => {
+  console.log('the call');
   $('.titleModal').click(function() {
     console.log('the modal');
     $('.modal-content').text('');
