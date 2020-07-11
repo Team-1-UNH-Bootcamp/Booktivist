@@ -225,6 +225,13 @@ select {
 	text-decoration: none;
 }
 
+.sign-up-btn {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+}
+
 #categoryHeader {
 	display: flex;
 	flex-direction: column;
