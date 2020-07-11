@@ -30,12 +30,11 @@ router.get('/api/book/:bookId', (req, res) => {
 
 router.put('/api/admin/books/:bookId', (req, res) => {
   console.log(req.body.added);
-  db.Book.update(
-    { added: req.body.added },
-    { where: { id: req.params.bookId } },
-  ).then((dbBooks) => {
-    res.json(dbBooks);
-  });
+  db.Book.update({ added: 1 }, { where: { id: req.params.bookId } }).then(
+    (dbBooks) => {
+      res.json(dbBooks);
+    },
+  );
 });
 
 // $.ajax("/api/admin/books/${id}", { type: "DESTROY"}

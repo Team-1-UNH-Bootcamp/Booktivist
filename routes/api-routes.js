@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const router = require('express').Router();
 const db = require('../models');
 const passport = require('../config/passport');
@@ -5,16 +6,19 @@ const passport = require('../config/passport');
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
-router.post('/api/login', passport.authenticate('local', {
-
-  successRedirect: '/mylibrary',
-  failureRedirect: '/login',
-  failureFlash: true,
-  successFlash: true,
-}), (req, res) => {
-  res.json(req.user);
-  // console.log(req.user);
-});
+router.post(
+  '/api/login',
+  passport.authenticate('local', {
+    successRedirect: '/mylibrary',
+    failureRedirect: '/login',
+    failureFlash: true,
+    successFlash: true,
+  }),
+  (req, res) => {
+    res.json(req.user);
+    // console.log(req.user);
+  }
+);
 
 router.post('/api/admin/login', passport.authenticate('local'), (req, res) => {
   res.json(req.user);
@@ -56,7 +60,7 @@ router.get('/logout', (req, res) => {
 router.get('/api/user_data', (req, res) => {
   if (!req.user) {
     // The user is not logged in, send back an empty object
-    res.json({});
+    res.json({ message: false });
   } else {
     // Otherwise send back the user's email and id
     // Sending back a password, even a hashed password, isn't a good idea
@@ -64,6 +68,7 @@ router.get('/api/user_data', (req, res) => {
     res.json({
       email: req.user.email,
       id: req.user.id,
+      message: true,
     });
   }
 });

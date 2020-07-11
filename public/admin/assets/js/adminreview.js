@@ -1,26 +1,180 @@
-// $.ajax("/api/admin/books", {type: 'GET'})
-// return all books with added = false
-// .then((response)=>{
-// loop through response and create grid
-// set grid to clickable
-// })
+/* eslint-disable no-use-before-define */
+/* eslint-disable arrow-body-style */
+/* eslint-disable no-use-before-define */
+/* eslint-disable comma-dangle */
+/* eslint-disable space-before-function-paren */
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable func-names */
+$(document).ready(() => {
+  const argument = 'adminReview';
+  loadBooks(argument);
+});
 
-// $("#this").click(()=>{
-// $.ajax("/api/books/${bookid}")
-// get clicked book from books table based on book id
-// }).then((response)=>{use response to populate book modal})
+const getBooks = (category) => {
+  return new Promise((resolve, reject) => {
+    $.ajax('/api/admin/books', { type: 'GET' })
+      .then((response) => {
+        console.log(response);
+        response.forEach((data) => {
+          const apiTitle = 'title';
+          const apiId = 'id';
+          const apiAuthor = 'author';
+          const apiImg = 'image_link';
 
-// $("#submitBook").click(()=>{
-// $.ajax("/api/admin/books/${id}", { type: "POST"}
-// set value of added for this book id to true
-// })
-// })
+          const parentDiv = $('<div>').attr({ class: 'col-lg-3 col-sm-12' });
+          const cardDiv = $('<div>').attr({ class: 'card' });
+          const cardImg = $('<img>').attr({
+            class: 'card-img-top',
+            src: data[apiImg],
+            alt: 'Card Img Top',
+          });
+          const cardBody = $('<div>')
+            .attr({ class: 'card-body' })
+            .css({
+              paddingLeft: '5px',
+              paddingRight: '5px',
+              paddingBotton: '10px',
+            });
+          const linkTitle = $('<button>')
+            .attr({ class: 'titleModal', value: data[apiId] })
+            .attr('data-toggle', 'modal')
+            .attr('data-target', '#bookModal')
+            .css({ border: 'none', backgroundColor: 'white' });
+          const bookTitle = $('<h3>')
+            .attr({ class: 'card-title' })
+            .text(data[apiTitle]);
+          const bookAuthor = $('<h4>')
+            .attr({ class: 'card-subtitle' })
+            .text(data[apiAuthor]);
+          const br = $('<br>');
+          $(linkTitle).append(bookTitle, br, bookAuthor);
+          $(cardBody).append(cardImg, linkTitle);
+          $(cardDiv).append(cardBody);
+          // cardImg,
+          $(parentDiv).append(cardDiv);
 
-// $("#delete").click(()=>{
-// $.ajax("/api/admin/books/${id}", { type: "DESTROY"}
-// DESTROY book by id
-// })
-// })
+          $(`#${category}`).append(parentDiv);
+          resolve(response);
+        });
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
 
-// change screen to "book added"
-// set timeout then close modal
+const loadBooks = (arg) => {
+  $.when(getBooks(arg)).then(() => {
+    getModal();
+  });
+};
+
+$('#button-addon1').click(function(event) {
+  event.preventDefault();
+  const targetUrl = $('#searchBar')
+    .val()
+    .replace(/ /g, '&')
+    .toLowerCase();
+
+  window.location.href = `/categories/?search=${targetUrl}`;
+});
+
+const getModal = () => {
+  $('.titleModal').click(function() {
+    $('.modal-content').text('');
+    const index = this.value;
+    fillModal(index);
+  });
+};
+
+const fillModal = (i) => {
+  $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
+    const bookJpg = $('<img>').attr({
+      src: response.img_link,
+      class: 'col-sm-4',
+    });
+    const bookTitle = $('<h5>').text(
+      // eslint-disable-next-line comma-dangle
+      `TITLE: ${response.title}`
+    );
+    const bookSubtitle = $('<h6>').text('');
+    const bookAuthor = $('<h6>').text(
+      // eslint-disable-next-line comma-dangle
+      `AUTHOR: ${response.author}`
+    );
+    const bookIllustrator = $('<h6>').text('');
+    const bookDescriptionHeader = $('<h6>').text('Description:');
+    const bookDescription = $('<p>')
+      .text(response.description)
+      .attr({ id: 'bookDesc' });
+    const keyPointsHeader = $('<h6>').text('Key Discussion Points');
+    const keyPoints = $('<p>').text('');
+    const youTubeLink = response.youtube_link;
+    let youTubeAppend = '';
+    if (youTubeLink !== null) {
+      youTubeAppend = $('<a>')
+        .attr({ href: youTubeLink })
+        .text('Watch This Book Being Read on YouTube');
+    }
+    const pubDate = $('<p>').text(response.pub_date);
+    const isbn = $('<p>').text(response.isbn);
+    const rowDiv = $('<div>')
+      .attr({ class: 'row' })
+      .css({ marginTop: '80px' });
+    const bookInfo = $('<div>').attr({ class: 'col-sm-6' });
+    const extendedBookInfo = $('<div>').attr({});
+    // const bookCategories = $('<ul>');
+    // const allCategories = response.categories
+    // allCategories.forEach((cat)=>{
+    // const bookCategory = $('<li>').text(cat);
+    // $(bookCategories).append(bookCategory)
+    // })
+    $(bookInfo).append(bookTitle, bookSubtitle, bookAuthor, bookIllustrator);
+    $(rowDiv).append(bookJpg, bookInfo);
+    $(extendedBookInfo).append(
+      bookDescriptionHeader,
+      bookDescription,
+      keyPointsHeader,
+      keyPoints,
+      youTubeAppend,
+      // bookCategories,
+      pubDate,
+      // eslint-disable-next-line comma-dangle
+      isbn
+    );
+
+    const buttonDiv = $('<div>');
+    const addToTable = $('<button>')
+      .attr({ id: 'addToTable', class: 'btn btn-success' })
+      .text('submit')
+      .css({ marginBotton: '20px' });
+    const deleteFromTable = $('<button>')
+      .attr({ id: 'deleteFromTable', class: 'btn btn-warning' })
+      .text('delete')
+      .css({ marginBotton: '20px' });
+
+    $(buttonDiv).append(deleteFromTable, addToTable);
+    $('.modal-content').append(rowDiv, extendedBookInfo, buttonDiv);
+    $('#addToTable').click(() => {
+      console.log(i);
+      $.ajax(`/api/admin/books/${i}`, { type: 'PUT' }).then((addeds) => {
+        console.log(addeds);
+        const success = $('<h1>')
+          .text('Book Added Succesfully')
+          .css({ textAlign: 'center' });
+        $('.modal-content').text('');
+        $('.modal-content').append(success);
+      });
+    });
+    $('#deleteFromTable').click(() => {
+      console.log('remove');
+      $.ajax(`/api/admin/books/${i}`, { type: 'DELETE' }).then(() => {
+        const removed = $('<h1>')
+          .text('Book Removed Successfully')
+          .css({ textAlign: 'center' });
+        $('.modal-content').text('');
+        $('.modal-content').append(removed);
+      });
+    });
+  });
+};

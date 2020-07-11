@@ -3,6 +3,19 @@ USE booktivist;
 INSERT INTO CATEGORIES (category) VALUES ('LGBTQ');
 INSERT INTO CATEGORIES (category) VALUES ('NAH');
 INSERT INTO CATEGORIES (category) VALUES ('BLM');
+INSERT INTO CATEGORIES (category) VALUES ('Activism');
+INSERT INTO CATEGORIES (category) VALUES ('Ability');
+INSERT INTO CATEGORIES (category) VALUES ('API');
+INSERT INTO CATEGORIES (category) VALUES ('Biography');
+INSERT INTO CATEGORIES (category) VALUES ('Challenging_Stereotypes');
+INSERT INTO CATEGORIES (category) VALUES ('Diverese_Representation');
+INSERT INTO CATEGORIES (category) VALUES ('Feelings_Self-Esteem');
+INSERT INTO CATEGORIES (category) VALUES ('History');
+INSERT INTO CATEGORIES (category) VALUES ('Latinx');
+INSERT INTO CATEGORIES (category) VALUES ('Privelege_Racism');
+INSERT INTO CATEGORIES (category) VALUES ('Religion');
+INSERT INTO CATEGORIES (category) VALUES ('Strong_Girls_Women');
+
 
 
 INSERT INTO BOOKS (title,subtitle,author,illustrator,description,image_link,key_talking_points,isbn,pub_date,youtube_link,added) 
