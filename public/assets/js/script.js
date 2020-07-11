@@ -16,7 +16,6 @@ const getBooks = (category) => {
     $.ajax(`/api/books/${category[0]}`, { type: 'GET' })
       .then((response) => {
         response.forEach((data) => {
-          console.log('hello - 1');
           let apiTitle = 'title';
           let apiId = 'id';
           let apiAuthor = 'author';
@@ -61,7 +60,7 @@ const getBooks = (category) => {
           $(parentDiv).append(cardDiv);
 
           $(`#${category[1]}`).append(parentDiv);
-          resolve();
+          resolve(console.log('the data from the api', response));
         });
       })
       .catch((err) => {
