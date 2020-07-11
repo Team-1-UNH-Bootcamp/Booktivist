@@ -10,6 +10,9 @@ const recent = ['recent', 'recent'];
 const BLM = ['category/3', 'BLM'];
 const LGBTQ = ['category/1', 'LGBTQ'];
 // const NAH = 'category/2';
+$(document).ready(() => {
+  loadBooks();
+});
 
 const getBooks = (category) => {
   return new Promise((resolve, reject) => {
@@ -76,8 +79,6 @@ const loadBooks = async () => {
   getModal();
 };
 
-loadBooks();
-
 $('#button-addon1').click(function(event) {
   event.preventDefault();
   const targetUrl = $('#searchBar')
@@ -90,6 +91,7 @@ $('#button-addon1').click(function(event) {
 
 const getModal = () => {
   $('.titleModal').click(function() {
+    console.log('the modal');
     $('.modal-content').text('');
     const index = this.value;
     $.ajax('api/user_data', { type: 'GET' }).then((userData) => {
