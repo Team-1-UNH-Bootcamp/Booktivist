@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     illustrator: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: { len: [5, 100] },
+      // validate: { len: [5, 100] },
     },
     // This field will not be required as it will be a foreign key
     // category: {
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       // type: DataTypes.STRING,
       type: DataTypes.TEXT,
       allowNull: false,
-      validate: { len: [5, 500] },
+      // validate: { len: [5, 500] },
     },
     image_link: {
       type: DataTypes.STRING,
@@ -43,10 +43,10 @@ module.exports = (sequelize, DataTypes) => {
     key_talking_points: {
       type: DataTypes.TEXT,
       allowNull: true,
-      validate: { len: [5, 500] },
+      // validate: { len: [5, 500] },
     },
     isbn: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
       validate: { len: [5, 100] },
     },
