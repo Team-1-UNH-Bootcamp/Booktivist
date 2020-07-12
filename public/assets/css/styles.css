@@ -45,11 +45,12 @@ a {
 * {
 	box-sizing: border-box;
 }
-html, body {
-	margin:0;
-	padding:0;
-	height:100%;
- }
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
 body {
 	background-color: #f7f8fc;
 	color: #141c2c;
@@ -224,6 +225,13 @@ select {
 	float: right;
 }
 
+.nav-btn {
+	color: #000;
+	text-decoration: none;
+	padding: 0 130px;
+	padding-top: 32px;
+}
+
 .sign {
 	color: #2762eb;
 	text-decoration: none;
@@ -336,14 +344,13 @@ option:hover {
   }
 } */
 /* footer style */
-.footerLinks{
-
-    font-style: italic;
+.footerLinks {
+	font-style: italic;
 }
-#footer{
-    background-color: lightskyblue;
+#footer {
+	background-color: lightskyblue;
 }
-.footerContainer{
+.footerContainer {
 	bottom: 0;
 	position: fixed;
 	right: 0;
