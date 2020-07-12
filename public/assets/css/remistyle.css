@@ -1,6 +1,11 @@
 * {
     box-sizing: border-box;
 }
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+ }
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -9,7 +14,7 @@ body {
 
 #isbn {
     width: 100%;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 form {
@@ -86,4 +91,23 @@ img {
 
 #aboutIntro {
     margin-top: 50px;
+}
+
+/* footer style */
+.footerLinks{
+
+    font-style: italic;
+}
+#footer{
+    background-color: lightskyblue;
+}
+.footerContainer{
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+/* add book page style */
+#isbnHeader{
+    display: inline;
 }

@@ -45,7 +45,11 @@ a {
 * {
 	box-sizing: border-box;
 }
-
+html, body {
+	margin:0;
+	padding:0;
+	height:100%;
+ }
 body {
 	background-color: #f7f8fc;
 	color: #141c2c;
@@ -55,9 +59,9 @@ body {
 	height: 100vh;
 }
 
-footer {
+/* footer {
 	padding: 0 80px;
-}
+} */
 
 form {
 	display: flex;
@@ -69,10 +73,10 @@ form {
 	padding: 30px;
 }
 
-h3 {
+/* h3 {
 	padding: 1rem;
 	float: left;
-}
+} */
 
 h6 {
 	margin-top: 3rem;
@@ -331,3 +335,17 @@ option:hover {
     opacity: 1;
   }
 } */
+/* footer style */
+.footerLinks{
+
+    font-style: italic;
+}
+#footer{
+    background-color: lightskyblue;
+}
+.footerContainer{
+	bottom: 0;
+	position: fixed;
+	right: 0;
+	left: 0;
+}
