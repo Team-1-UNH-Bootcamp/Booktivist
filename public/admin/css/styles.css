@@ -54,9 +54,6 @@ body {
   height: 100vh;
 }
 
-container {
-}
-
 form {
   display: flex;
   flex-direction: column;
