@@ -18,11 +18,11 @@ router.post('/api/signup', (req, res) => {
     password: req.body.password,
   })
     .then(() => {
-      res.status(200).send(
-        {
-          message: 'The user has been signed up successfully',
-        },
-      );
+      // res.status(200).send(
+      //   {
+      //     message: 'The user has been signed up successfully',
+      //   },
+      // );
       res.redirect('/login');
     })
     .catch((err) => {
