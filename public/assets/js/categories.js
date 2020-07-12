@@ -80,15 +80,17 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
             }
             // apiImg = 'books.image_link';
 
-            const parentDiv = $('<div>').attr({ class: 'col-lg-3 col-sm-12' });
-            const cardDiv = $('<div>').attr({ class: 'card' });
+            const parentDiv = $('<div>').attr({
+              class: 'col-lg-3 col-sm-12 bookParentDiv',
+            });
+            const cardDiv = $('<div>').attr({ class: 'card bookCardDiv' });
             const cardImg = $('<img>').attr({
-              class: 'card-img-top',
+              class: 'card-img-top bookCardImage',
               src: data[apiImg],
               alt: 'Card Img Top',
             });
             const cardBody = $('<div>')
-              .attr({ class: 'card-body' })
+              .attr({ class: 'card-body bookCardBody' })
               .css({
                 paddingLeft: '5px',
                 paddingRight: '5px',
@@ -98,13 +100,12 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
               .attr({ class: 'titleModal', value: data[apiId] })
               .attr('data-toggle', 'modal')
               .attr('data-target', '#bookModal')
-              .css({ border: 'none', backgroundColor: 'white', width: '100%' });
+              .css({ border: 'none', backgroundColor: 'white' });
             const bookTitle = $('<h3>')
-              .attr({ class: 'card-title' })
-              .text(data[apiTitle])
-              .css({ width: '100%', border: 'none' });
+              .attr({ class: 'card-title cardBookTitle' })
+              .text(data[apiTitle]);
             const bookAuthor = $('<h4>')
-              .attr({ class: 'card-subtitle' })
+              .attr({ class: 'card-subtitle cardBookAuthor' })
               .text(data[apiAuthor]);
 
             $(linkTitle).append(bookTitle, bookAuthor);
@@ -131,13 +132,13 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
 
 const addPlusSign = () => {
   const plusSign = $('<i>').attr({
-    class: 'fa fa-plus',
+    class: 'fa fa-plus plusSign',
     id: 'plusSign',
   });
 
   const addButton = $('<button>')
     .attr({
-      class: 'btn btn-primary',
+      class: 'btn btn-primary addBookBtn',
       id: 'thePlusSign',
     })
     .css({
@@ -153,13 +154,13 @@ const addPlusSign = () => {
 
 const addMinusSign = () => {
   const minusSign = $('<i>').attr({
-    class: 'fa fa-minus',
+    class: 'fa fa-minus minusSign',
     id: 'minusSign',
   });
 
   const addButton = $('<button>')
     .attr({
-      class: 'btn btn-primary',
+      class: 'btn btn-primary addBookBtn',
       id: 'theMinusSign',
     })
     .css({
@@ -178,7 +179,7 @@ const notLoggedIn = () => {
   addPlusSign();
   $('#thePlusSign').click(() => {
     const topDiv = $('<div>')
-      .attr({ class: 'alert alert-danger' })
+      .attr({ class: 'alert alert-danger notLoggedIn' })
       .text('Please Login To Add This Book To Your Library');
     $('.modal-content').prepend(topDiv);
     setTimeout(() => {
@@ -240,39 +241,58 @@ const getModal = () => {
       console.log(response.title);
 
       const bookJpg = $('<img>').attr({
-        src: response.img_link,
-        class: 'col-sm-4',
+        src: response.image_link,
+        class: 'col-sm-4 modalCoverJpg bookInfoChild',
       });
-      const bookTitle = $('<h5>').text(
-        // eslint-disable-next-line comma-dangle
-        `TITLE: ${response.title}`
-      );
-      const bookSubtitle = $('<h6>').text('');
-      const bookAuthor = $('<h6>').text(
-        // eslint-disable-next-line comma-dangle
-        `AUTHOR: ${response.author}`
-      );
-      const bookIllustrator = $('<h6>').text('');
-      const bookDescriptionHeader = $('<h6>').text('Description:');
+      const bookTitle = $('<h5>')
+        .attr({ class: 'modalBookTitle bookInfoChild' })
+        .text(
+          // eslint-disable-next-line comma-dangle
+          `TITLE: ${response.title}`
+        );
+      const bookSubtitle = $('<h6>')
+        .attr({ class: 'modalBooksubTitle bookInfoChild' })
+        .text('');
+      const bookAuthor = $('<h6>')
+        .attr({ class: 'modalBookAuthor bookInfoChild' })
+        .text(
+          // eslint-disable-next-line comma-dangle
+          `AUTHOR: ${response.author}`
+        );
+      const bookIllustrator = $('<h6>')
+        .attr({ class: 'modalBookIllustrator bookInfoChild' })
+        .text(`illustrator: ${response.illustrator}`);
+      const bookDescriptionHeader = $('<h6>')
+        .attr({ class: 'descriptionHeader extBookChild' })
+        .text('Description:');
       const bookDescription = $('<p>')
         .text(response.description)
-        .attr({ id: 'bookDesc' });
-      const keyPointsHeader = $('<h6>').text('Key Discussion Points');
-      const keyPoints = $('<p>').text('');
+        .attr({ id: 'bookDesc extBookChild' });
+      const keyPointsHeader = $('<h6>')
+        .text('Key Discussion Points')
+        .attr({ class: 'keyPointsHeader extBookChild' });
+      const keyPoints = $('<p>')
+        .text('')
+        .attr({ class: 'keyPoints extBookChild' });
       const youTubeLink = response.youtube_link;
       let youTubeAppend = '';
       if (youTubeLink !== null) {
         youTubeAppend = $('<a>')
-          .attr({ href: youTubeLink })
+          .attr({ href: youTubeLink, class: 'youTubeLink extBookChild' })
           .text('Watch This Book Being Read on YouTube');
       }
-      const pubDate = $('<p>').text(response.pub_date);
-      const isbn = $('<p>').text(response.isbn);
+      const pubDate = $('<p>')
+        .text(response.pub_date)
+        .attr({ class: 'pubDate extBookChild' });
+      const isbn = $('<p>')
+        .text(response.isbn)
+        .attr({ class: 'isbn extBookChild' });
+
       const rowDiv = $('<div>')
-        .attr({ class: 'row' })
+        .attr({ class: 'row rowDiv' })
         .css({ marginTop: '80px' });
-      const bookInfo = $('<div>').attr({ class: 'col-sm-6' });
-      const extendedBookInfo = $('<div>').attr({});
+      const bookInfo = $('<div>').attr({ class: 'col-sm-6 modalBookInfo' });
+      const extendedBookInfo = $('<div>').attr({ class: 'extendedInfo' });
       // const bookCategories = $('<ul>');
       // const allCategories = response.categories
       // allCategories.forEach((cat)=>{
