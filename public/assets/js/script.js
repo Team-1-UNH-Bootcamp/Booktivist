@@ -33,14 +33,14 @@ const getBooks = (category) => {
           const parentDiv = $('<div>').attr({
             class: 'col-lg-3 col-sm-12 bookParentDiv',
           });
-          const cardDiv = $('<div>').attr({ class: 'card bookCardDiv' });
+          const cardDiv = $('<div>').attr({ class: 'card bookCardDiv h-100' });
           const cardImg = $('<img>').attr({
-            class: 'card-img-top bookCardImage',
+            class: 'card-img-top bookCardImage h-70',
             src: data[apiImg],
             alt: 'Card Img Top',
           });
           const cardBody = $('<div>')
-            .attr({ class: 'card-body bookCardBody' })
+            .attr({ class: 'card-body bookCardBody h-30' })
             .css({
               paddingLeft: '5px',
               paddingRight: '5px',
@@ -81,7 +81,7 @@ const loadBooks = async () => {
   getModal();
 };
 
-$('#button-addon1').click(function(event) {
+$('#button-addon1').click(function (event) {
   event.preventDefault();
   const targetUrl = $('#searchBar')
     .val()
@@ -93,7 +93,7 @@ $('#button-addon1').click(function(event) {
 
 const getModal = () => {
   console.log('the call');
-  $('.titleModal').click(function() {
+  $('.titleModal').click(function () {
     console.log('the modal');
     $('.modal-content').text('');
     const index = this.value;

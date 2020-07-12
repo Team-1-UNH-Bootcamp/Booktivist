@@ -309,3 +309,28 @@ option:hover {
     opacity: 1;
   }
 } */
+.footerLinks{
+
+  font-style: italic;
+  color: white;
+}
+/* #footer{
+  background-color: lightskyblue;
+} */
+.footerContainer{
+bottom: 0;
+right: 0;
+left: 0;
+}
+
+/* navigation bar style */
+.navbar .nav-link {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.navbar .nav-item.active {
+  border-left: rgb(239, 239, 243) 3px solid;
+}

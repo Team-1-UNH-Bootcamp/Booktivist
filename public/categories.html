@@ -10,41 +10,36 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-
-  <link rel="stylesheet2" href="./assets/css/remistyle.css" />
+  <!-- 
+  <link rel="stylesheet2" href="./assets/css/remistyle.css" /> -->
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <title>Categories</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">Kid Booktivist</a>
-    <div>
-      <button class="btn btn-warning" type="button" style="width: 130px; margin-right: 40px; height: 38px;">
-        Sign Up
-        <a class="nav-link" href="/signup"></a>
-      </button>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand font-weight-bold" href="/">Kid Booktivist</a>
+
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home </a>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/categories">Categories<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/mylibrary">My Library</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/addbook">Add Book</a>
+            <a class="nav-link" href="addbook">Add Book</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
@@ -52,6 +47,13 @@
         </ul>
       </div>
     </div>
+
+    <!-- <div>
+      <button class="btn btn-warning" type="button">
+
+        <a class="nav-link" href="/signup">Sign Up</a>
+      </button>
+    </div> -->
   </nav>
   <!-- h1 - will display name of category selected or search terms / id="categoryHeader"-->
 
@@ -137,9 +139,9 @@
   </div>
   <!-- Footer -->
   <container>
-    <footer id="footer" class="page-footer font-small mdb-color pt-4">
+    <footer class="page-footer font-small mdb-color bg-primary">
       <!-- Footer Links -->
-      <div class="text-center text-md-left">
+      <div class=" container text-center text-md-left">
         <!-- Footer links -->
         <div class="row text-center text-md-left mt-3 pb-3">
           <!-- Grid column -->
@@ -149,60 +151,64 @@
             </h6>
             <p id="footerGraph">
               Kid Booktivist is dedicated to bringing awareness to parents and
-              their children about issues justice and equality.
+              their children about issues of justice and equality.
             </p>
           </div>
           <!-- Grid column -->
 
-          <hr class="w-100 clearfix d-md-none" />
+          <!-- <hr class="w-100 clearfix d-md-none" /> -->
 
           <!-- Grid column -->
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
             <h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
             <p id="footerGraph">
-              <a href="/about">About</a>
+              <a href="/about" class="footerLinks">About</a>
             </p>
             <p id="footerGraph">
-              <a href="/categories">Categories</a>
+              <a href="/categories" class="footerLinks">Categories</a>
             </p>
             <p id="footerGraph">
-              <a href="/mylibrary">My Library</a>
+              <a href="/mylibrary" class="footerLinks">My Library</a>
             </p>
             <p id="footerGraph">
-              <a href="/addbook">Add Book</a>
+              <a href="/addbook" class="footerLinks">Add Book</a>
             </p>
           </div>
           <!-- Grid column -->
 
-          <hr class="w-100 clearfix d-md-none" />
+          <!-- <hr class="w-100 clearfix d-md-none" /> -->
 
           <!-- Grid column -->
           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
             <h6 class="text-uppercase mb-4 font-weight-bold">Resources</h6>
             <p id="footerGraph">
-              <a href="https://diversebookfinder.org/">Diversity Book Finder</a>
+
+              <a href="https://diversebookfinder.org/" class="footerLinks">Diversity Book Finder</a>
             </p>
             <p id="footerGraph">
-              <a href="https://socialjusticebooks.org/guide-for-selecting-anti-bias-childrens-books/">Social Justice
+              <a href="https://socialjusticebooks.org/guide-for-selecting-anti-bias-childrens-books/"
+                class="footerLinks">Social Justice
                 Books</a>
             </p>
             <p id="footerGraph">
-              <a
-                href="https://www.embracerace.org/blog/reading-picture-books-with-children-through-a-race-conscious-lens">Race-Conscious
+              <a href="https://www.embracerace.org/blog/reading-picture-books-with-children-through-a-race-conscious-lens"
+                class="footerLinks">Race-Conscious
                 Lens</a>
             </p>
             <p id="footerGraph">
-              <a href="https://socialjusticebooks.org/guide-for-selecting-anti-bias-childrens-books/">Anti Bias
+              <a href="https://socialjusticebooks.org/guide-for-selecting-anti-bias-childrens-books/"
+                class="footerLinks">Anti Bias
                 Books</a>
             </p>
             <p id="footerGraph">
-              <a href="https://www.teachingforchange.org/wp-content/uploads/2012/08/ec_tenquickways_english.pdf">Sexism
+              <a href="https://www.teachingforchange.org/wp-content/uploads/2012/08/ec_tenquickways_english.pdf"
+                class="footerLinks">Sexism
                 & Racism Guide</a>
             </p>
           </div>
 
           <!-- Grid column -->
-          <hr class="w-100 clearfix d-md-none" />
+          <!-- <hr class="w-100 clearfix d-md-none" /> -->
 
           <!-- Grid column -->
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
@@ -214,24 +220,23 @@
             </p>
             <p id="footerGraph">
               <!-- <i class="fas fa-envelope mr-3"></i> -->
-
-              <a href="mailto: kid.booktivist@gmail.com">kid.booktivist@gmail.com</a>
+              <a href="mailto: kid.booktivist@gmail.com" class="footerLinks">kid.booktivist@gmail.com</a>
             </p>
           </div>
           <!-- Grid column -->
         </div>
         <!-- Footer links -->
 
-        <hr />
+
 
         <!-- Grid row -->
         <div class="row d-flex align-items-center">
           <!-- Grid column -->
           <div class="col-md-7 col-lg-8">
             <!--Copyright-->
-            <p class="text-center text-md-left" id="footerGraph">
+            <p class="text-center">
               © 2020 Copyright:
-              <a href="www.kidbooktivist.com">
+              <a href="www.kidbooktivist.com" class="footerLinks">
                 <strong> KidBooktivist.com</strong>
               </a>
             </p>

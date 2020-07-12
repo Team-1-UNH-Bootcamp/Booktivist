@@ -33,11 +33,14 @@ h3 {
     margin-bottom: 50px;
 }
 
-h1,
-h6 {
+h1{
     font-weight: bold;
-    margin-top: 50px;
+    font-size: 30px;
 }
+
+/* h6 {
+    font-weight: bold;
+} */
 
 select {
     padding: 20px;
@@ -90,17 +93,19 @@ img {
 /* ABout page */
 
 #aboutIntro {
-    margin-top: 50px;
+    margin-top: 40px;
+    text-align: justify;
 }
 
 /* footer style */
 .footerLinks{
 
     font-style: italic;
+    color:white;
 }
-#footer{
+/* #footer{
     background-color: lightskyblue;
-}
+} */
 .footerContainer{
 	bottom: 0;
 	right: 0;
@@ -111,3 +116,54 @@ img {
 #isbnHeader{
     display: inline;
 }
+/* home page modal window style */
+.rowDiv{
+    margin-top: 30px;
+}
+.modalBookInfor{
+    margin-top: 5px;
+}
+.modalBooktitle{
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.modalBooksubTitle,.modalBookAuthor,.modalBookIllustrator{
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold; 
+}
+.descriptionHeader{
+    margin-top: 15px;
+    font-weight: bold;
+}
+.bookDesc{
+    font-size: 15px;
+    text-align:justify
+}
+.keyPonits{
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.youTubeLink{
+    font-style: italic;
+}
+.alert-danger{
+    margin-top: 5px;
+}
+/* home page book cards style */
+.bookCardBody{
+margin-top: 30;
+}
+
+/* navigation bar style */
+.navbar .nav-link {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .navbar .nav-item.active {
+    border-left: rgb(239, 239, 243) 3px solid;
+  }

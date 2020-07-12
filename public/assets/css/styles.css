@@ -331,14 +331,64 @@ option:hover {
 /* footer style */
 .footerLinks{
 
-    font-style: italic;
+	font-style: italic;
+	color: white;
 }
-#footer{
+/* #footer{
     background-color: lightskyblue;
-}
+} */
 .footerContainer{
 	bottom: 0;
-	position: fixed;
 	right: 0;
 	left: 0;
 }
+/* home page modal window style */
+.rowDiv{
+    margin-top: 30px;
+}
+.modalBookInfor{
+    margin-top: 5px;
+}
+.modalBooktitle{
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.modalBooksubTitle,.modalBookAuthor,.modalBookIllustrator{
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold; 
+}
+.descriptionHeader{
+    margin-top: 15px;
+    font-weight: bold;
+}
+.bookDesc{
+    font-size: 15px;
+    text-align:justify
+}
+.keyPonits{
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.youTubeLink{
+    font-style: italic;
+}
+.alert-danger{
+    margin-top: 5px;
+}
+.categoryHeader{
+	font-size: 20px;
+}
+
+/* navigation bar style */
+.navbar .nav-link {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .navbar .nav-item.active {
+    border-left: rgb(239, 239, 243) 3px solid;
+  }

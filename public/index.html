@@ -19,20 +19,15 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">Kid Booktivist</a>
-    <div>
-      <button class="btn btn-warning" type="button" style="width: 130px; margin-right: 40px; height: 38px;">
-        Sign Up
-        <a class="nav-link" href="/signup"></a>
-      </button>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand font-weight-bold" href="/">Kid Booktivist</a>
+
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
@@ -54,6 +49,13 @@
         </ul>
       </div>
     </div>
+
+    <!-- <div>
+      <button class="btn btn-warning" type="button">
+
+        <a class="nav-link" href="/signup">Sign Up</a>
+      </button>
+    </div> -->
   </nav>
   <!-- --------------------------------------------------------------------------- -->
 
@@ -166,7 +168,7 @@
   <!-- ------------------------------------------------------------------------ -->
   <!-- Footer -->
   <container>
-    <footer id="footer" class="page-footer font-small mdb-color">
+    <footer class="page-footer font-small mdb-color bg-primary">
       <!-- Footer Links -->
       <div class=" container text-center text-md-left">
         <!-- Footer links -->
@@ -235,7 +237,7 @@
           </div>
 
           <!-- Grid column -->
-          <hr class="w-100 clearfix d-md-none" />
+          <!-- <hr class="w-100 clearfix d-md-none" /> -->
 
           <!-- Grid column -->
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
