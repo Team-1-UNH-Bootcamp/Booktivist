@@ -81,7 +81,7 @@ $('#button-addon1').click(function(event) {
 
 const getModal = () => {
   $('.titleModal').click(function() {
-    $('.modal-content').text('');
+    // $('.modal-content').text('');
     const index = this.value;
     fillModal(index);
   });
@@ -89,72 +89,32 @@ const getModal = () => {
 
 const fillModal = (i) => {
   $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
-    const bookJpg = $('<img>').attr({
-      src: response.img_link,
-      class: 'col-sm-4',
+    $('.modalCoverJpg').attr({
+      src: response.image_link,
     });
-    const bookTitle = $('<h5>').text(
+    $('.modalBookTitle ').val(
       // eslint-disable-next-line comma-dangle
-      `TITLE: ${response.title}`
+      response.title
     );
-    const bookSubtitle = $('<h6>').text('');
-    const bookAuthor = $('<h6>').text(
+    $('.modalBooksubTitle').val(response.subtitle);
+    $('.modalBookAuthor').val(
       // eslint-disable-next-line comma-dangle
-      `AUTHOR: ${response.author}`
+      `By: ${response.author}`
     );
-    const bookIllustrator = $('<h6>').text('');
-    const bookDescriptionHeader = $('<h6>').text('Description:');
-    const bookDescription = $('<p>')
-      .text(response.description)
-      .attr({ id: 'bookDesc' });
-    const keyPointsHeader = $('<h6>').text('Key Discussion Points');
-    const keyPoints = $('<p>').text('');
+    $('.modalBookIllustrator').val(response.illustrator);
+    $('.descriptionHeader').text('Description:');
+    $('.bookDesc').val(response.description);
+    $('.keyPointsHeader').text('Key Discussion Points');
+    $('.keyPoints').val(response.key_talking_points);
     const youTubeLink = response.youtube_link;
-    let youTubeAppend = '';
     if (youTubeLink !== null) {
-      youTubeAppend = $('<a>')
+      $('.youTubeLink')
         .attr({ href: youTubeLink })
-        .text('Watch This Book Being Read on YouTube');
+        .val('Watch This Book Being Read on YouTube');
     }
-    const pubDate = $('<p>').text(response.pub_date);
-    const isbn = $('<p>').text(response.isbn);
-    const rowDiv = $('<div>')
-      .attr({ class: 'row' })
-      .css({ marginTop: '80px' });
-    const bookInfo = $('<div>').attr({ class: 'col-sm-6' });
-    const extendedBookInfo = $('<div>').attr({});
-    // const bookCategories = $('<ul>');
-    // const allCategories = response.categories
-    // allCategories.forEach((cat)=>{
-    // const bookCategory = $('<li>').text(cat);
-    // $(bookCategories).append(bookCategory)
-    // })
-    $(bookInfo).append(bookTitle, bookSubtitle, bookAuthor, bookIllustrator);
-    $(rowDiv).append(bookJpg, bookInfo);
-    $(extendedBookInfo).append(
-      bookDescriptionHeader,
-      bookDescription,
-      keyPointsHeader,
-      keyPoints,
-      youTubeAppend,
-      // bookCategories,
-      pubDate,
-      // eslint-disable-next-line comma-dangle
-      isbn
-    );
+    $('.pubDate').val(response.pub_date);
+    $('.isbn').val(response.isbn);
 
-    const buttonDiv = $('<div>');
-    const addToTable = $('<button>')
-      .attr({ id: 'addToTable', class: 'btn btn-success' })
-      .text('submit')
-      .css({ marginBotton: '20px' });
-    const deleteFromTable = $('<button>')
-      .attr({ id: 'deleteFromTable', class: 'btn btn-warning' })
-      .text('delete')
-      .css({ marginBotton: '20px' });
-
-    $(buttonDiv).append(deleteFromTable, addToTable);
-    $('.modal-content').append(rowDiv, extendedBookInfo, buttonDiv);
     $('#addToTable').click(() => {
       console.log(i);
       $.ajax(`/api/admin/books/${i}`, { type: 'PUT' }).then((addeds) => {
