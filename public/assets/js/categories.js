@@ -13,7 +13,8 @@ $(document).ready(() => {
     let keyValue = catUrl.slice(catUrl.indexOf('=') + 1, catUrl.indexOf('+'));
     const urlCategory = catUrl
       .slice(catUrl.indexOf('+') + 1, catUrl.length)
-      .replace(/&/g, ' ');
+      .replace(/&/g, ' ')
+      .replace(/_/g, '/');
 
     if (key === 'search') {
       keyValue = catUrl.slice(catUrl.indexOf('=') + 1, catUrl.length);
