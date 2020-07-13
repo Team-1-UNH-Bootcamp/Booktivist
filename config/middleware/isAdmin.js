@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
     return next();
   }
   if ((req.user) && (req.user.adminStatus === false)) {
-    return res.redirect('/admin/login');
+    return res.redirect('/login');
   }
 
   // If the user isn't logged in, redirect them to the login page
