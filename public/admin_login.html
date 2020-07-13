@@ -1,242 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/admin/css/styles.css" />
+    <title>Admin Login</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-	<link rel="stylesheet" href="./admin/css/styles.css" />
-	<title>Admin Login</title>
-</head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand font-weight-bold" href="/">Kid Booktivist</a>
 
-<body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-		<div class="container">
-			<a class="navbar-brand font-weight-bold" href="/">Kid Booktivist</a>
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/mylibrary">My Library</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="addbook">Add Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/about">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/categories">Categories</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/mylibrary">My Library</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="addbook">Add Book</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/login">Login</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- <div>
+      <!-- <div>
       <button class="btn btn-warning" type="button">
 
         <a class="nav-link" href="/signup">Sign Up</a>
       </button>
     </div> -->
-	</nav>
+    </nav>
 
-	<!-- centered <div> -->
-	<div class="container" id="container">
-		<form class="login">
-			<h1>Booktivist <i class="fas fa-book-open"></i></h1>
-			<h6>Admin Login</h6>
-			<div class="form-control">
-				<label for="email">Email</label>
-				<input type="email" name="email" id="email" placeholder="Please Enter Your Email" required />
-			</div>
-			<div class="form-control">
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password" placeholder="Please Enter Your Password"
-					required />
-			</div>
-			<button class="form-btn btn-warning">Login</button>
-		</form>
-	</div>
-	<!-- <text input> username -->
-	<!-- <text input> password -->
-	<!-- <button> login-->
-	<!-- <link> forgot password-->
-	<!-- <link> register-->
+    <!-- centered <div> -->
+    <div class="container" id="container">
+      <form class="login">
+        <h1>Booktivist <i class="fas fa-book-open"></i></h1>
+        <h6>Admin Login</h6>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Please Enter Your Email"
+            required
+          />
+        </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Please Enter Your Password"
+            required
+          />
+        </div>
+        <button class="form-btn btn-warning">Login</button>
+      </form>
+    </div>
+    <!-- <text input> username -->
+    <!-- <text input> password -->
+    <!-- <button> login-->
+    <!-- <link> forgot password-->
+    <!-- <link> register-->
 
-	<!-- Footer -->
-	<container>
-		<footer class="page-footer font-small mdb-color bg-primary">
-			<!-- Footer Links -->
-			<div class=" container text-center text-md-left">
-				<!-- Footer links -->
-				<div class="row text-center text-md-left mt-3 pb-3">
-					<!-- Grid column -->
-					<div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 mx-auto mt-3">
-						<h6 class="text-uppercase mb-4 font-weight-bold">
-							Kid Booktivist
-						</h6>
-						<p id="footerGraph">
-							Kid Booktivist is dedicated to bringing awareness to parents and
-							their children about issues of justice and equality.
-						</p>
-					</div>
-					<!-- Grid column -->
+    <!-- Footer -->
+    <container>
+      <footer class="page-footer font-small mdb-color bg-primary">
+        <!-- Footer Links -->
+        <div class=" container text-center text-md-left">
+          <!-- Footer links -->
+          <div class="row text-center text-md-left mt-3 pb-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">
+                Kid Booktivist
+              </h6>
+              <p id="footerGraph">
+                Kid Booktivist is dedicated to bringing awareness to parents and
+                their children about issues of justice and equality.
+              </p>
+            </div>
+            <!-- Grid column -->
 
-					<!-- <hr class="w-100 clearfix d-md-none" /> -->
+            <!-- <hr class="w-100 clearfix d-md-none" /> -->
 
-					<!-- Grid column -->
-					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-						<h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
-						<p id="footerGraph">
-							<a href="/about" class="footerLinks">About</a>
-						</p>
-						<p id="footerGraph">
-							<a href="/categories" class="footerLinks">Categories</a>
-						</p>
-						<p id="footerGraph">
-							<a href="/mylibrary" class="footerLinks">My Library</a>
-						</p>
-						<p id="footerGraph">
-							<a href="/addbook" class="footerLinks">Add Book</a>
-						</p>
-					</div>
-					<!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
+              <p id="footerGraph">
+                <a href="/about" class="footerLinks">About</a>
+              </p>
+              <p id="footerGraph">
+                <a href="/categories" class="footerLinks">Categories</a>
+              </p>
+              <p id="footerGraph">
+                <a href="/mylibrary" class="footerLinks">My Library</a>
+              </p>
+              <p id="footerGraph">
+                <a href="/addbook" class="footerLinks">Add Book</a>
+              </p>
+            </div>
+            <!-- Grid column -->
 
-					<!-- <hr class="w-100 clearfix d-md-none" /> -->
+            <!-- <hr class="w-100 clearfix d-md-none" /> -->
 
-					<!-- Grid column -->
-					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-						<h6 class="text-uppercase mb-4 font-weight-bold">Resources</h6>
-						<p id="footerGraph">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Resources</h6>
+              <p id="footerGraph">
+                <a href="https://diversebookfinder.org/" class="footerLinks"
+                  >Diversity Book Finder</a
+                >
+              </p>
+              <p id="footerGraph">
+                <a
+                  href="https://socialjusticebooks.org/guide-for-selecting-anti-bias-childrens-books/"
+                  class="footerLinks"
+                  >Social Justice Books</a
+                >
+              </p>
+              <p id="footerGraph">
+                <a
+                  href="https://www.embracerace.org/blog/reading-picture-books-with-children-through-a-race-conscious-lens"
+                  class="footerLinks"
+                  >Race-Conscious Lens</a
+                >
+              </p>
+              <p id="footerGraph">
+                <a
+                  href="https://socialjusticebooks.org/guide-for-selecting-anti-bias-childrens-books/"
+                  class="footerLinks"
+                  >Anti Bias Books</a
+                >
+              </p>
+              <p id="footerGraph">
+                <a
+                  href="https://www.teachingforchange.org/wp-content/uploads/2012/08/ec_tenquickways_english.pdf"
+                  class="footerLinks"
+                  >Sexism & Racism Guide</a
+                >
+              </p>
+            </div>
 
-							<a href="https://diversebookfinder.org/" class="footerLinks">Diversity Book Finder</a>
-						</p>
-						<p id="footerGraph">
-							<a href="https://socialjusticebooks.org/guide-for-selecting-anti-bias-childrens-books/"
-								class="footerLinks">Social Justice
-								Books</a>
-						</p>
-						<p id="footerGraph">
-							<a href="https://www.embracerace.org/blog/reading-picture-books-with-children-through-a-race-conscious-lens"
-								class="footerLinks">Race-Conscious
-								Lens</a>
-						</p>
-						<p id="footerGraph">
-							<a href="https://socialjusticebooks.org/guide-for-selecting-anti-bias-childrens-books/"
-								class="footerLinks">Anti Bias
-								Books</a>
-						</p>
-						<p id="footerGraph">
-							<a href="https://www.teachingforchange.org/wp-content/uploads/2012/08/ec_tenquickways_english.pdf"
-								class="footerLinks">Sexism
-								& Racism Guide</a>
-						</p>
-					</div>
+            <!-- Grid column -->
+            <!-- <hr class="w-100 clearfix d-md-none" /> -->
 
-					<!-- Grid column -->
-					<!-- <hr class="w-100 clearfix d-md-none" /> -->
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+              <p id="footerGraph">
+                <!-- <i class="fas fa-home mr-3"></i> -->
 
-					<!-- Grid column -->
-					<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-						<h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-						<p id="footerGraph">
-							<!-- <i class="fas fa-home mr-3"></i> -->
+                Portsmouth, New Hampshire
+              </p>
+              <p id="footerGraph">
+                <!-- <i class="fas fa-envelope mr-3"></i> -->
+                <a href="mailto: kid.booktivist@gmail.com" class="footerLinks"
+                  >kid.booktivist@gmail.com</a
+                >
+              </p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Footer links -->
 
-							Portsmouth, New Hampshire
-						</p>
-						<p id="footerGraph">
-							<!-- <i class="fas fa-envelope mr-3"></i> -->
-							<a href="mailto: kid.booktivist@gmail.com" class="footerLinks">kid.booktivist@gmail.com</a>
-						</p>
-					</div>
-					<!-- Grid column -->
-				</div>
-				<!-- Footer links -->
+          <!-- Grid row -->
+          <div class="row d-flex align-items-center">
+            <!-- Grid column -->
+            <div class="col-md-7 col-lg-8">
+              <!--Copyright-->
+              <p class="text-center">
+                © 2020 Copyright:
+                <a href="www.kidbooktivist.com" class="footerLinks">
+                  <strong> KidBooktivist.com</strong>
+                </a>
+              </p>
+            </div>
+            <!-- Grid column -->
 
+            <!-- Grid column -->
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+              <!-- Social buttons -->
+              <div class="text-center text-md-right">
+                <ul class="list-unstyled list-inline">
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <!-- <i class="fab fa-facebook-f"></i> -->
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <!-- <i class="fab fa-twitter"></i> -->
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <!-- <i class="fab fa-google-plus-g"></i> -->
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <!-- <i class="fab fa-linkedin-in"></i> -->
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+        <!-- Footer Links -->
+      </footer>
+    </container>
 
+    <div
+      class="modal fade"
+      id="bookModal"
+      aria-labelledby="exampleModalLabel"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div
+          class="modal-content container"
+          id="container"
+          style="width: 100%; margin-left: auto; margin-right: auto;"
+        ></div>
+      </div>
+    </div>
+    <!-- Footer -->
 
-				<!-- Grid row -->
-				<div class="row d-flex align-items-center">
-					<!-- Grid column -->
-					<div class="col-md-7 col-lg-8">
-						<!--Copyright-->
-						<p class="text-center">
-							© 2020 Copyright:
-							<a href="www.kidbooktivist.com" class="footerLinks">
-								<strong> KidBooktivist.com</strong>
-							</a>
-						</p>
-					</div>
-					<!-- Grid column -->
-
-					<!-- Grid column -->
-					<div class="col-md-5 col-lg-4 ml-lg-0">
-						<!-- Social buttons -->
-						<div class="text-center text-md-right">
-							<ul class="list-unstyled list-inline">
-								<li class="list-inline-item">
-									<a class="btn-floating btn-sm rgba-white-slight mx-1">
-										<!-- <i class="fab fa-facebook-f"></i> -->
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="btn-floating btn-sm rgba-white-slight mx-1">
-										<!-- <i class="fab fa-twitter"></i> -->
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="btn-floating btn-sm rgba-white-slight mx-1">
-										<!-- <i class="fab fa-google-plus-g"></i> -->
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="btn-floating btn-sm rgba-white-slight mx-1">
-										<!-- <i class="fab fa-linkedin-in"></i> -->
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<!-- Grid column -->
-				</div>
-				<!-- Grid row -->
-			</div>
-			<!-- Footer Links -->
-		</footer>
-	</container>
-
-	<div class="modal fade" id="bookModal" aria-labelledby="exampleModalLabel" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content container" id="container"
-				style="width: 100%; margin-left: auto; margin-right: auto;">
-			</div>
-		</div>
-	</div>
-	<!-- Footer -->
-
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.5.0.min.js"
-		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
-	<script src="/assets/js/adminlogin.js"></script>
-</body>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/assets/js/adminlogin.js"></script>
+  </body>
 </html>

@@ -131,6 +131,8 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
 };
 
 const addPlusSign = () => {
+  $('.addBookBtn').remove();
+
   const plusSign = $('<i>').attr({
     class: 'fa fa-plus plusSign',
     id: 'plusSign',
@@ -153,6 +155,7 @@ const addPlusSign = () => {
 };
 
 const addMinusSign = () => {
+  $('.addBookBtn').remove();
   const minusSign = $('<i>').attr({
     class: 'fa fa-minus minusSign',
     id: 'minusSign',
@@ -216,7 +219,6 @@ const plusMinusBtn = (bookId) => {
 const getModal = () => {
   // eslint-disable-next-line space-before-function-paren
   $('.titleModal').click(function() {
-    $('.modal-content').text('');
     const i = this.value;
     console.log(i);
     $.ajax('/api/user_data', { type: 'GET' }).then((userData) => {
@@ -237,82 +239,55 @@ const getModal = () => {
     });
 
     $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
-      console.log(response);
-      console.log(response.title);
-
-      const bookJpg = $('<img>').attr({
+      $('.modalCoverJpg').attr({
         src: response.image_link,
-        class: 'col-sm-4 modalCoverJpg bookInfoChild',
       });
-      const bookTitle = $('<h5>')
-        .attr({ class: 'modalBookTitle bookInfoChild' })
-        .text(
-          // eslint-disable-next-line comma-dangle
-          `TITLE: ${response.title}`
-        );
-      const bookSubtitle = $('<h6>')
-        .attr({ class: 'modalBooksubTitle bookInfoChild' })
-        .text('');
-      const bookAuthor = $('<h6>')
-        .attr({ class: 'modalBookAuthor bookInfoChild' })
-        .text(
-          // eslint-disable-next-line comma-dangle
-          `AUTHOR: ${response.author}`
-        );
-      const bookIllustrator = $('<h6>')
-        .attr({ class: 'modalBookIllustrator bookInfoChild' })
-        .text(`illustrator: ${response.illustrator}`);
-      const bookDescriptionHeader = $('<h6>')
-        .attr({ class: 'descriptionHeader extBookChild' })
-        .text('Description:');
-      const bookDescription = $('<p>')
-        .text(response.description)
-        .attr({ id: 'bookDesc extBookChild' });
-      const keyPointsHeader = $('<h6>')
-        .text('Key Discussion Points')
-        .attr({ class: 'keyPointsHeader extBookChild' });
-      const keyPoints = $('<p>')
-        .text('')
-        .attr({ class: 'keyPoints extBookChild' });
+      $('.modalBookTitle ').text(
+        // eslint-disable-next-line comma-dangle
+        response.title
+      );
+      $('.modalBooksubTitle').text(response.subtitle);
+      $('.modalBookAuthor').text(
+        // eslint-disable-next-line comma-dangle
+        `By: ${response.author}`
+      );
+      $('.modalBookIllustrator').text(
+        `Illustrated By: ${response.illustrator}`
+      );
+      $('.descriptionHeader').text('Description:');
+      $('.bookDesc').text(response.description);
+      $('.keyPointsHeader').text('Key Discussion Points');
+      $('.keyPoints').text(response.key_talking_points);
       const youTubeLink = response.youtube_link;
-      let youTubeAppend = '';
       if (youTubeLink !== null) {
-        youTubeAppend = $('<a>')
-          .attr({ href: youTubeLink, class: 'youTubeLink extBookChild' })
+        $('.youTubeLink')
+          .attr({ href: youTubeLink })
           .text('Watch This Book Being Read on YouTube');
       }
-      const pubDate = $('<p>')
-        .text(response.pub_date)
-        .attr({ class: 'pubDate extBookChild' });
-      const isbn = $('<p>')
-        .text(response.isbn)
-        .attr({ class: 'isbn extBookChild' });
+      $('.pubDate').text(` Published On: ${response.pub_date}`);
+      $('.isbn').text(`ISBN: ${response.isbn}`);
 
-      const rowDiv = $('<div>')
-        .attr({ class: 'row rowDiv' })
-        .css({ marginTop: '80px' });
-      const bookInfo = $('<div>').attr({ class: 'col-sm-6 modalBookInfo' });
-      const extendedBookInfo = $('<div>').attr({ class: 'extendedInfo' });
-      // const bookCategories = $('<ul>');
-      // const allCategories = response.categories
-      // allCategories.forEach((cat)=>{
-      // const bookCategory = $('<li>').text(cat);
-      // $(bookCategories).append(bookCategory)
-      // })
-      $(bookInfo).append(bookTitle, bookSubtitle, bookAuthor, bookIllustrator);
-      $(rowDiv).append(bookJpg, bookInfo);
-      $(extendedBookInfo).append(
-        bookDescriptionHeader,
-        bookDescription,
-        keyPointsHeader,
-        keyPoints,
-        youTubeAppend,
-        // bookCategories,
-        pubDate,
-        // eslint-disable-next-line comma-dangle
-        isbn
-      );
-      $('.modal-content').append(rowDiv, extendedBookInfo);
+      $('#addToTable').click(() => {
+        console.log(i);
+        $.ajax(`/api/admin/books/${i}`, { type: 'PUT' }).then((addeds) => {
+          console.log(addeds);
+          const success = $('<h1>')
+            .text('Book Added Succesfully')
+            .css({ textAlign: 'center' });
+          $('.modal-content').text('');
+          $('.modal-content').append(success);
+        });
+      });
+      $('#deleteFromTable').click(() => {
+        console.log('remove');
+        $.ajax(`/api/admin/books/${i}`, { type: 'DELETE' }).then(() => {
+          const removed = $('<h1>')
+            .text('Book Removed Successfully')
+            .css({ textAlign: 'center' });
+          $('.modal-content').text('');
+          $('.modal-content').append(removed);
+        });
+      });
     });
   });
 };
