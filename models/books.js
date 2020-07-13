@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     subtitle: {
       type: DataTypes.STRING,
-      // allowNull: false,
-      validate: { len: [5, 100] },
+      allowNull: true,
+      validate: { len: [0, 100] },
     },
     author: {
       type: DataTypes.STRING,
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     illustrator: {
       type: DataTypes.STRING,
       allowNull: true,
-      // validate: { len: [5, 100] },
+      validate: { len: [0, 100] },
     },
     // This field will not be required as it will be a foreign key
     // category: {
@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
     youtube_link: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: { len: [5, 150] },
+      validate: { len: [0, 150] },
     },
     createdAt: {
       type: 'TIMESTAMP',

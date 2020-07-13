@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-use-before-define */
 /* eslint-disable comma-dangle */
@@ -18,7 +19,12 @@ const getBooks = (category) => {
   return new Promise((resolve, reject) => {
     $.ajax(`/api/books/${category[0]}`, { type: 'GET' })
       .then((response) => {
-        response.forEach((data) => {
+        const revisedResponse = [];
+        for (let i = 0; i < 4; i++) {
+          revisedResponse.push(response[i]);
+        }
+        console.log(revisedResponse);
+        revisedResponse.forEach((data) => {
           let apiTitle = 'title';
           let apiId = 'id';
           let apiAuthor = 'author';
@@ -33,7 +39,9 @@ const getBooks = (category) => {
           const parentDiv = $('<div>').attr({
             class: 'col-lg-3 col-sm-12 bookParentDiv',
           });
-          const cardDiv = $('<div>').attr({ class: 'card bookCardDiv h-100' });
+          const cardDiv = $('<div>').attr({
+            class: 'card bookCardDiv h-100',
+          });
           const cardImg = $('<img>').attr({
             class: 'card-img-top bookCardImage h-70',
             src: data[apiImg],
