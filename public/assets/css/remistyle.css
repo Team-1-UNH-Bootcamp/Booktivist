@@ -87,3 +87,8 @@ img {
 #aboutIntro {
     margin-top: 50px;
 }
+
+.card-img-sq {
+    background-position: top center;
+    background-size: cover;
+}
