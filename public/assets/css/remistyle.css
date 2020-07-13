@@ -2,6 +2,13 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: white;
@@ -9,7 +16,7 @@ body {
 
 #isbn {
     width: 100%;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 form {
@@ -28,11 +35,15 @@ h3 {
     margin-bottom: 50px;
 }
 
-h1,
-h6 {
+h1 {
     font-weight: bold;
-    margin-top: 50px;
+    font-size: 30px;
 }
+
+
+/* h6 {
+    font-weight: bold;
+} */
 
 select {
     padding: 20px;
@@ -85,10 +96,101 @@ img {
 /* ABout page */
 
 #aboutIntro {
-    margin-top: 50px;
+    margin-top: 40px;
+    text-align: justify;
 }
 
-.card-img-sq {
-    background-position: top center;
-    background-size: cover;
+
+/* footer style */
+
+.footerLinks {
+    font-style: italic;
+    color: white;
+}
+
+
+/* #footer{
+    background-color: lightskyblue;
+} */
+
+.footerContainer {
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+
+/* add book page style */
+
+#isbnHeader {
+    display: inline;
+}
+
+
+/* home page modal window style */
+
+.rowDiv {
+    margin-top: 30px;
+}
+
+.modalBookInfor {
+    margin-top: 5px;
+}
+
+.modalBooktitle {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.modalBooksubTitle,
+.modalBookAuthor,
+.modalBookIllustrator {
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.descriptionHeader {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.bookDesc {
+    font-size: 15px;
+    text-align: justify
+}
+
+.keyPonits {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.youTubeLink {
+    font-style: italic;
+}
+
+.alert-danger {
+    margin-top: 5px;
+}
+
+
+/* home page book cards style */
+
+.bookCardBody {
+    margin-top: 30;
+}
+
+
+/* navigation bar style */
+
+.navbar .nav-link {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.navbar .nav-item.active {
+    border-left: rgb(239, 239, 243) 3px solid;
 }
