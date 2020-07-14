@@ -119,7 +119,7 @@ $('#isbnSubmit').click(() => {
         const payload = {
           title: $('#populateBook').val(),
           subtitle: $('#populateSubtitle').val(),
-          author: $('#populateBook').val(),
+          author: $('#populateAuthor').val(),
           illustrator: $('#populateIllustrator').val(),
           description: response.items[0].volumeInfo.description,
           image_link: response.items[0].volumeInfo.imageLinks.thumbnail,
