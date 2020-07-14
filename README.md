@@ -1,137 +1,169 @@
-# **Full-Stack Sequelize Template**
-this template is meant to get you up-and-running with a full-stack web application scaffolded out and ready to run using node, express, and sequelize.  happy coding.
+# Project: **_Kid Booktivist_**
 
-### **Useful Features**
-* 'dotenv' environmental variables package configured for sequelize
-* nodemon package configured
-* ESlint package configured for Airbnb styleguide
-* heroku-deployment ready
-* instructions to create separate development and production databases
-* instructions for migrating and seeding databases
+Kid Booktivist is an application that assists parents in their search to find books for their children that deal with issues of equality, diversity, equity and social justice.
 
-### **How to Use This Template**
-* click "use template" next to the clone button, this will create a new repository on *your* github account
-* clone the repository down to your machine
-* run the `schema.sql` query in the mySQL tool of your choice  
-* run &nbsp; `npm install`
-* run &nbsp; `touch .env` &nbsp;in the root of your repository
-* open the .env file
-* add the four environmental variables that will be used to connect to the database:
-    <br/>       `DB_PASSWORD=yourpassword`
-    <br/>       `DB_HOST=127.0.0.1`
-    <br/>       `DB_USER=root`
-    <br/>       `DB_NAME=sample_db`
-* run &nbsp; `npm start` to start the server with nodemon which will automatically refresh after any server-side code changes
-* ***check out the optional migrations and heroku deployment guides below!***
+## User Story: \*\*\*
 
-![image](./public/assets/images/dotenv.png)
+A user goes onto the site and find books that relate to their search criteria about diversity and social justice topics. The user can register and create a profile page, add books to the site through the use of an ISBN number, find books by categories and save books onto their library.
 
-### **Optional Database Migrations and Seeding**
-#### ***Hey, this part can be confusing and is waaay beyond the scope of this readme to fully explain...if you choose to implement this useful functionality, you will need to refer to the documentation!***
-***If you dont want to set up migrations at the moment, you can always come back to it, just skip ahead to the "Heroku Deployment" section***
-* Sequelize-cli allows you to create models and seed your database from the command line
-* This will allow you to pre-fill your database for development, as well as provide a consistent data set for testing accross multiple collaborators
-* Please refer to the instructions below and [Sequelize migrations documentation](https://sequelize.org/master/manual/migrations.html#bootstrapping) to configure this project for migrations
+## Functional Specification:
 
-### **Optional Instructions for Implementing Migrations**
-* run two sequelize-cli commands to initialize the migrations and seeders folders
+- There is a navbar with links to various pages that is consistent through the site.
+- There is a footer that provides additional links as well as additional resources and information for parents
+- On the landing page, there is an ability to search for books by categories as well as the ability to open each book and see further details about the book such as title, author, illustrator, description, parental insights and YouTube Links
+- The user begins by registering for the sight in order to be able to fully utilize the add book functionalities to their libraries and the database
+- In the book modal, the user is able to add books to their library.
+- In the add book page, the user is able to add favorite books to the website to be approved by the administrator.
+- In the categories page, users are able to search for books by categories, author or book title.
 
-        npx sequelize-cli init:migrations
+## App Structure
 
-  and 
+When building the app, we had to take a data-driven approach. Our first consideration was, what were the different data elements we needed to store, and of those data elements, what was the most efficient way to store the data. The answers to these questions would determine the overall build.
 
-        npx sequelize-cli init:seeders
+### Book Data
 
-* run 
+We needed a table to store most book data. That data included standard information, such as author, title, subtitle, and book description. It also needed to store a boolean value for a column we titled "added." Because books are crowd-sourced. It was important that we used at least one validation method to prevent users from directly uploading to the site.
 
-        npx sequelize-cli model:generate --name <ModelName> --attributes <someAttribute>:string,<anotherAttribute>:boolean
+We used the data from the book table to populate almost every page of our app. The front end used a call for basic book info to create cards (as seen on the homepage). When clicked, these cards would opena modal with more extensive book information. When clicked, the button that activated the modal, would pass the book id to the function creating the modal so it could use that book id to make a specific get request.
+Here's the backend call for getting a book by id:
 
-    entering in the model name and the attribute you are initializing it with - for example: 
+```
+router.get('/api/book/:id', (req, res) => {
+  db.Book.findOne({
+    where: { id: req.params.id },
+  }).then((dbBook) => {
+    res.json(dbBook);
+  });
+});
+```
 
-        npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+### Book Category Data
 
-* this will create the model in the models folder, and a migration file in the migrations folder.
-* you will need to go to the model file and finish setting it up, add validation, etc.
-* you will also need to set up your migrations file to match your model before running the migration
-* Once you have set up your model and matching migration, you can run the migration to create the table in your database:
-            
-        npx sequelize-cli db:migrate
+One tricky element of the book data was sorting books by category. Because a book can have multiple categories, we needed to create a specific model to join the books and categories table. The resulting table holds books by id ordered by category id. With this table, we can search for books by category, which allows us to use multiple category search dropdowns.
 
-* Next we will create a seed file that will allow us to populate the table with a dataset on command, allowing us to share a consistent dataset accross collaborators, as well as revert the table back to a clean state after testing.
+```
+router.get('/api/books/category/:id', (req, res) => {
+  db.Category.findAll({
+    raw: true,
+    where: { id: req.params.id },
+    include: [
+      {
+        model: db.Book,
+        where: { added: true },
+        as: 'books',
+        attributes: ['id', 'title', 'author', 'image_link', 'description'],
+      },
+    ],
+  }).then((dbBooks) => {
+    res.json(dbBooks);
+  });
+});
+```
 
-        npx sequelize-cli seed:generate <SEED NAME HERE, EX. DEMO-USER>
+### Handling book searches on the front end
 
-* Open the seed file created in the seeders folder and set up your seed data. for example:
+The trickiest search on the front end was when a user executed a search by category from the category dropdown on the homepage. It needed to store the category data, execute a new HTML route to the categories page, an on load, execute a get request with the category data from the previous page. The solution was to build a URL containing all the search criteria, then parse that url and pass that information into the get request.
 
-![image](./public/assets/images/seeder-file.png)
+In addition to allowing the user to search by category, there is also a search by keyword feature. This block of code determines what kind of search the user is attempting to execute, parses the relevant search data, and executes the corresponding get request.
 
-* once you have filled in your seed file you can run it:
+```
+$(document).ready(() => {
+  // on document load - pull url provided and splice
+  const catUrl = window.location.href;
+  console.log(catUrl.length);
+  if (catUrl.length > 40) {
+    const key = catUrl.slice(catUrl.indexOf('?') + 1, catUrl.indexOf('='));
+    let urlPath = '';
+    let keyValue = catUrl.slice(catUrl.indexOf('=') + 1, catUrl.indexOf('+'));
+    const urlCategory = catUrl
+      .slice(catUrl.indexOf('+') + 1, catUrl.length)
+      .replace(/&/g, ' ')
+      .replace(/_/g, '/');
 
-        npx sequelize-cli db:seed:all
+    // if the key = search, this means it's a search request from the homepage
+    // this calls a search specific get request
+    if (key === 'search') {
+      keyValue = catUrl.slice(catUrl.indexOf('=') + 1, catUrl.length);
+      urlPath = key;
+      const searchCriteria = keyValue.toUpperCase().replace(/&/g, ' ');
+      // eslint-disable-next-line no-use-before-define
+      $.when(getBooksbyCat(urlPath, keyValue, searchCriteria, false)).then(
+        () => {
+          // eslint-disable-next-line no-use-before-define
+          getModal();
+        }
+      );
+    } else {
+      // if not a search request, then it is a category request
+      urlPath = `books/${key}`;
+      // eslint-disable-next-line no-use-before-define
+      $.when(getBooksbyCat(urlPath, keyValue, urlCategory, true)).then(() => {
+        // eslint-disable-next-line no-use-before-define
+        getModal();
+      });
+    }
+  }
+});
+```
 
-* you are now all set to push everything up to github and continue with the steps below to deploy to heroku.
-* the final step will be to seed your production database as well.  See the optional last step in the heroku deployment section.
+### User Data
 
-### **Heroku Deployment**
-* you may need to log into the heroku cli, do so by running &nbsp; `heroku login` &nbsp; in the terminal, you will also need the heroku website so might as well log in there too
-* run &nbsp;`heroku create` in the root of your project repository.
-* you can now run `git push heroku master` to push your application to heroku in its current state.  You will need to do this each time you wish to rebuild your heroku deployment.  You can also set up your repository to automatically push to heroku when you push to github -look around, you will find it!
-* select your application on the heroku website
-* click "Configure Add-ons"
-* type "JawsDB" into the search bar, select "JawsDB MySQL" and provision the "Kitefin Shared - Free" default option
-* open the JawsDB instance you have created by clicking on it
-* you will be brought to a page with the connection information for your deployed database, which you will need to establish a connection to your production database in the MySQL management tool of your choice
+In addition the challenges we faced with book data, we had equally as many challenges with user data. Users needed to be able to create accounts and login. However we also needed to be able to denote specific users as admins, and then allow only the admins to log into a specific admin portal. In addition to this we also needed to create user-specific libraries so users could login and save books to their own library.
 
-![image](./public/assets/images/JawsDB-connection-info.png)
+For this, we needed to create a table that joined users and books, storing book ids and user ids.
 
-* now it is time to create an instance of your production database in your MySQL management tool.  The following instructions are specifically for MySQL Workbench, but they should apply in a general sense to any tool you are using.
-* create a new MySQL connection instance
+```
+module.exports = (sequelize, DataTypes) => {
+  const UserBooks = sequelize.define('UserBooks', {
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    bookId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
 
-![image](./public/assets/images/new-connection.png)
 
-* give your connection a meaningful name, then using the information from the JawsDB Connection Info page, fill in the connection information on the new connection dialog, click the "store in keychain" button and store your password
+  });
+  return UserBooks;
+};
+```
 
-![image](./public/assets/images/new-con-setup.png)
+We then tied a usertable specific get request to the modal pop-up. Everytime a book modal is opened, we check first if the user is logged in or not. If they are logged in, we then check if the user has this book in their library or not. Based on the results returned, the modal would either present a plus-sign to add the book or a minus-sign to remove the book from the user library.
 
-* test you connection by clicking the "Test Connection" button at the bottom of the dialog
-* if your connection fails, double check that you copied the information correctly
-* if your connection succeeds, click into the instance
-* don't be alarmed if your schemas panel looks like this, you will still be able to view and query the database: 
+```
+const getModal = () => {
+  $('.titleModal').click(function() {
+    const index = this.value;
+    $.ajax('api/user_data', { type: 'GET' }).then((userData) => {
+      if (userData.message === false) {
+        notLoggedIn();
+      } else {
+        $.ajax(`api/mylibrary/${index}`, { type: 'GET' }).then((isAdded) => {
+          if (isAdded === null) {
+            addBookToLibrary(index);
+          } else {
+            removeBookFromLibrary(index);
+          }
+        });
+      }
+    });
+    fillModal(index);
+  });
+};
+```
 
-![image](./public/assets/images/no-fetch.png)
+## Tech Spechs
 
-* to run queries, dont forget your `USE <DATABASE NAME>;` statement, using the database name you see in the schemas panel:
+- We designed this app with Bootstrap for our frontend CSS
+- We used sequelize and mysql to help with data storage and creation
+- Passport JS was used to help with user validation, login, and storage of information by user ID
+- The front end is powered primarily by jquery
+- We also use a number of fontawesome features throught
 
-![image](./public/assets/images/db-name.png)
+## Next Steps
 
-* now you can manage your deployed production database!
-* ***Optional last steps when using migrations:***
-* To seed your production database, add the following line to the scripts in the &nbsp; `package.json` &nbsp; file, right below the start script:
+The scope of our app was definitely larger than the two week time-frame allowed for. There is some additional functionality that we would love to build out for a future iteration of this app. Primarily, there are some features that we would like to add to improve user experience. For example, adding more purpose driven resources for users to utilize. We'd also like to add a search by age feature.
 
-        "heroku-postbuild": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
-
-* save and commit your changes to github, then run another
-
-        git push heroku master
-
-    to push the changes to heroku and run a fresh build.  The script that was added will run the migration and seed at the end of the heroku build.
-* `select * ...` &nbsp; within your database management tool to see your freshly seeded production database!  Note that the database will be re-seeded each time you run a build, and the build ***does not*** drop the table automatically.  So to avoid doubling your data set, drop the table prior to running another build (you can use your management tool for this).  If you do not wish to continue re-seeding your production database, as you surely will at some point, just remove the `"heroku-postbuild"` script from the `package.json` file.
-
-### **Notes About This Database Configuration**
-* you now have two databases, a local development database and a deployed production database
-* when running your application locally as you develop, it will connect to the local development database using the credentials you supplied in your .env file
-* the heroku-deployed application will connect automatically to the deployed production database
-* if at any point you with to revert to a clean data set, run the migration/seeder instructions above.  Heroku has a cli that can be accessed by running
-
-        heroku run bash <name of application>
-  this will allow you to run the migration and seed commands on the production database manually by running the `npx sequelize-cli...` commands detailed above.
-* remember that the heroku postbuild script in the package.json file is optional and may or may not be worth keeping in for you if you use the heroku cli tool.  It will append the seedfile dataset to the database each time the application is pushed to heroku.  You can also drop the table using your management tool prior to running another heroku build.
-
-### **To Disable ESLint**
-* delete the .eslintrc.js file
-* run &nbsp; `npm uninstall eslint`
-
-### **Links and Resources**
-* [eslint Getting started page](https://eslint.org/docs/user-guide/getting-started)
-* [dotenv NPM Documentation](https://www.npmjs.com/package/dotenv)
-* [airbnb styleguide documentation](https://github.com/airbnb/javascript)
+While there are always more features to add to any app, given the two week time frame, we as a team feel that we put together a very strong app.
