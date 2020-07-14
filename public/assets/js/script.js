@@ -10,7 +10,7 @@
 const recent = ['recent', 'recent'];
 const BLM = ['category/3', 'BLM'];
 const LGBTQ = ['category/1', 'LGBTQ'];
-// const NAH = 'category/2';
+
 $(document).ready(() => {
   loadBooks();
 });
@@ -23,7 +23,6 @@ const getBooks = (category) => {
         for (let i = 0; i < 4; i++) {
           revisedResponse.push(response[i]);
         }
-        console.log(revisedResponse);
         revisedResponse.forEach((data) => {
           let apiTitle = 'title';
           let apiId = 'id';
@@ -100,9 +99,7 @@ $('#button-addon1').click(function(event) {
 });
 
 const getModal = () => {
-  console.log('the call');
   $('.titleModal').click(function() {
-    console.log('the modal');
     const index = this.value;
     $.ajax('api/user_data', { type: 'GET' }).then((userData) => {
       if (userData.message === false) {
@@ -110,10 +107,8 @@ const getModal = () => {
       } else {
         $.ajax(`api/mylibrary/${index}`, { type: 'GET' }).then((isAdded) => {
           if (isAdded === null) {
-            console.log('notAdded');
             addBookToLibrary(index);
           } else {
-            console.log('added');
             removeBookFromLibrary(index);
           }
         });
@@ -123,8 +118,56 @@ const getModal = () => {
   });
 };
 
+const fillModal = (i) => {
+  $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
+    $('.modalCoverJpg').attr({
+      src: response.image_link,
+    });
+    $('.modalBookTitle ').text(
+      // eslint-disable-next-line comma-dangle
+      response.title
+    );
+    $('.modalBooksubTitle').text(response.subtitle);
+    $('.modalBookAuthor').text(
+      // eslint-disable-next-line comma-dangle
+      `By: ${response.author}`
+    );
+    $('.modalBookIllustrator').text(`Illustrated By: ${response.illustrator}`);
+    $('.descriptionHeader').text('Description:');
+    $('.bookDesc').text(response.description);
+    $('.keyPointsHeader').text('Key Discussion Points');
+    $('.keyPoints').text(response.key_talking_points);
+    const youTubeLink = response.youtube_link;
+    if (youTubeLink !== null) {
+      $('.youTubeLink')
+        .attr({ href: youTubeLink })
+        .text('Watch This Book Being Read on YouTube');
+    }
+    $('.pubDate').text(` Published On: ${response.pub_date}`);
+    $('.isbn').text(`ISBN: ${response.isbn}`);
+
+    $('#addToTable').click(() => {
+      $.ajax(`/api/admin/books/${i}`, { type: 'PUT' }).then(() => {
+        const success = $('<h1>')
+          .text('Book Added Succesfully')
+          .css({ textAlign: 'center' });
+        $('.modal-content').text('');
+        $('.modal-content').append(success);
+      });
+    });
+    $('#deleteFromTable').click(() => {
+      $.ajax(`/api/admin/books/${i}`, { type: 'DELETE' }).then(() => {
+        const removed = $('<h1>')
+          .text('Book Removed Successfully')
+          .css({ textAlign: 'center' });
+        $('.modal-content').text('');
+        $('.modal-content').append(removed);
+      });
+    });
+  });
+};
+
 const notLoggedIn = () => {
-  console.log('not logged in');
   addPlusSign();
   $('#thePlusSign').click(() => {
     const topDiv = $('<div>')
@@ -206,57 +249,4 @@ const addMinusSign = () => {
 
   $(addButton).append(minusSign);
   $('.modal-content').prepend(addButton);
-};
-
-const fillModal = (i) => {
-  $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
-    console.log(response);
-    $('.modalCoverJpg').attr({
-      src: response.image_link,
-    });
-    $('.modalBookTitle ').text(
-      // eslint-disable-next-line comma-dangle
-      response.title
-    );
-    $('.modalBooksubTitle').text(response.subtitle);
-    $('.modalBookAuthor').text(
-      // eslint-disable-next-line comma-dangle
-      `By: ${response.author}`
-    );
-    $('.modalBookIllustrator').text(`Illustrated By: ${response.illustrator}`);
-    $('.descriptionHeader').text('Description:');
-    $('.bookDesc').text(response.description);
-    $('.keyPointsHeader').text('Key Discussion Points');
-    $('.keyPoints').text(response.key_talking_points);
-    const youTubeLink = response.youtube_link;
-    if (youTubeLink !== null) {
-      $('.youTubeLink')
-        .attr({ href: youTubeLink })
-        .text('Watch This Book Being Read on YouTube');
-    }
-    $('.pubDate').text(` Published On: ${response.pub_date}`);
-    $('.isbn').text(`ISBN: ${response.isbn}`);
-
-    $('#addToTable').click(() => {
-      console.log(i);
-      $.ajax(`/api/admin/books/${i}`, { type: 'PUT' }).then((addeds) => {
-        console.log(addeds);
-        const success = $('<h1>')
-          .text('Book Added Succesfully')
-          .css({ textAlign: 'center' });
-        $('.modal-content').text('');
-        $('.modal-content').append(success);
-      });
-    });
-    $('#deleteFromTable').click(() => {
-      console.log('remove');
-      $.ajax(`/api/admin/books/${i}`, { type: 'DELETE' }).then(() => {
-        const removed = $('<h1>')
-          .text('Book Removed Successfully')
-          .css({ textAlign: 'center' });
-        $('.modal-content').text('');
-        $('.modal-content').append(removed);
-      });
-    });
-  });
 };

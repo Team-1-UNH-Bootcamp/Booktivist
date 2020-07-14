@@ -5,6 +5,7 @@
 /* eslint-disable func-names */
 // onload ->
 $(document).ready(() => {
+  // on document load - pull url provided and splice
   const catUrl = window.location.href;
   console.log(catUrl.length);
   if (catUrl.length > 40) {
@@ -16,6 +17,8 @@ $(document).ready(() => {
       .replace(/&/g, ' ')
       .replace(/_/g, '/');
 
+    // if the key = search, this means it's a search request from the homepage
+    // this calls a search specific get request
     if (key === 'search') {
       keyValue = catUrl.slice(catUrl.indexOf('=') + 1, catUrl.length);
       urlPath = key;
@@ -28,6 +31,7 @@ $(document).ready(() => {
         }
       );
     } else {
+      // if not a search request, then it is a category request
       urlPath = `books/${key}`;
       // eslint-disable-next-line no-use-before-define
       $.when(getBooksbyCat(urlPath, keyValue, urlCategory, true)).then(() => {
@@ -53,10 +57,10 @@ $('#bookCategorySelect').change(function() {
 });
 
 // eslint-disable-next-line arrow-body-style
-// path 1 - middle part of route
-// path 2 - id
-// path 3 - header to display
-// isbook - boolean true for category searches
+
+// this function builds a get call based on the URL
+// executes it and returns all books fitting the specified
+// search criteriea, whether it be search terms or category
 const getBooksbyCat = (path1, path2, path3, isBook) => {
   return new Promise((resolve, reject) => {
     $.ajax(`/api/${path1}/${path2}`, {
@@ -79,8 +83,6 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
               apiAuthor = 'author';
               apiImg = 'image_link';
             }
-            // apiImg = 'books.image_link';
-
             const parentDiv = $('<div>').attr({
               class: 'col-lg-3 col-sm-12 bookParentDiv',
             });
@@ -116,9 +118,9 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
 
             $('#cardDiv').append(parentDiv);
             $('#categoryHeader').text(path3);
-            resolve(response);
           });
         }
+        resolve(response);
       })
       .catch((err) => {
         $('#categoryHeader').text(
@@ -131,6 +133,10 @@ const getBooksbyCat = (path1, path2, path3, isBook) => {
   });
 };
 
+// the below code handles the modal popups when a book is clicked
+// the code will open the modal, check if user is logged in, if user is logged in
+// check if the user has this book in library or not and provide either a plus sign
+// or a minus sign to add or remove book from library
 const addPlusSign = () => {
   $('.addBookBtn').remove();
 
