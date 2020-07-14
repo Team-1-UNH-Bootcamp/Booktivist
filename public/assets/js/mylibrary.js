@@ -14,12 +14,17 @@ $(document).ready(() => {
   });
   const argument = 'mylibrary';
   loadBooks(argument);
-  // $.ajax('/mylibrary', { type: 'GET' }).then((response) => {
-  //   console.log(response);
-  // });
 });
 
-const getBooks = (category) => {
+// get books and then load modals
+const loadBooks = (arg) => {
+  $.when(getBooks(arg)).then(() => {
+    getModal();
+  });
+};
+
+// get books from my library
+const getBooks = (local) => {
   return new Promise((resolve, reject) => {
     $.ajax('/api/mylibrary', { type: 'GET' })
       .then((response) => {
@@ -60,11 +65,10 @@ const getBooks = (category) => {
           $(linkTitle).append(bookTitle, bookAuthor);
           $(cardBody).append(linkTitle);
           $(cardDiv).append(cardImg, cardBody);
-          // cardImg,
           $(parentDiv).append(cardDiv);
 
-          $(`#${category}`).append(parentDiv);
-          resolve(console.log('the data from the api', response));
+          $(`#${local}`).append(parentDiv);
+          resolve(response);
         });
       })
       .catch((err) => {
@@ -73,12 +77,7 @@ const getBooks = (category) => {
   });
 };
 
-const loadBooks = (arg) => {
-  $.when(getBooks(arg)).then(() => {
-    getModal();
-  });
-};
-
+// on search button click, construct search url and send to categories page
 $('#button-addon1').click(function(event) {
   event.preventDefault();
   const targetUrl = $('#searchBar')
@@ -88,7 +87,7 @@ $('#button-addon1').click(function(event) {
 
   window.location.href = `/categories/?search=${targetUrl}`;
 });
-
+// on click- create modal
 const getModal = () => {
   $('.titleModal').click(function() {
     const index = this.value;
@@ -98,10 +97,8 @@ const getModal = () => {
       } else {
         $.ajax(`api/mylibrary/${index}`, { type: 'GET' }).then((isAdded) => {
           if (isAdded === null) {
-            console.log('notAdded');
             addBookToLibrary(index);
           } else {
-            console.log('added');
             removeBookFromLibrary(index);
           }
         });
@@ -111,8 +108,58 @@ const getModal = () => {
   });
 };
 
+// fill modal when clicked
+const fillModal = (i) => {
+  $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
+    $('.modalCoverJpg').attr({
+      src: response.image_link,
+    });
+    $('.modalBookTitle ').text(
+      // eslint-disable-next-line comma-dangle
+      response.title
+    );
+    $('.modalBooksubTitle').text(response.subtitle);
+    $('.modalBookAuthor').text(
+      // eslint-disable-next-line comma-dangle
+      `By: ${response.author}`
+    );
+    $('.modalBookIllustrator').text(response.illustrator);
+    $('.descriptionHeader').text('Description:');
+    $('.bookDesc').text(response.description);
+    $('.keyPointsHeader').text('Key Discussion Points');
+    $('.keyPoints').text(response.key_talking_points);
+    const youTubeLink = response.youtube_link;
+    if (youTubeLink !== null) {
+      $('.youtTubeLink')
+        .attr({ href: youTubeLink })
+        .text('Watch This Book Being Read on YouTube');
+    }
+    $('.pubDate').text(` Published On: ${response.pub_date}`);
+    $('.isbn').text(`ISBN: ${response.isbn}`);
+
+    $('#addToTable').click(() => {
+      $.ajax(`/api/admin/books/${i}`, { type: 'PUT' }).then(() => {
+        const success = $('<h1>')
+          .text('Book Added Succesfully')
+          .css({ textAlign: 'center' });
+        $('.modal-content').text('');
+        $('.modal-content').append(success);
+      });
+    });
+    $('#deleteFromTable').click(() => {
+      $.ajax(`/api/admin/books/${i}`, { type: 'DELETE' }).then(() => {
+        const removed = $('<h1>')
+          .text('Book Removed Successfully')
+          .css({ textAlign: 'center' });
+        $('.modal-content').text('');
+        $('.modal-content').append(removed);
+      });
+    });
+  });
+};
+
+// check if user is logged in
 const notLoggedIn = () => {
-  console.log('not logged in');
   addPlusSign();
   $('#thePlusSign').click(() => {
     const topDiv = $('<div>')
@@ -194,56 +241,4 @@ const addMinusSign = () => {
 
   $(addButton).append(minusSign);
   $('.modal-content').prepend(addButton);
-};
-
-const fillModal = (i) => {
-  $.ajax(`/api/book/${i}`, { type: 'GET' }).then((response) => {
-    $('.modalCoverJpg').attr({
-      src: response.image_link,
-    });
-    $('.modalBookTitle ').text(
-      // eslint-disable-next-line comma-dangle
-      response.title
-    );
-    $('.modalBooksubTitle').text(response.subtitle);
-    $('.modalBookAuthor').text(
-      // eslint-disable-next-line comma-dangle
-      `By: ${response.author}`
-    );
-    $('.modalBookIllustrator').text(response.illustrator);
-    $('.descriptionHeader').text('Description:');
-    $('.bookDesc').text(response.description);
-    $('.keyPointsHeader').text('Key Discussion Points');
-    $('.keyPoints').text(response.key_talking_points);
-    const youTubeLink = response.youtube_link;
-    if (youTubeLink !== null) {
-      $('.youtTubeLink')
-        .attr({ href: youTubeLink })
-        .text('Watch This Book Being Read on YouTube');
-    }
-    $('.pubDate').text(` Published On: ${response.pub_date}`);
-    $('.isbn').text(`ISBN: ${response.isbn}`);
-
-    $('#addToTable').click(() => {
-      console.log(i);
-      $.ajax(`/api/admin/books/${i}`, { type: 'PUT' }).then((addeds) => {
-        console.log(addeds);
-        const success = $('<h1>')
-          .text('Book Added Succesfully')
-          .css({ textAlign: 'center' });
-        $('.modal-content').text('');
-        $('.modal-content').append(success);
-      });
-    });
-    $('#deleteFromTable').click(() => {
-      console.log('remove');
-      $.ajax(`/api/admin/books/${i}`, { type: 'DELETE' }).then(() => {
-        const removed = $('<h1>')
-          .text('Book Removed Successfully')
-          .css({ textAlign: 'center' });
-        $('.modal-content').text('');
-        $('.modal-content').append(removed);
-      });
-    });
-  });
 };
