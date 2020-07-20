@@ -9,6 +9,7 @@
 $('#bookInfo').hide();
 $('#extraInfo').hide();
 
+// pulls values from api call into html
 function populateFields(book) {
   $('#populateImg').attr('src', book.volumeInfo.imageLinks.thumbnail);
   $('#populateBook').val(book.volumeInfo.title);
@@ -18,31 +19,39 @@ function populateFields(book) {
   $('#populateIllustrator').val(book.volumeInfo.thumbnail);
   $('#populateDate').val(book.volumeInfo.publishedDate);
 }
+
+// on isbn submit, search google books api
 $('#isbnSubmit').click(() => {
   const isbn = $('#isbnInput').val();
-  console.log(isbn);
   let isbnWithoutHyphens = isbn.replace(/-/g, '');
   const googleAPI = `https://www.googleapis.com/books/v1/volumes?q=${isbnWithoutHyphens}`;
   $.getJSON(googleAPI, (response) => {
-    console.log(response);
+    // no response from google books API - return error message
     if (typeof response.items === 'undefined') {
-      console.log('error ');
+      const alertISBN = $('<div>')
+        .attr({
+          class: 'alert alert-danger',
+          role: 'alert',
+        })
+        .text('We could not find a book matching that ISBN. Please try again.');
+      $('#isbn').append(alertISBN);
     } else {
       populateFields(response.items[0]);
 
       $('#bookInfo').show();
       $('#isbn').hide();
     }
-
+    // if isbn is not right, reject and reenter isbn
     $('#infoReject').click(() => {
       $('#bookInfo').hide();
       $('#isbn').show();
       console.log(response);
     });
-
+    // if isbn is right, review info and submit
     $('#infoSubmit').click((e) => {
       e.preventDefault();
       console.log($('#populateDate').val());
+      // date validation
       if ($('#populateDate').val().length < 10) {
         const alertDiv = $('<div>')
           .attr({
@@ -52,6 +61,7 @@ $('#isbnSubmit').click(() => {
           .text('Please Enter the Date as MM/DD/YYYY');
         $('#bookInfo').append(alertDiv);
       } else if (
+        // author and book title validation
         $('#populateBook').val() === '' ||
         $('#populateAuthor').val() === ''
       ) {
@@ -104,11 +114,12 @@ $('#isbnSubmit').click(() => {
         categoriesById.forEach((cat) => {
           categoriesArray.push(Number(cat));
         });
-
+        // use information provided to create an object to send to backend
+        // for post request
         const payload = {
           title: $('#populateBook').val(),
           subtitle: $('#populateSubtitle').val(),
-          author: $('#populateBook').val(),
+          author: $('#populateAuthor').val(),
           illustrator: $('#populateIllustrator').val(),
           description: response.items[0].volumeInfo.description,
           image_link: response.items[0].volumeInfo.imageLinks.thumbnail,
@@ -120,6 +131,7 @@ $('#isbnSubmit').click(() => {
         };
         console.log(payload);
 
+        // submit newly added book to backend
         const submitAnswers = () => {
           return new Promise((resolve, reject) => {
             $.ajax({
