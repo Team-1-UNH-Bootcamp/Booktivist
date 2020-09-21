@@ -1,4 +1,4 @@
-# Project: **_Kid Booktivist_**
+# **_Kid Booktivist_**
 
 Kid Booktivist is an application that assists parents in their search to find books for their children that deal with issues of equality, diversity, equity and social justice.
 
